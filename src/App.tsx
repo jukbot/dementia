@@ -1,44 +1,37 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Landing from './components/Landing'
+import Layout from './components/Layout/Layout'
+import OutroLayout from './components/Outro/Layout'
+import OutroContent from './components/Outro/Content'
+import Profile from './components/Profile'
+import Share from './components/Share'
+import QuizLanding from './components/Quiz/Landing'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = (): JSX.Element => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <main>
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/share" element={<Share />} />
+            <Route path="/outro" element={<OutroLayout bgColor="bg-white" />}>
+              <Route path=":id" element={<OutroContent />} />
+            </Route>
+            {/* <Route path="/introduction" element={<Users />}>
+            <Route path="me" element={<OwnUserProfile />} />
+            <Route path=":id" element={<UserProfile />} />
+          </Route> */}
+            <Route path="/quiz" element={<QuizLanding />}>
+              {/* <Route path="landing" element={<QuizLanding />} /> */}
+              {/* <Route path=":id" element={<QuizQuestion />} /> */}
+            </Route>
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </main>
   )
 }
 

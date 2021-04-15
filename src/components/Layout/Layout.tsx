@@ -6,9 +6,7 @@ interface Props {
 
 const Layout: FC<Props> = ({ children }): JSX.Element => {
   return (
-    <div
-      className={`min-h-full bg-white debug-screen ${process.env.NODE_ENV === 'development' ? 'debug-screens' : ''} `}
-    >
+    <div className={`min-h-full debug-screen ${process.env.NODE_ENV === 'development' ? 'debug-screens' : ''} `}>
       <main>{children}</main>
     </div>
   )

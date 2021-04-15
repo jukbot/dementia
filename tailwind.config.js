@@ -1,6 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
+  mode: 'jit',
   purge: {
     enabled: process.env.NODE_ENV === 'production',
     safeList: [],
@@ -17,6 +18,24 @@ module.exports = {
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
       },
+      maxWidth: {
+        0: '0',
+        '1/4': '25%',
+        '1/3': '33.33%',
+        '1/2': '50%',
+        '3/4': '75%',
+        290: '290px',
+        full: '100%',
+        min: 'min-content',
+        max: 'max-content',
+        prose: '65ch',
+      },
+      boxShadow: {
+        dark: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
+      },
+      backgroundImage: () => ({
+        'hero-landing': "url('/images/landing/body.svg')",
+      }),
     },
   },
   variants: {
