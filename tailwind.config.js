@@ -18,6 +18,12 @@ module.exports = {
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
       },
+      transformOrigin: {
+        0: '0%',
+      },
+      zIndex: {
+        '-1': '-1',
+      },
       maxWidth: {
         0: '0',
         '1/4': '25%',
