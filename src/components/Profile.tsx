@@ -121,16 +121,20 @@ const Profile = (): JSX.Element => {
             </button>
             <button
               type="button"
-              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
             >
               รู้จักผู้ที่มีอาการสมองเสื่อม
             </button>
-            <button
-              type="button"
-              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              อื่นๆ
-            </button>
+            <label htmlFor="other" className="sr-only">
+              <span className="text-gray-700">Input (text)</span>
+            </label>
+            <input
+              id="other"
+              type="text"
+              autoComplete="off"
+              className="inline-flex text-center justify-center items-center placeholder-[#6866E7] [#6866E7] font-light font-pridi bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
+              placeholder="อื่นๆ"
+            />
           </div>
           <div className="flex justify-center">
             <button
