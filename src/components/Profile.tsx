@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { provinces } from '../data/province'
+import { zipcode } from '../data/zipcode'
 
 const Profile = (): JSX.Element => {
   const navigate = useNavigate()
+  const [province, setProvince] = useState<string | null>('1')
+
   return (
     <>
       <div className="fixed h-full w-full bg-[#6866e7] p-6 overflow-hidden">
@@ -49,9 +53,17 @@ const Profile = (): JSX.Element => {
                   id="province"
                   name="province"
                   placeholder="จังหวัด"
+                  onChange={(e) => setProvince(e.target?.value)}
+                  defaultValue=""
                   className="block w-full text-base font-light h-12 border-0 border-b py-2 px-3 border-[#808080] bg-[#E5E5E5] rounded-t-md font-pridi placeholder-[#808080] focus:outline-none focus:ring-0 focus:border-[#6866E7]"
                 >
-                  <option value="male">กรุงเทพ</option>
+                  {provinces.map((p) => {
+                    return (
+                      <option key={p.PROVINCE_ID} value={p.PROVINCE_ID}>
+                        {p.PROVINCE_NAME}
+                      </option>
+                    )
+                  })}
                 </select>
               </div>
               <div className="col-span-12">
@@ -62,11 +74,20 @@ const Profile = (): JSX.Element => {
                   name="postal_code"
                   id="postal_code"
                   placeholder="รหัสไปรษณีย์"
-                  className="block w-full text-base font-light h-12 border-0 border-b py-2 px-3 border-[#808080] bg-[#E5E5E5] rounded-t-md font-pridi placeholder-[#808080] focus:outline-none focus:ring-0 focus:border-[#6866E7]"
+                  disabled={!province}
+                  className={`${
+                    province ? 'placeholder-[#808080]' : 'placeholder-[#808080]'
+                  } block w-full text-base font-light h-12 border-0 border-b py-2 px-3 border-[#808080] bg-[#E5E5E5] rounded-t-md font-pridi focus:outline-none focus:ring-0 focus:border-[#6866E7]`}
                 >
-                  <option value="" disabled>
-                    รหัสไปรษณีย์
-                  </option>
+                  {[...new Set(zipcode.filter((z) => z.PROVINCE_ID === province).map((item) => item.ZIPCODE))].map(
+                    (code) => {
+                      return (
+                        <option key={code} value={code}>
+                          {code}
+                        </option>
+                      )
+                    }
+                  )}
                 </select>
               </div>
             </div>
@@ -79,33 +100,34 @@ const Profile = (): JSX.Element => {
             </h2>
           </div>
           <div className="flex flex-col self-center w-full px-6 space-y-2 lg:max-w-1/2">
+            {/* hover:bg-[#4842e0] hover:text-[#e7e7f9]  */}
             <button
               type="button"
-              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md hover:bg-[#4842e0] hover:text-[#e7e7f9] focus:outline-none"
+              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
             >
               สงสัยว่าตัวเองอาจมีความเสี่ยง
             </button>
             <button
               type="button"
-              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md hover:bg-[#4842e0] hover:text-[#e7e7f9] focus:outline-none"
+              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
             >
               เป็นผู้รับผิดชอบการดูแลผู้สูงอายุ
             </button>
             <button
               type="button"
-              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md hover:bg-[#4842e0] hover:text-[#e7e7f9] focus:outline-none"
+              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
             >
               มีผู้สูงอายุในครอบครัว
             </button>
             <button
               type="button"
-              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md hover:bg-[#4842e0] hover:text-[#e7e7f9] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               รู้จักผู้ที่มีอาการสมองเสื่อม
             </button>
             <button
               type="button"
-              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md hover:bg-[#4842e0] hover:text-[#e7e7f9] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               อื่นๆ
             </button>

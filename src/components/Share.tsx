@@ -2,6 +2,10 @@ import React from 'react'
 import { Facebook, Line, Twitter } from './Icons'
 
 const Share = (): JSX.Element => {
+  const goToLink = (url: string): void => {
+    window.location.assign(url)
+  }
+
   return (
     <>
       <div className="fixed h-full w-full bg-[#4842e0] overflow-hidden">
@@ -15,12 +19,14 @@ const Share = (): JSX.Element => {
           <div className="flex flex-col self-center w-full px-8 pt-4 space-y-4 md:max-w-1/2">
             <button
               type="button"
+              onClick={() => goToLink('https://www.the101.world/prevent-dementia-syndrome')}
               className="inline-flex justify-center items-center px-6 py-3 text-lg font-medium text-primary bg-[#a7a5f0] border border-transparent rounded-md shadow-lg hover:bg-gray-100 focus:outline-none"
             >
               ‘ยากันลืม’ คู่มือเตือนความจำ
             </button>
             <button
               type="button"
+              onClick={() => goToLink('https://www.facebook.com/azthai2013')}
               className="inline-flex justify-center items-center px-6 py-3 text-lg font-medium text-primary bg-[#a7a5f0] border border-transparent rounded-md shadow-lg hover:bg-gray-100 focus:outline-none"
             >
               สายด่วนดูแล ผู้ป่วยสมองเสื่อม
@@ -36,9 +42,15 @@ const Share = (): JSX.Element => {
           <div className="pt-4">
             <h2 className="text-2xl font-medium text-center text-[#e7e7f9]">แชร์สิ่งนี้ให้คนที่คุณรัก</h2>
             <div className="flex justify-center pt-6 space-x-4 text-[#a7a5f0]">
-              <Line className="flex-shrink-0 w-12 h-12 cursor-pointer md:w-24 md:h-24 hover:text-white" />
-              <Facebook className="flex-shrink-0 w-12 h-12 cursor-pointer md:w-24 md:h-24 hover:text-white" />
-              <Twitter className="flex-shrink-0 w-12 h-12 cursor-pointer md:w-24 md:h-24 hover:text-white" />
+              <a href="https://facebook.com" target="_blank" rel="noreferrer">
+                <Line className="flex-shrink-0 w-12 h-12 cursor-pointer md:w-24 md:h-24 hover:text-white" />
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noreferrer">
+                <Facebook className="flex-shrink-0 w-12 h-12 cursor-pointer md:w-24 md:h-24 hover:text-white" />
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noreferrer">
+                <Twitter className="flex-shrink-0 w-12 h-12 cursor-pointer md:w-24 md:h-24 hover:text-white" />
+              </a>
             </div>
           </div>
         </section>
