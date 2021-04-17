@@ -21,7 +21,7 @@ const Landing = (): JSX.Element => {
 
   return (
     <>
-      <div className="fixed h-full w-full bg-[#2208b2] overflow-hidden">
+      <div className="fixed h-full w-full bg-[#2208b2]">
         <div className="flex justify-center w-full">
           <img src={body} alt="body" className="absolute bottom-0 z-0 w-full lg:max-w-1/2" />
         </div>

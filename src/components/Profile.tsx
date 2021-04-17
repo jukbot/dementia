@@ -9,12 +9,12 @@ const Profile = (): JSX.Element => {
 
   return (
     <>
-      <div className="fixed h-full w-full bg-[#6866e7] p-6 overflow-hidden flex items-center">
-        <section className="flex flex-col items-center justify-center p-6 mx-auto space-y-4 bg-white rounded-md lg:max-w-1/2">
+      <div className="fixed h-full w-full bg-[#6866e7] p-6 flex justify-center lg:items-center">
+        <section className="flex flex-col items-center justify-between w-full p-6 space-y-4 bg-white rounded-md lg:max-w-1/2">
           <div>
             <h1 className="text-center text-[#666666] text-xl font-medium">ข้อมูลส่วนตัว</h1>
           </div>
-          <div className="px-8 overflow-hidden">
+          <div className="px-8">
             <div className="grid grid-cols-12 gap-x-6 gap-y-4">
               <div className="col-span-6">
                 <label htmlFor="gender" className="sr-only">
@@ -139,7 +139,7 @@ const Profile = (): JSX.Element => {
           <div className="flex justify-center">
             <button
               type="button"
-              onClick={() => navigate('/outro/1')}
+              onClick={() => navigate('/intro/1')}
               className="inline-flex items-center px-8 py-2 text-lg font-medium border rounded-md border-[#4842e0] text-white hover:text-[#6866E7] bg-[#4842e0] hover:border-gray-50 hover:bg-gray-50 hover:text-[#e7e7f9] focus:outline-none shadow-dark hover:shadow-lg"
             >
               บันทึก

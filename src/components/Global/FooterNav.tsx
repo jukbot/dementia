@@ -2,15 +2,16 @@ import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 interface Props {
+  className?: string
   lightTheme: boolean
   prev: string
   next: string
 }
-const FooterNav: FC<Props> = ({ lightTheme = true, prev = '/', next = '/' }): JSX.Element => {
+const FooterNav: FC<Props> = ({ lightTheme = true, prev = '/', next = '/', className }): JSX.Element => {
   const navigate = useNavigate()
 
   return (
-    <nav className="absolute bottom-0 flex justify-center w-full mb-12 space-x-4">
+    <nav className={`bottom-0 flex justify-center w-full mb-12 space-x-4 ${className}`}>
       <button
         type="button"
         onClick={() => navigate(prev ?? '/')}

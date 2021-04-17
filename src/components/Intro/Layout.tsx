@@ -5,10 +5,10 @@ interface Props {
   bgColor?: string
 }
 
-const OutroLayout: FC<Props> = ({ bgColor }): JSX.Element => {
+const IntroLayout: FC<Props> = ({ bgColor }): JSX.Element => {
   return (
     <>
-      <main className={`${bgColor} fixed h-full w-full`}>
+      <main className={`${bgColor} flex flex-col fixed h-full w-full`}>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
@@ -17,4 +17,4 @@ const OutroLayout: FC<Props> = ({ bgColor }): JSX.Element => {
   )
 }
 
-export default OutroLayout
+export default IntroLayout

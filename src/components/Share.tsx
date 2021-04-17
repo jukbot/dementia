@@ -8,7 +8,7 @@ const Share = (): JSX.Element => {
 
   return (
     <>
-      <div className="fixed h-full w-full bg-[#4842e0] overflow-hidden">
+      <div className="fixed h-full w-full bg-[#4842e0]">
         <section className="flex flex-col justify-between h-full py-12">
           <h1 className="text-2xl font-medium text-center text-[#a7a5f0]">
             ลิงก์ข้อมูล

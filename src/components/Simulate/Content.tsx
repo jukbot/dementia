@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { content } from '../../data/outro'
 import FooterNav from '../Global/FooterNav'
 
-const OutroContent: FC = (): JSX.Element => {
+const SimulateContent: FC = (): JSX.Element => {
   const { id } = useParams()
   const data = content.find((v) => v.route === id)
 
@@ -20,9 +20,9 @@ const OutroContent: FC = (): JSX.Element => {
           dangerouslySetInnerHTML={{ __html: data?.content ?? '' }}
         />
       </section>
-      <FooterNav prev={data?.prev ?? ''} next={data?.next ?? ''} lightTheme={false} />
+      <FooterNav prev={data?.prev ?? ''} next={data?.next ?? ''} lightTheme={false} className={'mt-auto'} />
     </>
   )
 }
 
-export default OutroContent
+export default SimulateContent
