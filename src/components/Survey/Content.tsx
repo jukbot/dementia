@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { content } from '../../data/survey'
 import FooterSurvey from '../Global/FooterSurvey'
 
-const importView = (name: string) => lazy(() => import(`./Form/${name}`).catch((error) => console.error(error)))
+const importView = (name: string) => lazy(() => import(`./Form/${name}`))
 
 interface Props {
   bgColor?: string
