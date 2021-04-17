@@ -37,11 +37,13 @@ const Landing = (): JSX.Element => {
             <br />
             ที่ดียิ่งขึ้นสำหรับทุกคน
           </p>
-          <div className="flex justify-center pt-4">
+          <div className="flex justify-center h-16 pt-4">
             <button
               type="button"
               onClick={() => setShowModal(true)}
-              className="inline-flex items-center px-8 py-2 text-lg font-medium border rounded-md border-[#a7a5f0] text-[#a7a5f0] hover:text-[#6866E7] hover:border-gray-50 hover:bg-gray-50 focus:outline-none"
+              className={`${
+                showModal ? 'hidden' : 'inline-flex'
+              }  items-center px-8 py-2 text-lg font-medium border rounded-md border-[#a7a5f0] text-[#a7a5f0] hover:text-[#6866E7] hover:border-gray-50 hover:bg-gray-50 focus:outline-none`}
             >
               เข้าสู่เว็บไซต์
             </button>

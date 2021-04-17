@@ -9,7 +9,7 @@ const Profile = (): JSX.Element => {
 
   return (
     <>
-      <div className="fixed h-full w-full bg-[#6866e7] p-6 overflow-hidden">
+      <div className="fixed h-full w-full bg-[#6866e7] p-6 overflow-hidden flex items-center">
         <section className="flex flex-col items-center justify-center p-6 mx-auto space-y-4 bg-white rounded-md lg:max-w-1/2">
           <div>
             <h1 className="text-center text-[#666666] text-xl font-medium">ข้อมูลส่วนตัว</h1>
@@ -99,7 +99,7 @@ const Profile = (): JSX.Element => {
               ภาวะสมองเสื่อมอย่างไร
             </h2>
           </div>
-          <div className="flex flex-col self-center w-full px-6 space-y-2 lg:max-w-1/2">
+          <div className="flex flex-col self-center w-full px-6 space-y-2">
             {/* hover:bg-[#4842e0] hover:text-[#e7e7f9]  */}
             <button
               type="button"

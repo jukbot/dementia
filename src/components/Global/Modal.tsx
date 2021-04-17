@@ -56,7 +56,7 @@ const Modal: FC<Props> = ({
           </div>
         </div>
       </div>
-      <div className="fixed inset-0 z-40 bg-black opacity-50 modal" onTouchEnd={() => setOpenModal(false, false)}></div>
+      <div className="fixed inset-0 z-40 bg-black opacity-30 modal" onTouchEnd={() => setOpenModal(false, false)}></div>
     </div>
   )
 }
