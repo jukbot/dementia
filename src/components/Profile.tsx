@@ -21,6 +21,7 @@ const Profile = (): JSX.Element => {
                   เพศ
                 </label>
                 <select
+                  required
                   id="gender"
                   name="gender"
                   placeholder="เพศ"
@@ -36,6 +37,7 @@ const Profile = (): JSX.Element => {
                   อายุ
                 </label>
                 <input
+                  required
                   type="text"
                   name="age"
                   id="age"
@@ -93,7 +95,7 @@ const Profile = (): JSX.Element => {
             </div>
           </div>
           <div>
-            <h2 className="text-[#666666] text-xl text-center">
+            <h2 className="text-[#666666] text-xl text-center font-medium">
               คุณมีความเกี่ยวข้องกับ
               <br />
               ภาวะสมองเสื่อมอย่างไร
@@ -103,25 +105,25 @@ const Profile = (): JSX.Element => {
             {/* hover:bg-[#4842e0] hover:text-[#e7e7f9]  */}
             <button
               type="button"
-              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
+              className="inline-flex justify-center items-center px-4 py-2 font-light font-pridi text-lg text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
             >
               สงสัยว่าตัวเองอาจมีความเสี่ยง
             </button>
             <button
               type="button"
-              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
+              className="inline-flex justify-center items-center px-4 py-2 font-light font-pridi text-lg text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
             >
               เป็นผู้รับผิดชอบการดูแลผู้สูงอายุ
             </button>
             <button
               type="button"
-              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
+              className="inline-flex justify-center items-center px-4 py-2 font-light font-pridi text-lg text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
             >
               มีผู้สูงอายุในครอบครัว
             </button>
             <button
               type="button"
-              className="inline-flex justify-center items-center px-6 py-2 font-light font-pridi text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
+              className="inline-flex justify-center items-center px-4 py-2 font-light font-pridi text-lg text-[#6866E7] bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
             >
               รู้จักผู้ที่มีอาการสมองเสื่อม
             </button>
@@ -132,7 +134,7 @@ const Profile = (): JSX.Element => {
               id="other"
               type="text"
               autoComplete="off"
-              className="inline-flex text-center justify-center items-center placeholder-[#6866E7] [#6866E7] font-light font-pridi bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
+              className="inline-flex text-center justify-center items-center placeholder-[#6866E7] [#6866E7] text-lg font-light font-pridi bg-[#E7E7F9] border border-transparent rounded-md focus:outline-none"
               placeholder="อื่นๆ"
             />
           </div>

@@ -26,6 +26,8 @@ const Modal: FC<Props> = ({
     if (isShown) {
       window.addEventListener('click', handleClick)
       window.addEventListener('touchend', handleClick)
+    } else {
+      window.removeEventListener('click', handleClick)
     }
     // return window.removeEventListener('click', handleClick)
   }, [isShown, setOpenModal])

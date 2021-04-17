@@ -3,7 +3,6 @@ export interface QuizRouter {
 }
 
 export interface QuizData {
-  layout: string
   route: string
   prev: string
   next: string

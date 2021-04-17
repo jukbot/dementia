@@ -1,4 +1,4 @@
-import React, { FC, Suspense } from 'react'
+import React, { FC } from 'react'
 import { Outlet } from 'react-router-dom'
 
 interface Props {
@@ -8,10 +8,8 @@ interface Props {
 const OutroLayout: FC<Props> = ({ bgColor }): JSX.Element => {
   return (
     <>
-      <main className={`${bgColor} fixed h-full w-full`}>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Outlet />
-        </Suspense>
+      <main className={`${bgColor} flex flex-col fixed  h-full w-full`}>
+        <Outlet />
       </main>
     </>
   )

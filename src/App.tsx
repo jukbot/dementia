@@ -12,7 +12,17 @@ import IntroContent from './components/Intro/Content'
 import OutroLayout from './components/Outro/Layout'
 import OutroContent from './components/Outro/Content'
 
+import QuizLayout from './components/Quiz/Layout'
 import QuizLanding from './components/Quiz/Landing'
+import QuizContent from './components/Quiz/Content'
+import QuizResult from './components/Quiz/Result'
+
+import SimulateLayout from './components/Simulate/Layout'
+import SimulateContent from './components/Simulate/Content'
+
+import SurveyLayout from './components/Survey/Layout'
+import SurveyContent from './components/Survey/Content'
+import SurveyResult from './components/Survey/Result'
 
 const App = (): JSX.Element => {
   return (
@@ -26,16 +36,20 @@ const App = (): JSX.Element => {
             <Route path="intro" element={<IntroLayout bgColor="bg-[#6866e7]" />}>
               <Route path=":id" element={<IntroContent />} />
             </Route>
+            <Route path="/quiz" element={<QuizLayout />}>
+              <Route path="landing" element={<QuizLanding bgColor="bg-[#4842e0]" />} />
+              <Route path=":id" element={<QuizContent bgColor="bg-white" />} />
+              <Route path="result" element={<QuizResult bgColor="bg-[#4842e0]" />} />
+            </Route>
+            <Route path="/simulate" element={<SimulateLayout />}>
+              <Route path=":id" element={<SimulateContent />} />
+            </Route>
+            <Route path="/survey" element={<SurveyLayout />}>
+              <Route path=":id" element={<SurveyContent bgColor="bg-[#e7e7f9]" />} />
+              <Route path="result" element={<SurveyResult bgColor="bg-[#4842e0]" />} />
+            </Route>
             <Route path="/outro" element={<OutroLayout bgColor="bg-white" />}>
               <Route path=":id" element={<OutroContent />} />
-            </Route>
-            <Route path="/simulate" element={<OutroLayout bgColor="bg-white" />}>
-              <Route path=":id" element={<OutroContent />} />
-            </Route>
-
-            <Route path="/quiz" element={<QuizLanding />}>
-              {/* <Route path="landing" element={<QuizLanding />} /> */}
-              {/* <Route path=":id" element={<QuizQuestion />} /> */}
             </Route>
           </Routes>
         </Layout>

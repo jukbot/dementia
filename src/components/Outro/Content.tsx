@@ -9,18 +9,22 @@ const OutroContent: FC = (): JSX.Element => {
 
   return (
     <>
-      <section className={`text-center flex flex-col h-full px-8 py-12 ${data?.space_type}`}>
+      <section className={`text-center flex flex-col h-full px-8 py-8 ${data?.space_type}`}>
         <h1
           className="text-2xl font-light text-[#444444] leading-relaxed"
           dangerouslySetInnerHTML={{ __html: data?.title ?? '' }}
         />
-        {data?.image_url ? <img className="object-contain h-64" src={data.image_url} alt={data.image_alt} /> : ''}
+        {data?.image_url ? (
+          <img className="object-contain w-full h-72" src={data.image_url} alt={data.image_alt} />
+        ) : (
+          ''
+        )}
         <h2
           className="text-2xl font-light text-[#444444] leading-relaxed"
           dangerouslySetInnerHTML={{ __html: data?.content ?? '' }}
         />
       </section>
-      <FooterNav prev={data?.prev ?? '/'} next={data?.next ?? '/'} lightTheme={false} className={'absolute'} />
+      <FooterNav prev={data?.prev ?? '/'} next={data?.next ?? '/'} lightTheme={false} className="mt-auto" />
     </>
   )
 }

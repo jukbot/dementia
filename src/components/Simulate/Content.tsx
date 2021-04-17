@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { useParams } from 'react-router-dom'
-import { content } from '../../data/outro'
+import { content } from '../../data/simulate'
 import FooterNav from '../Global/FooterNav'
 
 const SimulateContent: FC = (): JSX.Element => {
@@ -8,20 +8,21 @@ const SimulateContent: FC = (): JSX.Element => {
   const data = content.find((v) => v.route === id)
 
   return (
-    <>
-      <section className={`text-center flex flex-col h-full px-8 py-12 ${data?.space_type}`}>
+    <div className={`h-full flex flex-col fixed w-full ${data?.bg_color}`}>
+      <section className={`text-center flex flex-col h-full px-8 py-12 space-y-8 ${data?.space_type}`}>
+        {data?.image_url ? <img className="object-contain w-full h-72" src={data.image_url} alt="simulate" /> : ''}
         <h1
-          className="text-2xl font-light text-[#444444] leading-relaxed"
+          className={`text-2xl font-light ${data?.text_color} leading-relaxed`}
           dangerouslySetInnerHTML={{ __html: data?.title ?? '' }}
         />
-        {data?.image_url ? <img className="object-contain h-64" src={data.image_url} alt={data.image_alt} /> : ''}
-        <h2
-          className="text-2xl font-light text-[#444444] leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: data?.content ?? '' }}
-        />
       </section>
-      <FooterNav prev={data?.prev ?? ''} next={data?.next ?? ''} lightTheme={false} className={'mt-auto'} />
-    </>
+      <FooterNav
+        prev={data?.prev ?? null}
+        next={data?.next ?? null}
+        lightTheme={data?.light_theme ?? true}
+        className={'mt-auto'}
+      />
+    </div>
   )
 }
 
