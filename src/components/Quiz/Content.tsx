@@ -25,7 +25,7 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
           ''
         )}
         {data?.image_url ? (
-          <img src={`/public${data?.image_url}`} className="object-contain w-full" alt={data.image_alt} />
+          <img src={`${data?.image_url}`} className="object-contain w-full" alt={data.image_alt} />
         ) : (
           ''
         )}

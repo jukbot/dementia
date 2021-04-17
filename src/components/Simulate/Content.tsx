@@ -11,7 +11,7 @@ const SimulateContent: FC = (): JSX.Element => {
     <div className={`h-full flex flex-col fixed w-full ${data?.bg_color}`}>
       <section className={`text-center flex flex-col h-full px-8 py-12 space-y-8 ${data?.space_type}`}>
         {data?.image_url ? (
-          <img src={`/public${data?.image_url}`} className="object-contain w-full h-72" alt="simulate" />
+          <img src={`${data?.image_url}`} className="object-contain w-full h-72" alt="simulate" />
         ) : (
           ''
         )}
