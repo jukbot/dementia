@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { content } from '../../data/intro'
 import FooterNav from '../Global/FooterNav'
 
-const importView = (name: string) => lazy(() => import(`./Infographic/${name}`))
+const importView = (name: string) => lazy(() => import(`./Infographic/${name}.tsx`))
 
 const IntroContent: FC = (): JSX.Element => {
   const { id } = useParams()
