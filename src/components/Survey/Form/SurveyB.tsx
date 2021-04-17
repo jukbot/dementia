@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 
-const SurveyB: FC = () => {
+const SurveyB: FC = (): JSX.Element => {
   const [answer, setAnswer] = useState<string | undefined>(undefined)
 
   return (

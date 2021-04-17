@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react'
+import { choices } from '../../../data/choice'
 
-const SurveyA: FC = () => {
+const SurveyA: FC = (): JSX.Element => {
   const [answer, setAnswer] = useState<string | undefined>(undefined)
 
   return (
@@ -9,35 +10,32 @@ const SurveyA: FC = () => {
       <p className="text-[#4842e0] font-light text-lg">คลิกแต่ละข้อเพื่อดูรายละเอียด</p>
       <fieldset>
         <legend className="sr-only">ตัวเลือกแบบคัดกรองที่จะทำ</legend>
-        <div className="space-y-4">
-          <label
-            className={`${
-              answer === 'A' ? 'bg-[#6866e7] shadow-lg' : 'bg-white shadow-dark'
-            } relative block px-4 py-4 rounded-md cursor-pointer transition`}
-            tabIndex={0}
-            role="radio"
-            aria-checked={answer === 'A'}
-            onClick={() => setAnswer('A')}
-          >
-            <div className="flex items-center justify-center">
-              <p
+        <ul className="space-y-4">
+          {choices.map((choice) => {
+            return (
+              <li
+                key={choice.id}
                 className={`${
-                  answer === 'A' ? 'text-white' : 'text-[#6866e7]'
-                } transition font-light text-lg text-center}`}
+                  answer === choice.value ? 'bg-[#6866e7] shadow-lg' : 'bg-white shadow-dark'
+                } relative block px-4 py-4 rounded-md cursor-pointer transition`}
+                tabIndex={0}
+                role="radio"
+                aria-checked={answer === choice.value}
+                onClick={() => setAnswer(choice.value)}
               >
-                ปรับเปลี่ยนพฤติกรรมด้วยตนเอง
-                <br /> เพื่อชะลอความเสื่อมของสมอง
-                <br /> สังเกตอาการและตรวจเช็คอย่างสม่ำเสมอ
-              </p>
-            </div>
-            {/* <div
-              className={`${
-                answer === 'A' ? 'border-red-500' : 'border-transparent'
-              } absolute inset-0 border-2 rounded-lg group-hover:border-primary pointer-events-none `}
-              aria-hidden="true"
-            ></div> */}
-          </label>
-          <label
+                <p
+                  className={`${
+                    answer === choice.value ? 'text-white' : 'text-[#6866e7]'
+                  } transition font-light text-lg text-center}`}
+                >
+                  {choice.name}
+                </p>
+                {/* </div> */}
+              </li>
+            )
+          })}
+
+          {/* <label
             className={`${
               answer === 'B' ? 'bg-[#6866e7] shadow-lg' : 'bg-white shadow-dark'
             } relative block px-4 py-4 rounded-md cursor-pointer transition`}
@@ -56,8 +54,8 @@ const SurveyA: FC = () => {
                 <br /> เพื่อยืนยันภาวะทางสมองอีกครั้ง
               </p>
             </div>
-          </label>
-        </div>
+          </label> */}
+        </ul>
       </fieldset>
     </div>
   )
