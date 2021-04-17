@@ -15,7 +15,7 @@ const OutroContent: FC = (): JSX.Element => {
           dangerouslySetInnerHTML={{ __html: data?.title ?? '' }}
         />
         {data?.image_url ? (
-          <img className="object-contain w-full h-72" src={data.image_url} alt={data.image_alt} />
+          <img src={`/public${data?.image_url}`} className="object-contain w-full h-72" alt={data.image_alt} />
         ) : (
           ''
         )}

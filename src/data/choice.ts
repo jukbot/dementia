@@ -5,8 +5,8 @@ export const choices = [
     description:
       'พยาบาลหรืออาสาสมัครสาธารณสุขประจำหมู่บ้าน (อสม.) จะเดินทางมาตรวจคัดแยกให้ที่บ้านเป็นรายปี เหมาะกับกรณีที่ไม่รีบเร่งที่จะ ต้องเข้ารับการคัดแยกทันที หรืออาจจะไม่สะดวก เดินทางไปเข้ารับการคัดแยกที่โรงพยาบาล',
     text: 'แบบ ก',
-    thumbnail_url: '/src/images/choice/choice-a.svg',
-    image_url: '/src/images/choice/detail-a.svg',
+    thumbnail_url: '/images/choice/choice-a.svg',
+    image_url: '/images/choice/detail-a.svg',
     value: 'A',
   },
   {
@@ -15,8 +15,8 @@ export const choices = [
     description:
       'เปิดจุดคัดแยกตามสถานที่ต่างๆ ที่ใกล้ชุมชน และเดินทางสะดวก เช่น ห้างสรรพสินค้า โดย จะมีเจ้าหน้าที่เป็นผู้คัดแยกให้โดยตรง',
     text: 'แบบ ข',
-    thumbnail_url: '/src/images/choice/choice-b.svg',
-    image_url: '/src/images/choice/detail-b.svg',
+    thumbnail_url: '/images/choice/choice-b.svg',
+    image_url: '/images/choice/detail-b.svg',
     value: 'B',
   },
   {
@@ -25,8 +25,8 @@ export const choices = [
     description:
       'สามารถรู้ผลการคัดแยกได้ทันทีด้วยระบบการ คัดแยกออนไลน์ ซึ่งพัฒนาและทดสอบแล้วโดย แพทย์ที่มีความเชี่ยวชาญ คุณสามารถประเมิน ตนเอง หรือจะเปิดแบบประเมินออนไลน์เพื่อ ให้คนที่คุณรักทำที่ไหนก็ได้ ',
     text: 'แบบ ค',
-    thumbnail_url: '/src/images/choice/choice-c.svg',
-    image_url: '/src/images/choice/detail-c.svg',
+    thumbnail_url: '/images/choice/choice-c.svg',
+    image_url: '/images/choice/detail-c.svg',
     value: 'C',
   },
   {
@@ -35,8 +35,8 @@ export const choices = [
     description:
       'คุณใส่ใจสุขภาวะของตนเองและตรวจสุขภาพ ประจำปีอยู่แล้ว ภาวะสมองเสื่อมเป็นอีกเรื่อง ที่คุณอยากรู้พร้อมกับภาวะอื่นๆ ในร่างกาย โดย ไม่จำเป็นต้องรีบรู้ผลในทันทีว่ามีภาวะสมองเสื่อมหรือไม่',
     text: 'แบบ ง',
-    thumbnail_url: '/src/images/choice/choice-d.svg',
-    image_url: '/src/images/choice/detail-d.svg',
+    thumbnail_url: '/images/choice/choice-d.svg',
+    image_url: '/images/choice/detail-d.svg',
     value: 'D',
   },
   {
@@ -45,8 +45,8 @@ export const choices = [
     description:
       'หากไม่สะดวกเดินทางออกจากบ้าน ไม่ว่าจะ เพราะอยู่ในพื้นที่ห่างไกล หรือเพราะไม่สามารถ เคลื่อนไหวได้ถนัดนัก แต่ต้องการจะรู้ผลภาวะ ทางสมองทันที คุณจึงเลือกใช้บริการโทร นัดหมายให้เจ้าหน้าที่มาตรวจที่บ้าน ',
     text: 'แบบ จ',
-    thumbnail_url: '/src/images/choice/choiceea.svg',
-    image_url: '/src/images/choice/detail-e.svg',
+    thumbnail_url: '/images/choice/choiceea.svg',
+    image_url: '/images/choice/detail-e.svg',
     value: 'E',
   },
 ]

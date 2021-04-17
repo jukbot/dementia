@@ -24,7 +24,11 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
         ) : (
           ''
         )}
-        {data?.image_url ? <img className="object-contain w-full" src={data.image_url} alt={data.image_alt} /> : ''}
+        {data?.image_url ? (
+          <img src={`/public${data?.image_url}`} className="object-contain w-full" alt={data.image_alt} />
+        ) : (
+          ''
+        )}
       </section>
       <FooterQuiz prev={data?.prev ?? '/'} next={data?.next ?? '/'} className="mt-auto" />
     </>

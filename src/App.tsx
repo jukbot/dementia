@@ -18,6 +18,7 @@ import QuizContent from './components/Quiz/Content'
 import QuizResult from './components/Quiz/Result'
 
 import SimulateLayout from './components/Simulate/Layout'
+import SimulateLanding from './components/Simulate/Landing'
 import SimulateContent from './components/Simulate/Content'
 
 import SurveyLayout from './components/Survey/Layout'
@@ -42,6 +43,7 @@ const App = (): JSX.Element => {
               <Route path="result" element={<QuizResult bgColor="bg-[#4842e0]" />} />
             </Route>
             <Route path="/simulate" element={<SimulateLayout />}>
+              <Route path="landing" element={<SimulateLanding bgColor="bg-[#6866e7]" />} />
               <Route path=":id" element={<SimulateContent />} />
             </Route>
             <Route path="/survey" element={<SurveyLayout />}>
