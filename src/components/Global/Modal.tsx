@@ -19,7 +19,7 @@ const Modal: FC<Props> = ({
   useEffect(() => {
     const handleClick = (e: MouseEvent | TouchEvent) => {
       const target = e.target as HTMLDivElement
-      if (target && target.className.includes('modal')) {
+      if (target && target.className?.includes('modal')) {
         return setOpenModal(false, false)
       }
     }
