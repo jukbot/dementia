@@ -27,36 +27,34 @@ import SurveyResult from './components/Survey/Result'
 
 const App = (): JSX.Element => {
   return (
-    <main>
-      <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/share" element={<Share />} />
-            <Route path="intro" element={<IntroLayout bgColor="bg-[#6866e7]" />}>
-              <Route path=":id" element={<IntroContent />} />
-            </Route>
-            <Route path="/quiz" element={<QuizLayout />}>
-              <Route path="landing" element={<QuizLanding bgColor="bg-[#4842e0]" />} />
-              <Route path=":id" element={<QuizContent bgColor="bg-white" />} />
-              <Route path="result" element={<QuizResult bgColor="bg-[#4842e0]" />} />
-            </Route>
-            <Route path="/simulate" element={<SimulateLayout />}>
-              <Route path="landing" element={<SimulateLanding bgColor="bg-[#6866e7]" />} />
-              <Route path=":id" element={<SimulateContent />} />
-            </Route>
-            <Route path="/survey" element={<SurveyLayout />}>
-              <Route path=":id" element={<SurveyContent bgColor="bg-[#e7e7f9]" />} />
-              <Route path="result" element={<SurveyResult bgColor="bg-[#4842e0]" />} />
-            </Route>
-            <Route path="/outro" element={<OutroLayout bgColor="bg-white" />}>
-              <Route path=":id" element={<OutroContent />} />
-            </Route>
-          </Routes>
-        </Layout>
-      </BrowserRouter>
-    </main>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/share" element={<Share />} />
+          <Route path="intro" element={<IntroLayout bgColor="bg-[#6866e7]" />}>
+            <Route path=":id" element={<IntroContent />} />
+          </Route>
+          <Route path="/quiz" element={<QuizLayout />}>
+            <Route path="landing" element={<QuizLanding bgColor="bg-[#4842e0]" />} />
+            <Route path=":id" element={<QuizContent bgColor="bg-white" />} />
+            <Route path="result" element={<QuizResult bgColor="bg-[#4842e0]" />} />
+          </Route>
+          <Route path="/simulate" element={<SimulateLayout />}>
+            <Route path="landing" element={<SimulateLanding bgColor="bg-[#6866e7]" />} />
+            <Route path=":id" element={<SimulateContent />} />
+          </Route>
+          <Route path="/survey" element={<SurveyLayout />}>
+            <Route path=":id" element={<SurveyContent bgColor="bg-[#e7e7f9]" />} />
+            <Route path="result" element={<SurveyResult bgColor="bg-[#4842e0]" />} />
+          </Route>
+          <Route path="/outro" element={<OutroLayout bgColor="bg-white" />}>
+            <Route path=":id" element={<OutroContent />} />
+          </Route>
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   )
 }
 

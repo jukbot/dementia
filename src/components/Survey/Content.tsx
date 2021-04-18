@@ -15,7 +15,7 @@ const SimulateContent: FC<Props> = ({ bgColor }): JSX.Element => {
   const Survey = importView(data?.survey ?? '')
 
   return (
-    <main className={`h-full flex flex-col fixed w-full ${bgColor}`}>
+    <div className={`h-full flex flex-col fixed w-full ${bgColor}`}>
       <section className="flex flex-col h-full px-8 py-12 text-center">
         {data?.survey ? (
           <Suspense fallback={<div className="w-full h-64" />}>
@@ -26,7 +26,7 @@ const SimulateContent: FC<Props> = ({ bgColor }): JSX.Element => {
         )}
       </section>
       <FooterSurvey next={data?.next ?? ''} lightTheme={false} className={'mt-auto'} />
-    </main>
+    </div>
   )
 }
 

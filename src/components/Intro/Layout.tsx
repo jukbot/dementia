@@ -7,11 +7,9 @@ interface Props {
 
 const IntroLayout: FC<Props> = ({ bgColor }): JSX.Element => {
   return (
-    <>
-      <main className={`${bgColor} flex flex-col fixed h-full w-full`}>
-        <Outlet />
-      </main>
-    </>
+    <main className={`${bgColor} flex flex-col fixed h-full w-full`}>
+      <Outlet />
+    </main>
   )
 }
 

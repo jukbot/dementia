@@ -20,48 +20,46 @@ const Landing = (): JSX.Element => {
   }
 
   return (
-    <>
-      <div className="fixed h-full w-full bg-[#2208b2]">
-        <div className="flex justify-center w-full">
-          <img src={body} alt="body" className="absolute bottom-0 z-0 w-full lg:max-w-1/2" />
-        </div>
-        <section className="relative z-10 flex flex-col justify-end h-full py-8">
-          <h1 className="py-4 text-2xl font-light text-center text-white">
-            หากความทรงจำของคุณ
-            <br /> ค่อยๆ เลือนหายไป
-          </h1>
-          <p className="py-4 text-xl font-pridi font-light text-center text-[#a7a5f0]">
-            ชวนคุณมาสัมผัสประสบการณ์สมองเสื่อม
-            <br />
-            เพื่อพัฒนาระบบคัดกรองคัดแยก
-            <br />
-            ที่ดียิ่งขึ้นสำหรับทุกคน
-          </p>
-          <div className="flex justify-center h-16 pt-4">
-            <button
-              type="button"
-              onClick={() => setShowModal(true)}
-              className={`${
-                showModal ? 'hidden' : 'inline-flex'
-              }  items-center px-6 py-2 text-lg font-medium border rounded-md border-[#a7a5f0] text-[#a7a5f0] hover:text-[#6866E7] hover:border-gray-50 hover:bg-gray-50 focus:outline-none`}
-            >
-              เข้าสู่เว็บไซต์
-            </button>
-          </div>
-        </section>
-        {showModal ? (
-          <Modal
-            title={modalTitle}
-            content={modalContent}
-            buttonText={modalButton}
-            isShown={showModal}
-            setOpenModal={(active, continues) => handleAction(active, continues)}
-          />
-        ) : (
-          ''
-        )}
+    <section className="fixed h-full w-full bg-[#2208b2]">
+      <div className="flex justify-center w-full">
+        <img src={body} alt="body" className="absolute bottom-0 z-0 w-full lg:max-w-1/2" />
       </div>
-    </>
+      <div className="relative z-10 flex flex-col justify-end h-full py-8">
+        <h1 className="py-4 text-2xl font-light text-center text-white">
+          หากความทรงจำของคุณ
+          <br /> ค่อยๆ เลือนหายไป
+        </h1>
+        <p className="py-4 text-xl font-pridi font-light text-center text-[#a7a5f0]">
+          ชวนคุณมาสัมผัสประสบการณ์สมองเสื่อม
+          <br />
+          เพื่อพัฒนาระบบคัดกรองคัดแยก
+          <br />
+          ที่ดียิ่งขึ้นสำหรับทุกคน
+        </p>
+        <div className="flex justify-center h-16 pt-4">
+          <button
+            type="button"
+            onClick={() => setShowModal(true)}
+            className={`${
+              showModal ? 'hidden' : 'inline-flex'
+            }  items-center px-6 py-2 text-lg font-medium border rounded-md border-[#a7a5f0] text-[#a7a5f0] hover:text-[#6866E7] hover:border-gray-50 hover:bg-gray-50 focus:outline-none`}
+          >
+            เข้าสู่เว็บไซต์
+          </button>
+        </div>
+      </div>
+      {showModal ? (
+        <Modal
+          title={modalTitle}
+          content={modalContent}
+          buttonText={modalButton}
+          isShown={showModal}
+          setOpenModal={(active, continues) => handleAction(active, continues)}
+        />
+      ) : (
+        ''
+      )}
+    </section>
   )
 }
 

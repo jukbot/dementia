@@ -11,7 +11,7 @@ const Layout: FC<Props> = ({ children }): JSX.Element => {
         process.env.NODE_ENV === 'development' ? 'debug-screens' : ''
       } `}
     >
-      <main>{children}</main>
+      {children}
     </div>
   )
 }
