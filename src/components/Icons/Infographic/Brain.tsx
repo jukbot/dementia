@@ -1,12 +1,19 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 
 interface Props {
   className?: string
+  setSection: (section: string) => void
 }
 
-const Brain: FC<Props> = (props) => {
+const Brain: FC<Props> = ({ className, setSection = () => {} }) => {
+  const [selectedId, setId] = useState<string | null>('')
+  const selectPoint = (data: { text: string; id: string }) => {
+    setSection(data.text)
+    setId(data.id)
+  }
+
   return (
-    <svg viewBox="0 0 640 640" {...props} width={250} height={250} className="fill-current">
+    <svg viewBox="0 0 640 640" width={250} height={250} className={`fill-current ${className}`}>
       <defs>
         <path
           d="M184.32 616.91l-32.18-58.19c-46.91 2.18-72.97 3.38-78.18 3.63-16.41.69-30.28-12.05-30.98-28.46-.05-1.33-.02-2.67.1-3.99.47-4.89 2.78-29.3 6.95-73.26-24.24-4.86-37.7-7.57-40.4-8.11a8.572 8.572 0 01-6.76-10.06c.16-.81.43-1.59.81-2.32 4.33-8.33 38.94-74.98 43.27-83.32C15.37 153.35 186.56 5.79 385.69 24.72c240.09 22.82 313.91 256.89 197.4 490.3 2.7 6.79 16.22 40.72 40.56 101.79"
@@ -78,7 +85,10 @@ const Brain: FC<Props> = (props) => {
         <use xlinkHref="#i" fillOpacity={0} />
         <use xlinkHref="#i" fillOpacity={0} stroke="#fff" strokeWidth={4} />
       </g>
-      <g onClick={() => alert('การมองเห็น')}>
+      <g
+        onClick={() => selectPoint({ text: 'การมองเห็น', id: 'j' })}
+        className={`${selectedId === 'j' ? 'animate-pulse' : ''}`}
+      >
         <filter
           id="j"
           x={504.22}
@@ -103,9 +113,12 @@ const Brain: FC<Props> = (props) => {
           fillOpacity={1}
           filter="url(#j)"
         />
-        <use xlinkHref="#k" fill="#dc9b90" />
+        <use xlinkHref="#k" fill={`${selectedId === 'j' ? '#9e1d01' : '#dc9b90'}`} />
       </g>
-      <g onClick={() => alert('การฟัง')}>
+      <g
+        onClick={() => selectPoint({ text: 'การฟัง', id: 'l' })}
+        className={`${selectedId === 'l' ? 'animate-pulse' : ''}`}
+      >
         <filter
           id="l"
           x={352.8}
@@ -130,9 +143,12 @@ const Brain: FC<Props> = (props) => {
           fillOpacity={1}
           filter="url(#l)"
         />
-        <use xlinkHref="#m" fill="#dc9b90" />
+        <use xlinkHref="#m" fill={`${selectedId === 'l' ? '#9e1d01' : '#dc9b90'}`} />
       </g>
-      <g onClick={() => alert('การรับรู้ภาษา')}>
+      <g
+        onClick={() => selectPoint({ text: 'การรับรู้ภาษา', id: 'n' })}
+        className={`${selectedId === 'n' ? 'animate-pulse' : ''}`}
+      >
         <filter
           id="n"
           x={448.77}
@@ -157,9 +173,12 @@ const Brain: FC<Props> = (props) => {
           fillOpacity={1}
           filter="url(#n)"
         />
-        <use xlinkHref="#o" fill="#dc9b90" />
+        <use xlinkHref="#o" fill={`${selectedId === 'n' ? '#9e1d01' : '#dc9b90'}`} />
       </g>
-      <g onClick={() => alert('การรับสัมผัส')}>
+      <g
+        onClick={() => selectPoint({ text: 'การรับสัมผัส', id: 'p' })}
+        className={`${selectedId === 'p' ? 'animate-pulse' : ''}`}
+      >
         <filter
           id="p"
           x={290.99}
@@ -184,9 +203,12 @@ const Brain: FC<Props> = (props) => {
           fillOpacity={1}
           filter="url(#p)"
         />
-        <use xlinkHref="#q" fill="#dc9b90" />
+        <use xlinkHref="#q" fill={`${selectedId === 'p' ? '#9e1d01' : '#dc9b90'}`} />
       </g>
-      <g onClick={() => alert('การเคลื่อนไหว')}>
+      <g
+        onClick={() => selectPoint({ text: 'การเคลื่อนไหว', id: 'r' })}
+        className={`${selectedId === 'r' ? 'animate-pulse' : ''}`}
+      >
         <filter
           id="r"
           x={209.27}
@@ -211,9 +233,12 @@ const Brain: FC<Props> = (props) => {
           fillOpacity={1}
           filter="url(#r)"
         />
-        <use xlinkHref="#s" fill="#dc9b90" />
+        <use xlinkHref="#s" fill={`${selectedId === 'r' ? '#9e1d01' : '#dc9b90'}`} />
       </g>
-      <g onClick={() => alert('การคิดวิเคราะห์')}>
+      <g
+        onClick={() => selectPoint({ text: 'การคิดวิเคราะห์', id: 't' })}
+        className={`${selectedId === 't' ? 'animate-pulse' : ''}`}
+      >
         <filter
           id="t"
           x={117.58}
@@ -238,9 +263,12 @@ const Brain: FC<Props> = (props) => {
           fillOpacity={1}
           filter="url(#t)"
         />
-        <use xlinkHref="#u" fill="#dc9b90" />
+        <use xlinkHref="#u" fill={`${selectedId === 't' ? '#9e1d01' : '#dc9b90'}`} />
       </g>
-      <g onClick={() => alert('การพูด')}>
+      <g
+        onClick={() => selectPoint({ text: 'การพูด', id: 'v' })}
+        className={`${selectedId === 'v' ? 'animate-pulse' : ''}`}
+      >
         <filter
           id="v"
           x={209.27}
@@ -265,7 +293,7 @@ const Brain: FC<Props> = (props) => {
           fillOpacity={1}
           filter="url(#v)"
         />
-        <use xlinkHref="#w" fill="#dc9b90" />
+        <use xlinkHref="#w" fill={`${selectedId === 'v' ? '#9e1d01' : '#dc9b90'}`} />
       </g>
     </svg>
   )
