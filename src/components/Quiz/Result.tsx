@@ -8,7 +8,10 @@ interface Props {
 
 const QuizResult: FC<Props> = ({ bgColor }): JSX.Element => {
   const navigate = useNavigate()
-  const [score, _] = useState<number>(0)
+  const [score] = useState<number | null>(() => {
+    const stickyValue = window.localStorage.getItem('quiz-score')
+    return stickyValue !== null ? parseInt(stickyValue) : 0
+  })
 
   return (
     <section className={`${bgColor} flex flex-col justify-between h-full px-8 py-12`}>
@@ -39,7 +42,7 @@ const QuizResult: FC<Props> = ({ bgColor }): JSX.Element => {
       <div className="flex justify-center h-16 pt-4">
         <button
           type="button"
-          onClick={() => navigate('/simulate/1')}
+          onClick={() => navigate('/simulate/pre')}
           className="inline-flex items-center px-6 py-2 text-lg font-medium border rounded-md bg-[#e7e7f9] text-[#6866e7] shadow-dark hover:shadow-lg hover:bg-white focus:outline-none"
         >
           หน้าถัดไป

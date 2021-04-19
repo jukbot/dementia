@@ -31,7 +31,7 @@ const IntroContent: FC = (): JSX.Element => {
           ''
         )}
       </section>
-      <FooterNav prev={data?.prev ?? '/'} next={data?.next ?? '/'} lightTheme={true} className={data?.nav_position} />
+      <FooterNav prev={data?.prev} next={data?.next} lightTheme={true} className={data?.nav_position} />
     </>
   )
 }

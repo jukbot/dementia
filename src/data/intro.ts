@@ -4,7 +4,7 @@ export const content = [
     space_type: 'justify-center items-center',
     title:
       'สวัสดีค่ะ<br/><br/>ขอต้อนรับเข้าสู่<br/>“ห้องทดลองสมองเสื่อม”<br/><br/>เว็บไซต์ที่จะทำให้คุณได้เข้าใจ<br/> ภาวะความทรงจำบกพร่อง<br/> และภาวะสมองเสื่อม<br/> มากยิ่งขึ้น',
-    prev: '/profile',
+    prev: '/',
     next: '/intro/2',
   },
   {

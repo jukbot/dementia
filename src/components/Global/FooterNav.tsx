@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom'
 interface Props {
   className?: string
   lightTheme: boolean
-  prev: string | null
-  next: string | null
+  prev: string | null | undefined
+  next: string | null | undefined
 }
 const FooterNav: FC<Props> = ({ lightTheme = true, prev, next, className }): JSX.Element => {
   const navigate = useNavigate()

@@ -30,7 +30,7 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
           ''
         )}
       </section>
-      <FooterQuiz prev={data?.prev ?? '/'} next={data?.next ?? '/'} className="mt-auto" />
+      <FooterQuiz prev={data?.prev} next={data?.next} className="mt-auto" />
     </>
   )
 }

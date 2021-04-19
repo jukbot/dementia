@@ -10,6 +10,14 @@ export interface FormData extends Map {
   other?: string | null
 }
 
+export interface HospitalChoice {
+  id: number
+  title: string
+  value: string
+  prev: number | null
+  next: number | null
+  content: string
+}
 export interface QuizData {
   route: string
   prev: string

@@ -24,7 +24,7 @@ const OutroContent: FC = (): JSX.Element => {
           dangerouslySetInnerHTML={{ __html: data?.content ?? '' }}
         />
       </section>
-      <FooterNav prev={data?.prev ?? '/'} next={data?.next ?? '/'} lightTheme={false} className="mt-auto" />
+      <FooterNav prev={data?.prev} next={data?.next} lightTheme={false} className="mt-auto" />
     </>
   )
 }

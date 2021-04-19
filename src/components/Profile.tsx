@@ -32,6 +32,7 @@ const Profile = (): JSX.Element => {
 
   useEffect(() => {
     setProfile(state)
+    validateForm(state)
   }, [state])
 
   useEffect(() => {
@@ -296,7 +297,7 @@ const Profile = (): JSX.Element => {
             </RadioGroup.Option>
           </RadioGroup>
         </div>
-        <div className="flex justify-center">
+        <div className="inline-flex justify-center">
           <button
             type="button"
             onClick={saveForm}

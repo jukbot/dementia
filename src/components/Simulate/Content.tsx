@@ -1,11 +1,15 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, lazy, Suspense, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { content } from '../../data/simulate'
 import FooterNav from '../Global/FooterNav'
 
+const importView = (path: string, name: string) => lazy(() => import(`./${path}/${name}.tsx`))
+
 const SimulateContent: FC = (): JSX.Element => {
   const { id } = useParams()
   const data = content.find((v) => v.route === id)
+  const Choice = importView('Choice', data?.component ?? '')
+
   useEffect(() => {
     //preloading image
     content.forEach((data) => {
@@ -18,22 +22,29 @@ const SimulateContent: FC = (): JSX.Element => {
 
   return (
     <div className={`h-full flex flex-col fixed w-full ${data?.bg_color}`}>
-      <section className={`text-center flex flex-col h-full px-8 py-12 space-y-8 ${data?.space_type}`}>
+      <section className={`flex flex-col h-full px-8 py-8 space-y-8 ${data?.space_type}`}>
         {data?.image_url ? (
-          <img src={`${data?.image_url}`} className="flex-shrink-0 object-contain" alt="simulate" />
+          <img src={`${data?.image_url}`} className="flex-shrink-0 object-contain px-6" alt="simulate" />
         ) : (
           ''
         )}
         <h1
-          className={`text-2xl font-light ${data?.text_color} leading-relaxed`}
+          className={`text-2xl font-light ${data?.text_color} leading-normal text-center`}
           dangerouslySetInnerHTML={{ __html: data?.title ?? '' }}
         />
+        {data?.component ? (
+          <Suspense fallback={null}>
+            <Choice />
+          </Suspense>
+        ) : (
+          ''
+        )}
       </section>
       <FooterNav
         prev={data?.prev ?? null}
         next={data?.next ?? null}
         lightTheme={data?.light_theme ?? true}
-        className={'mt-auto'}
+        className={data?.image_url ? 'absolute' : 'mt-auto'}
       />
     </div>
   )
