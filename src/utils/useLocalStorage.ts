@@ -3,21 +3,9 @@
 
 import { useState } from 'react'
 
-// export const useStickyState = (defaultValue: string, key: string): [string, Dispatch<any>] => {
-//   const [value, setValue] = useState(() => {
-//     const stickyValue = window.localStorage.getItem(key)
-//     return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue
-//   })
-
-//   useEffect(() => {
-//     window.localStorage.setItem(key, JSON.stringify(value))
-//   }, [key, value])
-
-//   return [value, setValue]
-// }
 // // Usage
 // function App() {
-//   // Similar to useState but first arg is key to the value in local storage.
+//   Similar to useState but first arg is key to the value in local storage.
 //   const [name, setName] = useLocalStorage<string>('name', 'Bob')
 //   return (
 //     <div>

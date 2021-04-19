@@ -79,7 +79,6 @@ const Profile = (): JSX.Element => {
   }
 
   const checkSubjectName = (value: string): void => {
-    console.log(value)
     switch (value) {
       case 'a':
         setSubject('ตัวเอง')
@@ -88,14 +87,11 @@ const Profile = (): JSX.Element => {
         setSubject('ผู้สูงอายุในครอบครัว')
         return
       default:
-        console.log(age)
         if (age < 50) {
           setSubject('ผู้สูงอายุในครอบครัว')
         } else {
-          console.log('self')
           setSubject('ตัวเอง')
         }
-        return
     }
   }
 

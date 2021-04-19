@@ -37,12 +37,6 @@ const SurveyB: FC = (): JSX.Element => {
                 <br /> สังเกตอาการและตรวจเช็คอย่างสม่ำเสมอ
               </p>
             </div>
-            {/* <div
-              className={`${
-                answer === 'A' ? 'border-red-500' : 'border-transparent'
-              } absolute inset-0 border-2 rounded-lg group-hover:border-primary pointer-events-none `}
-              aria-hidden="true"
-            ></div> */}
           </label>
           <label
             className={`${
