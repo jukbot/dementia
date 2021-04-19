@@ -1,7 +1,8 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
+import { useLocalStorage } from '../../../utils/useLocalStorage'
 
 const SurveyB: FC = (): JSX.Element => {
-  const [answer, setAnswer] = useState<string | undefined>(undefined)
+  const [answer, setAnswer] = useLocalStorage<string | null | undefined>('mci-answer', null)
 
   return (
     <div className="flex flex-col justify-between space-y-8">

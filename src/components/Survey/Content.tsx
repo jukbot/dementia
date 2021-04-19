@@ -25,7 +25,7 @@ const SimulateContent: FC<Props> = ({ bgColor }): JSX.Element => {
           ''
         )}
       </section>
-      <FooterSurvey next={data?.next ?? ''} lightTheme={false} className={'mt-auto'} />
+      <FooterSurvey next={data?.next ?? ''} saveColumn={data?.column ?? ''} lightTheme={false} className={'mt-auto'} />
     </div>
   )
 }

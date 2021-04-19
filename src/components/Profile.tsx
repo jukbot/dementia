@@ -6,6 +6,7 @@ import { zipcode } from '../data/zipcode'
 import { useLocalStorage } from '../utils/useLocalStorage'
 import { RadioGroup } from '@headlessui/react'
 import { FormData } from '../../@types'
+import { addData } from '../utils/sheety'
 
 const defaultValue: FormData = {
   gender: 'male',
@@ -42,6 +43,7 @@ const Profile = (): JSX.Element => {
   }, [age, choice])
 
   const saveForm = (): void => {
+    addData(profile)
     navigate('/intro/1')
   }
 
