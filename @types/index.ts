@@ -1,5 +1,13 @@
-export interface QuizRouter {
-  id: string
+interface Map {
+  [key: string]: string | undefined | null
+}
+export interface FormData extends Map {
+  gender: string | null
+  age: string | null
+  province: string | null
+  postal: string | null
+  choice: string | null
+  other?: string | null
 }
 
 export interface QuizData {

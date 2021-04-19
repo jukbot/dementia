@@ -1,17 +1,63 @@
 // https://www.joshwcomeau.com/react/persisting-react-state-in-localstorage
 // https://reactjs.org/docs/hooks-reference.html#lazy-initial-state
 
-import { useEffect, useState, Dispatch } from 'react'
+import { useState } from 'react'
 
-export const useStickyState = (defaultValue: string, key: string): [string, Dispatch<any>] => {
-  const [value, setValue] = useState(() => {
-    const stickyValue = window.localStorage.getItem(key)
-    return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue
+// export const useStickyState = (defaultValue: string, key: string): [string, Dispatch<any>] => {
+//   const [value, setValue] = useState(() => {
+//     const stickyValue = window.localStorage.getItem(key)
+//     return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue
+//   })
+
+//   useEffect(() => {
+//     window.localStorage.setItem(key, JSON.stringify(value))
+//   }, [key, value])
+
+//   return [value, setValue]
+// }
+// // Usage
+// function App() {
+//   // Similar to useState but first arg is key to the value in local storage.
+//   const [name, setName] = useLocalStorage<string>('name', 'Bob')
+//   return (
+//     <div>
+//       <input type="text" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
+//     </div>
+//   )
+// }
+
+export const useLocalStorage = <T>(
+  key: string,
+  initialValue: T
+): readonly [T, (value: T | ((val: T) => T)) => void] => {
+  // State to store our value
+  // Pass initial state function to useState so logic is only executed once
+  const [storedValue, setStoredValue] = useState<T>(() => {
+    try {
+      // Get from local storage by key
+      const item = window.localStorage.getItem(key)
+      // Parse stored json or if none return initialValue
+      return item ? JSON.parse(item) : initialValue
+    } catch (error) {
+      // If error also return initialValue
+      console.log(error)
+      return initialValue
+    }
   })
-
-  useEffect(() => {
-    window.localStorage.setItem(key, JSON.stringify(value))
-  }, [key, value])
-
-  return [value, setValue]
+  // Return a wrapped version of useState's setter function that ...
+  // ... persists the new value to localStorage.
+  const setValue = (value: T | ((val: T) => T)) => {
+    try {
+      // Allow value to be a function so we have same API as useState
+      const valueToStore = value instanceof Function ? value(storedValue) : value
+      // Save state
+      setStoredValue(valueToStore)
+      // Save to local storage
+      window.localStorage.setItem(key, JSON.stringify(valueToStore))
+    } catch (error) {
+      // A more advanced implementation would handle the error case
+      console.log(error)
+    }
+  }
+  return [storedValue, setValue] as const
 }

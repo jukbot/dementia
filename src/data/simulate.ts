@@ -208,7 +208,7 @@ export const content = [
     space_type: 'justify-around',
     light_theme: false,
     title: 'ตัวเลือกที่คุณพอจะนึกออก<br/>ในตอนนี้...',
-    choice: 'HospitalChoice',
+    choice: 'Hospital',
     image_url: null,
     prev: '/simulate/17',
     next: '/simulate/19',
