@@ -1,4 +1,4 @@
-const subject: string = localStorage.getItem('subject') ?? 'null'
+const subject: string = window.localStorage.getItem('subject') ?? 'ตัวเอง'
 
 export const content = [
   {
