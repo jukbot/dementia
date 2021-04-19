@@ -1,5 +1,6 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { HospitalChoice } from '../../../../@types'
+import { useLocalStorage } from '../../../utils/useLocalStorage'
 
 const content: HospitalChoice[] = [
   {
@@ -33,6 +34,13 @@ const content: HospitalChoice[] = [
 
 const Hospital: FC = () => {
   const [section, setSection] = useState<HospitalChoice | null>(null)
+  const [hospital, setHospital] = useLocalStorage<string | null | undefined>('hospital-choice', null)
+
+  useEffect(() => {
+    if (!hospital) {
+      setHospital(section?.value)
+    }
+  }, [section])
 
   return (
     <div className="relative flex justify-center pt-12">

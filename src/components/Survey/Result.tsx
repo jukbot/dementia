@@ -9,8 +9,8 @@ interface Props {
 
 const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
   const [code] = useLocalStorage<string | null>('code', 'ก')
-  const [count, setCount] = useState<number>(0)
-  const [total, setTotal] = useState<number>(0)
+  const [count] = useState<number>(0)
+  const [total] = useState<number>(0)
   return (
     <section className={`h-full flex flex-col fixed w-full ${bgColor}`}>
       <div className="flex flex-col justify-between h-full px-6 py-6 space-y-4">

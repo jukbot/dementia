@@ -1,4 +1,4 @@
-import React, { FC, lazy, Suspense, useEffect } from 'react'
+import React, { FC, lazy, Suspense } from 'react'
 import { useParams } from 'react-router-dom'
 import { content } from '../../data/simulate'
 import FooterNav from '../Global/FooterNav'
@@ -10,15 +10,31 @@ const SimulateContent: FC = (): JSX.Element => {
   const data = content.find((v) => v.route === id)
   const Choice = importView('Choice', data?.component ?? '')
 
-  useEffect(() => {
-    //preloading image
-    content.forEach((data) => {
-      if (data?.image_url) {
-        const img = new Image()
-        img.src = data?.image_url
-      }
-    })
-  }, [data])
+  // const images: HTMLImageElement[] = []
+  // const preload = (list: string[]) => {
+  //   for (let i = 0; i < list.length; i++) {
+  //     images[i] = new Image()
+  //     images[i].src = list[i]
+  //     images[i].className = 'flex-shrink-0 object-contain px-6'
+  //     console.log(images[i])
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   const imageLists: string[] = content.filter((item) => item.image_url).map((item) => item?.image_url ?? '')
+  //   console.log(imageLists)
+  //   preload(imageLists)
+  // }, [])
+
+  // useEffect(() => {
+  //   //preloading image
+  //   content.forEach((data) => {
+  //     if (data?.image_url) {
+  //       const img = new Image()
+  //       img.src = data?.image_url
+  //     }
+  //   })
+  // }, [data])
 
   return (
     <div className={`h-full flex flex-col fixed w-full ${data?.bg_color}`}>
