@@ -6,14 +6,14 @@ import { zipcode } from '../data/zipcode'
 import { useLocalStorage } from '../utils/useLocalStorage'
 import { RadioGroup } from '@headlessui/react'
 import { FormData } from '../../@types'
-import { addData } from '../utils/sheety'
+import { addData, updateData } from '../utils/sheety'
 
 const defaultValue: FormData = {
   gender: 'male',
   age: '',
   province: '1',
   postal: '10200',
-  choice: '',
+  relevance: '',
   other: '',
 }
 
@@ -22,7 +22,7 @@ const Profile = (): JSX.Element => {
   const otherInput = useRef<HTMLInputElement>(null)
   const [profile, setProfile] = useLocalStorage<FormData | null>('profile', null)
   const [, setSubject] = useLocalStorage<string | null>('subject', null)
-  const [choice, setChoice] = useState<string | null>(null)
+  const [relevance, setRelevance] = useState<string | null>(null)
   const [age, setAge] = useState<number>(0)
   const [ageError, setAgeError] = useState<boolean>(false)
   const [isDisabled, setDisabled] = useState<boolean>(true)
@@ -37,18 +37,31 @@ const Profile = (): JSX.Element => {
   }, [state])
 
   useEffect(() => {
-    if (choice) {
-      checkSubjectName(choice)
+    if (relevance) {
+      checkSubjectName(relevance)
     }
-  }, [age, choice])
+  }, [age, relevance])
 
-  const saveForm = (): void => {
-    addData(profile)
-    navigate('/intro/1')
+  const saveForm = async (): Promise<void> => {
+    try {
+      const id = window.localStorage.getItem('dementia-uid')
+      if (!id) {
+        const result = await addData(profile, 'survey')
+        if (result?.survey) {
+          window.localStorage.setItem('dementia-uid', String(result?.survey.id))
+        }
+      } else {
+        await updateData(profile, 'survey', id ?? '1')
+      }
+      navigate('/intro/1')
+    } catch (error) {
+      console.log(error)
+      alert(error)
+    }
   }
 
   const validateForm = (data: FormData) => {
-    if (data.choice !== 'e') {
+    if (data.relevance !== 'e') {
       const removeKey = (key: string, { [key]: _, ...rest }) => rest
       const noOther = removeKey('other', data)
       setDisabled(!Object.keys(noOther).every((k) => noOther[k]))
@@ -75,8 +88,8 @@ const Profile = (): JSX.Element => {
     setState({ ...state, [e.name]: e.value })
     validateForm({ ...state, [e.name]: e.value })
 
-    if (e.name === 'choice') {
-      setChoice(e.value)
+    if (e.name === 'relevance') {
+      setRelevance(e.value)
     }
   }
 
@@ -216,8 +229,8 @@ const Profile = (): JSX.Element => {
         </div>
         <div className="w-full px-6">
           <RadioGroup
-            value={state.choice}
-            onChange={(value) => handleChange({ value, name: 'choice' })}
+            value={state.relevance}
+            onChange={(value) => handleChange({ value, name: 'relevance' })}
             className="flex flex-col w-full space-y-2"
           >
             <RadioGroup.Label className="sr-only">เลือกความเกี่ยวข้องภาวะสมองเสื่อม</RadioGroup.Label>

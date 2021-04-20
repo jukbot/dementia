@@ -6,7 +6,7 @@ export interface FormData extends Map {
   age: string | null
   province: string | null
   postal: string | null
-  choice: string | null
+  relevance: string | null
   other?: string | null
 }
 

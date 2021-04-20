@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 import { HospitalChoice } from '../../../../@types'
+import { updateData } from '../../../utils/sheety'
 import { useLocalStorage } from '../../../utils/useLocalStorage'
 
 const content: HospitalChoice[] = [
@@ -33,14 +34,31 @@ const content: HospitalChoice[] = [
 ]
 
 const Hospital: FC = () => {
-  const [section, setSection] = useState<HospitalChoice | null>(null)
-  const [hospital, setHospital] = useLocalStorage<string | null | undefined>('hospital-choice', null)
+  const [section, setSection] = useState<HospitalChoice | null>()
+  const [hospital, setHospital] = useLocalStorage<string | null | undefined>('hospital-choice', '')
 
   useEffect(() => {
     if (!hospital) {
       setHospital(section?.value)
     }
+    if (!hospital && section) {
+      console.log('trigger')
+      saveForm(section?.value)
+    }
   }, [section])
+
+  const saveForm = async (value: string): Promise<void> => {
+    console.log('save data')
+    try {
+      const id = window.localStorage.getItem('dementia-uid')
+      if (id) {
+        await updateData({ hospital: value }, 'survey', id ?? '1')
+      }
+    } catch (error) {
+      console.log(error)
+      alert(error)
+    }
+  }
 
   return (
     <div className="relative flex justify-center pt-12">
