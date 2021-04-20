@@ -327,7 +327,7 @@ const Profile = (): JSX.Element => {
                 : 'border-[#4842e0] text-white bg-[#4842e0] focus:outline-none hover:shadow-lg shadow-dark'
             } inline-flex items-center px-8 py-2 text-lg font-medium border rounded-md`}
           >
-            {isSaving ? 'กำลังบันทึก' : 'บันทึก'}
+            {isSaving ? <span className="animate-pulse">กำลังบันทึก</span> : 'บันทึก'}
           </button>
         </div>
       </div>

@@ -63,7 +63,7 @@ const FooterSurvey: FC<Props> = ({ saveColumn, next, className }): JSX.Element =
             isDisabled ? 'text-[#a7a5f0] border-[#a7a5f0]' : 'text-white bg-[#6866E7] border-[#6866E7] shadow-dark'
           } inline-flex items-center px-6 py-2 text-lg font-medium border rounded-md focus:outline-none`}
         >
-          {isSaving ? 'กำลังบันทึก' : 'บันทึก'}
+          {isSaving ? <span className="animate-pulse">กำลังบันทึก</span> : 'บันทึก'}
         </button>
       ) : (
         ''

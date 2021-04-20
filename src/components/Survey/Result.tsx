@@ -1,8 +1,10 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, memo, useEffect, useState } from 'react'
+import { CountUp } from 'use-count-up'
+
+import { SurveyData } from '../../../@types'
 import { choices } from '../../data/choice'
 import { getDataById } from '../../utils/sheety'
 import FooterNav from '../Global/FooterNav'
-import { SurveyData } from '../../../@types'
 
 interface Props {
   bgColor?: string
@@ -13,8 +15,12 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
     const stickyValue = window.localStorage.getItem('code')
     return stickyValue !== null ? String(stickyValue) : 'ก'
   })
+
+  const [columnName] = useState(() => {
+    const stickyValue = window.localStorage.getItem('choiceColumn')
+    return stickyValue !== null ? String(stickyValue) : 'choiceA'
+  })
   const [data, setData] = useState<SurveyData | null>(null)
-  const [count] = useState<number>(0)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,11 +33,11 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
 
     const session = window.sessionStorage.getItem('survey-summary')
     if (session) {
+      console.log('get from session')
       setData(JSON.parse(session))
     } else {
       fetchData()
     }
-    fetchData()
   }, [])
 
   const getWidthPercent = (value: string): string => {
@@ -44,7 +50,7 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
       <div className="flex flex-col justify-between h-full px-6 py-6 space-y-4">
         <div className="flex flex-col space-y-4">
           <h1 className="text-[#a7a5f0] font-medium text-2xl text-center">
-            คุณเป็น 1 ใน {count} คน
+            คุณเป็น 1 ใน {<CountUp isCounting end={Number(data?.[columnName])} duration={1} />} คน
             <br /> ที่เลือกการคัดกรองคัดแยก
           </h1>
           <div className="flex justify-center">
@@ -72,13 +78,13 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
                     <div
                       className={`${
                         choice.code === code ? 'bg-[#a7a5f0]' : 'bg-[#6866e7]'
-                      } h-4 left-0 w-0 transform transition`}
+                      } h-4 left-0 w-0 transform transition-transform	`}
                       style={{ width: getWidthPercent(data?.[choice.column] ?? '') }}
                     />
                     <span
                       className={`${choice.code === code ? 'text-white' : 'text-[#a7a5f0] '} text-lg font-light ml-2`}
                     >
-                      {data ? data?.[choice.column] : 0}
+                      {data ? <CountUp isCounting end={Number(data?.[choice.column])} duration={1} /> : 0}
                     </span>
                   </div>
                 </li>
@@ -86,11 +92,13 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
             })}
           </ul>
         </div>
-        <p className="text-2xl font-medium text-center text-white">จากทั้งหมด {data?.totalCount ?? 0} คน</p>
+        <p className="text-2xl font-medium text-center text-white">
+          จากทั้งหมด <CountUp isCounting end={Number(data?.totalCount)} duration={3} /> คน
+        </p>
       </div>
       <FooterNav prev={null} next={'/survey/b'} lightTheme={true} className={'mt-auto'} />
     </section>
   )
 }
 
-export default SurveyResult
+export default memo(SurveyResult)

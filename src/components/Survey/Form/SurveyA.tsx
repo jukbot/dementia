@@ -13,6 +13,7 @@ const SurveyA: FC = (): JSX.Element => {
     if (choices[index]) {
       window.localStorage.setItem('surveyA', choices[index]?.value)
       window.localStorage.setItem('code', choices[index]?.code)
+      window.localStorage.setItem('choiceColumn', choices[index]?.column)
       window.sessionStorage.removeItem('survey-summary')
     }
   }
