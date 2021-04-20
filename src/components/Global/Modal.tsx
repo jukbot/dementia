@@ -20,7 +20,7 @@ const Modal: FC<Props> = ({
     const handleClick = (e: MouseEvent | TouchEvent) => {
       const target = e.target as HTMLDivElement
       if (target && target.className) {
-        if (target.className.includes('modal')) {
+        if (typeof target.className.indexOf === 'function' && target.className.includes('modal')) {
           return setOpenModal(false, false)
         }
       }
@@ -28,7 +28,6 @@ const Modal: FC<Props> = ({
 
     if (isShown) {
       window.addEventListener('click', handleClick)
-      window.addEventListener('touchend', handleClick)
     } else {
       window.removeEventListener('click', handleClick)
     }

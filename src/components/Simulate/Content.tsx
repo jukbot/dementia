@@ -26,21 +26,17 @@ const SimulateContent: FC = (): JSX.Element => {
   //   preload(imageLists)
   // }, [])
 
-  // useEffect(() => {
-  //   //preloading image
-  //   content.forEach((data) => {
-  //     if (data?.image_url) {
-  //       const img = new Image()
-  //       img.src = data?.image_url
-  //     }
-  //   })
-  // }, [data])
-
   return (
     <div className={`h-full flex flex-col fixed w-full ${data?.bg_color}`}>
       <section className={`flex flex-col h-full px-8 py-8 space-y-8 ${data?.space_type}`}>
         {data?.image_url ? (
-          <img src={`${data?.image_url}`} className="flex-shrink-0 object-contain px-6" alt="simulate" />
+          <img
+            src={`${data?.image_url}`}
+            className={`${
+              data?.image_url ? 'opacity-100' : 'opacity-0'
+            } delay-100	flex-shrink-0 object-contain px-6 transition-opacity`}
+            alt="simulate"
+          />
         ) : (
           ''
         )}

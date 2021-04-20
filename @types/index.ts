@@ -30,14 +30,14 @@ export interface QuizData {
 }
 
 export interface SurveyData extends Map {
-  id?: number
-  totalCount: number
-  choiceA: number
-  choiceB: number
-  choiceC: number
-  choiceD: number
-  choiceE: number
-  publicHospital?: number | null
-  privateHospital?: number | null
-  nearbyClinic?: number | null
+  id?: string | null
+  totalCount: string | null
+  choiceA: string | null
+  choiceB: string | null
+  choiceC: string | null
+  choiceD: string | null
+  choiceE: string | null
+  publicHospital?: string | null
+  privateHospital?: string | null
+  nearbyClinic?: string | null
 }

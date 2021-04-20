@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 import { choices } from '../../data/choice'
 import { getDataById } from '../../utils/sheety'
-import { useLocalStorage } from '../../utils/useLocalStorage'
 import FooterNav from '../Global/FooterNav'
 import { SurveyData } from '../../../@types'
 
@@ -10,22 +9,34 @@ interface Props {
 }
 
 const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
-  const [code] = useLocalStorage<string | null>('code', 'ก')
+  const [code] = useState(() => {
+    const stickyValue = window.localStorage.getItem('code')
+    return stickyValue !== null ? String(stickyValue) : 'ก'
+  })
   const [data, setData] = useState<SurveyData | null>(null)
   const [count] = useState<number>(0)
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await getDataById('summary', '2')
-      setData(result.summary)
-      console.log(result.summary)
+      setData(result?.summary)
+      if (result.summary) {
+        window.sessionStorage.setItem('survey-summary', JSON.stringify(result?.summary))
+      }
     }
 
+    const session = window.sessionStorage.getItem('survey-summary')
+    if (session) {
+      setData(JSON.parse(session))
+    } else {
+      fetchData()
+    }
     fetchData()
   }, [])
 
-  const convertToRatio = (column: string): string => {
-    return String(Math.round((Number(data?.[column]) * 100) / Number(data?.totalCount)))
+  const getWidthPercent = (value: string): string => {
+    const width = Math.ceil((Number(value) * 100) / (Number(data?.totalCount) * 2))
+    return String(width) + '%'
   }
 
   return (
@@ -48,26 +59,26 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
               return (
                 <li key={choice.id} className="space-y-1">
                   <h3 className={`${choice.code === code ? 'text-white' : 'text-[#a7a5f0]'} text-lg font-light`}>
-                    {choice.title}
+                    {choice.title.replaceAll('<br/>', '')}
                   </h3>
-                  <div className="flex items-center">
+                  <div className="flex items-center w-full">
                     <img
                       src={choice.thumbnail_url}
                       alt={choice.title}
                       className={`${
                         choice.code === code ? 'opacity-100' : 'opacity-60 filter brightness-75'
-                      } object-contain w-12 h-12 bg-white rounded-md`}
+                      } object-contain w-12 h-12 bg-white rounded-md z-10`}
                     />
                     <div
-                      className={`${choice.code === code ? 'bg-[#a7a5f0]' : 'bg-[#6866e7]'} w-[${Number(
-                        convertToRatio(choice.column)
-                      )}%] h-4`}
+                      className={`${
+                        choice.code === code ? 'bg-[#a7a5f0]' : 'bg-[#6866e7]'
+                      } h-4 left-0 w-0 transform transition`}
+                      style={{ width: getWidthPercent(data?.[choice.column] ?? '') }}
                     />
                     <span
                       className={`${choice.code === code ? 'text-white' : 'text-[#a7a5f0] '} text-lg font-light ml-2`}
                     >
-                      {/* {data?.[choice.column]} */}
-                      {convertToRatio(choice.column) ?? 0}
+                      {data ? data?.[choice.column] : 0}
                     </span>
                   </div>
                 </li>
@@ -75,7 +86,7 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
             })}
           </ul>
         </div>
-        <p className="text-2xl font-medium text-center text-white">จากทั้งหมด {data?.totalCount} คน</p>
+        <p className="text-2xl font-medium text-center text-white">จากทั้งหมด {data?.totalCount ?? 0} คน</p>
       </div>
       <FooterNav prev={null} next={'/survey/b'} lightTheme={true} className={'mt-auto'} />
     </section>

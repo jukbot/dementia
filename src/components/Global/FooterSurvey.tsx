@@ -1,17 +1,55 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import { updateData } from '../../utils/sheety'
 interface Props {
   className?: string
   saveColumn: string
-  lightTheme: boolean
   next: string | null
 }
-const FooterNav: FC<Props> = ({ lightTheme = true, saveColumn, next, className }): JSX.Element => {
+
+const FooterSurvey: FC<Props> = ({ saveColumn, next, className }): JSX.Element => {
   const navigate = useNavigate()
-  const saveToSheet = () => {
+  const [isDisabled, setIsDisabled] = useState<boolean>(true)
+  const [isSaving, setIsSaving] = useState<boolean>(false)
+
+  useEffect(() => {
     console.log(saveColumn)
-    navigate(next ?? '/')
+    function checkUserData() {
+      const answer = window.localStorage.getItem(saveColumn)
+      if (answer) {
+        setIsDisabled(false)
+      } else {
+        setIsDisabled(true)
+      }
+    }
+
+    checkUserData()
+    window.addEventListener('storage', checkUserData)
+
+    return () => {
+      window.removeEventListener('storage', checkUserData)
+    }
+  }, [])
+
+  const saveForm = async (): Promise<void> => {
+    const id = window.localStorage.getItem('dementia-uid')
+    const answer = window.localStorage.getItem(saveColumn)
+    try {
+      if (id && answer) {
+        setIsSaving(true)
+        setIsDisabled(true)
+        const result = await updateData({ [saveColumn]: String(answer) }, 'survey', id ?? '1')
+        if (result) {
+          setIsSaving(false)
+          setIsDisabled(false)
+        }
+      }
+      navigate(next ?? '/')
+    } catch (error) {
+      console.log(error)
+      setIsSaving(false)
+      setIsDisabled(false)
+    }
   }
 
   return (
@@ -19,14 +57,13 @@ const FooterNav: FC<Props> = ({ lightTheme = true, saveColumn, next, className }
       {next ? (
         <button
           type="button"
-          onClick={() => saveToSheet()}
+          // disabled={isDisabled}
+          onClick={() => saveForm()}
           className={`${
-            lightTheme
-              ? 'text-[#6866E7] bg-white border-white hover:bg-transparent hover:text-white'
-              : 'text-white bg-[#6866E7] border-[#6866E7] hover:bg-[#A7A5F0] hover:border-[#A7A5F0]'
-          } inline-flex items-center px-6 py-2 text-lg font-medium border shadow-dark rounded-md focus:outline-none`}
+            isDisabled ? 'text-[#a7a5f0] border-[#a7a5f0]' : 'text-white bg-[#6866E7] border-[#6866E7] shadow-dark'
+          } inline-flex items-center px-6 py-2 text-lg font-medium border rounded-md focus:outline-none`}
         >
-          บันทึก
+          {isSaving ? 'กำลังบันทึก' : 'บันทึก'}
         </button>
       ) : (
         ''
@@ -35,4 +72,4 @@ const FooterNav: FC<Props> = ({ lightTheme = true, saveColumn, next, className }
   )
 }
 
-export default FooterNav
+export default FooterSurvey

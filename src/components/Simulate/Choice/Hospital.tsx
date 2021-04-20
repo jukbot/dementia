@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, memo, useEffect, useState } from 'react'
 import { HospitalChoice } from '../../../../@types'
 import { updateData } from '../../../utils/sheety'
 import { useLocalStorage } from '../../../utils/useLocalStorage'
@@ -130,4 +130,4 @@ const Hospital: FC = () => {
   )
 }
 
-export default Hospital
+export default memo(Hospital)

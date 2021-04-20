@@ -35,6 +35,7 @@ module.exports = {
         min: 'min-content',
         max: 'max-content',
         prose: '65ch',
+        ...defaultTheme.maxWidth,
       },
       boxShadow: {
         dark: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',

@@ -1,65 +1,146 @@
-import React, { FC, useState } from 'react'
+import React, { FC, memo, useState } from 'react'
 import { choices } from '../../../data/choice'
 import { RadioGroup } from '@headlessui/react'
-import { CheckIcon } from '@heroicons/react/solid'
+import { useLocalStorage } from '../../../utils/useLocalStorage'
 
 const SurveyA: FC = (): JSX.Element => {
-  const [answer, setAnswer] = useState<string | null>(null)
+  const [openChoice, setOpenChoice] = useState<number | string | null>(null)
+  const [selectedChoice, setChoice] = useLocalStorage<number | null>('selectedChoice', null)
+
+  const selectChoice = (index: number) => {
+    setChoice(index)
+    setOpenChoice(null)
+    if (choices[index]) {
+      window.localStorage.setItem('surveyA', choices[index]?.value)
+      window.localStorage.setItem('code', choices[index]?.code)
+      window.sessionStorage.removeItem('survey-summary')
+    }
+  }
 
   return (
-    <div className="flex flex-col justify-between space-y-8">
-      <h1 className="text-xl text-[#444444] font-medium">เลือกการคัดกรองคัดแยกแบบที่ใช่</h1>
-      <p className="text-[#4842e0] font-light text-lg">คลิกแต่ละข้อเพื่อดูรายละเอียด</p>
-      <RadioGroup value={answer} onChange={setAnswer}>
+    <div className="relative flex flex-col justify-between w-full space-y-2">
+      <h1 className="text-xl text-[#444444] font-medium text-center">เลือกการคัดกรองคัดแยกแบบที่ใช่</h1>
+      <p className={`${openChoice !== null ? 'hidden' : ''} text-[#4842e0] font-light text-lg text-center`}>
+        คลิกแต่ละข้อเพื่อดูรายละเอียด
+      </p>
+      <RadioGroup value={openChoice ?? selectedChoice} onChange={setOpenChoice}>
         <RadioGroup.Label className="sr-only">เลือกแบบคัดกรองสำหรับคุณ</RadioGroup.Label>
-        <div className="space-y-4">
+        <div className={`${openChoice !== null ? 'hidden' : ''} flex flex-col h-full space-y-3 mb-20`}>
           {choices.map((choice) => (
             <RadioGroup.Option
               key={choice.id}
-              value={choice.value}
+              value={choice.index}
               className={({ checked }) => `
-                  ${checked ? 'bg-[#6866e7] shadow-lg text-white' : 'bg-white shadow-dark text-[#999999]'}
-                    relative rounded-md shadow-dark cursor-pointer flex focus:outline-none transition`}
+                  ${checked ? 'bg-[#6866e7] text-white' : 'bg-white shadow-dark text-[#999999]'}
+                    relative rounded-md cursor-pointer focus:outline-none transition w-full overflow-hidden`}
             >
               {({ checked }) => (
-                <>
-                  <span
-                    className={`${checked ? 'bg-indigo-600 border-transparent' : 'bg-white border-gray-300'}
-                      h-4 w-4 mt-0.5 cursor-pointer rounded-full border flex items-center justify-center
+                <div className="flex items-center">
+                  <div className={`${checked ? 'bg-white' : 'bg-[#a7a5f0]'} overflow-hidden h-full transition`}>
+                    <img
+                      src={choice.thumbnail_url}
+                      alt={choice.title}
+                      className={`${checked ? 'opacity-100' : 'opacity-40'} object-cover h-22 w-full transition`}
+                    />
+                  </div>
+                  <div className="flex flex-col w-full px-4 py-2 space-y-2">
+                    <span
+                      className={`${
+                        checked ? 'bg-white text-[#6866e7]' : 'bg-[#6866e7] text-white'
+                      } flex px-4 py-0.5 rounded-full w-20 justify-center text-sm font-light transition`}
+                    >
+                      แบบ {choice.code}
+                    </span>
+                    <RadioGroup.Label
+                      as="p"
+                      className="text-base font-light leading-5 max-w-prose"
+                      dangerouslySetInnerHTML={{ __html: choice.title ?? '' }}
+                    />
+                  </div>
+
+                  <div
+                    className={`${checked ? 'bg-[#4842e0]' : ''}
+                      h-6 w-6 cursor-pointer rounded-full flex bg-[#e7e7f9] items-center justify-center flex-shrink-0 mr-4 right-0
                     `}
                     aria-hidden="true"
                   >
-                    <span className="rounded-full bg-white w-1.5 h-1.5" />
-                  </span>
-                  <div className="flex items-center justify-between w-full">
-                    <div className="flex items-center">
-                      <span className="inline-flex items-center px-4 py-0.5 rounded-full text-sm font-light bg-[#a7a5f0] text-white">
-                        แบบ ก
-                      </span>
-                      <RadioGroup.Label as="p" className={`font-medium  ${checked ? 'text-white' : 'text-gray-900'}`}>
-                        {choice.title}
-                      </RadioGroup.Label>
-                      <RadioGroup.Description
-                        as="span"
-                        className={`inline ${checked ? 'text-light-blue-100' : 'text-gray-500'}`}
-                      >
-                        <span aria-hidden="true">&middot;</span> <span>{choice.text}</span>
-                      </RadioGroup.Description>
-                    </div>
-                    {checked && (
-                      <div className="flex-shrink-0 text-white">
-                        <CheckIcon className="w-6 h-6" />
-                      </div>
-                    )}
+                    <span className={`${checked ? 'bg-[#4842e0]' : ''} rounded-full w-3 h-3 transition`} />
                   </div>
-                </>
+                </div>
               )}
             </RadioGroup.Option>
           ))}
         </div>
       </RadioGroup>
+
+      {openChoice !== null ? (
+        <div
+          role="dialog"
+          aria-labelledby=""
+          aria-describedby="dialog1Desc"
+          className="absolute top-0 z-10 flex flex-col w-full h-full p-6 space-y-4 text-white bg-white rounded-md shadow-dark"
+        >
+          <div className="flex justify-center w-full">
+            <span className="top-0 bg-[#6866e7] text-white flex px-4 py-0.5 rounded-full w-20 justify-center text-sm font-light transition">
+              แบบ {choices[Number(openChoice)]?.code ?? ''}
+            </span>
+          </div>
+          <h2
+            className="top-0 text-xl font-light text-center text-[#6866e7]"
+            dangerouslySetInnerHTML={{ __html: choices[Number(openChoice)]?.title ?? '' }}
+          />
+          <div className="absolute top-0 right-0 pr-4 opacity-75">
+            <div
+              className="flex justify-center items-center text-[#6866e7] bg-[#c9c8f3] rounded-full p-1"
+              onClick={() => setOpenChoice(null)}
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </div>
+          </div>
+          <div className="px-8">
+            <img
+              src={choices[Number(openChoice)]?.image_url ?? ''}
+              alt={choices[Number(openChoice)]?.title ?? ''}
+              className="object-contain w-full"
+            />
+          </div>
+          <p className="text-lg font-light text-[#666666] font-pridi h-full">{choices[Number(openChoice)]?.content}</p>
+          <div className="bottom-0 flex justify-center w-full pt-4 mt-auto space-x-2">
+            <button
+              onClick={() => setOpenChoice(choices[Number(openChoice)].prev ?? -1)}
+              disabled={choices[Number(openChoice)].prev === null}
+              className={`${
+                choices[Number(openChoice)].prev === null
+                  ? 'border-[#e7e7f9] text-[#e7e7f9] pointer-events-none'
+                  : 'border-[#a7a5f0] text-[#a7a5f0]'
+              } border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex items-center justify-center w-full px-2 py-2 text-lg font-medium border rounded-md`}
+            >
+              ย้อนกลับ
+            </button>
+            <button
+              onClick={() => selectChoice(choices[Number(openChoice)].index)}
+              className={`bg-[#6866e7] text-white hover:text-white focus:outline-none inline-flex items-center justify-center w-full px-2 py-2 text-lg font-medium border rounded-md`}
+            >
+              เลือก
+            </button>
+            <button
+              onClick={() => setOpenChoice(choices[Number(openChoice)].next ?? 0)}
+              disabled={choices[Number(openChoice)].next === null}
+              className={`${
+                choices[Number(openChoice)].next === null
+                  ? 'border-[#e7e7f9] text-[#e7e7f9] pointer-events-none'
+                  : 'border-[#a7a5f0] text-[#a7a5f0]'
+              } focus:outline-none inline-flex items-center justify-center w-full px-2 py-2 text-lg font-medium border rounded-md`}
+            >
+              ถัดไป
+            </button>
+          </div>
+        </div>
+      ) : null}
     </div>
   )
 }
 
-export default SurveyA
+export default memo(SurveyA)

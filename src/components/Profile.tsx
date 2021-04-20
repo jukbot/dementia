@@ -24,6 +24,7 @@ const Profile = (): JSX.Element => {
   const [, setSubject] = useLocalStorage<string | null>('subject', null)
   const [relevance, setRelevance] = useState<string | null>(null)
   const [age, setAge] = useState<number>(0)
+  const [isSaving, setIsSaving] = useState<boolean>(false)
   const [ageError, setAgeError] = useState<boolean>(false)
   const [isDisabled, setDisabled] = useState<boolean>(true)
   const [state, setState] = useState<FormData>(() => {
@@ -46,17 +47,24 @@ const Profile = (): JSX.Element => {
     try {
       const id = window.localStorage.getItem('dementia-uid')
       if (!id) {
+        setIsSaving(true)
+        setDisabled(true)
         const result = await addData(profile, 'survey')
         if (result?.survey) {
           window.localStorage.setItem('dementia-uid', String(result?.survey.id))
         }
       } else {
+        setIsSaving(true)
+        setDisabled(true)
         await updateData(profile, 'survey', id ?? '1')
       }
+      setIsSaving(false)
+      setDisabled(false)
       navigate('/intro/1')
     } catch (error) {
       console.log(error)
-      alert(error)
+      setIsSaving(false)
+      setDisabled(false)
     }
   }
 
@@ -315,11 +323,11 @@ const Profile = (): JSX.Element => {
             disabled={isDisabled}
             className={`${
               isDisabled
-                ? 'border-[#e7e7f9] text-[#e7e7f9] cursor-not-allowed'
+                ? 'border-[#e7e7f9] text-[#e7e7f9] pointer-events-none'
                 : 'border-[#4842e0] text-white bg-[#4842e0] focus:outline-none hover:shadow-lg shadow-dark'
             } inline-flex items-center px-8 py-2 text-lg font-medium border rounded-md`}
           >
-            บันทึก
+            {isSaving ? 'กำลังบันทึก' : 'บันทึก'}
           </button>
         </div>
       </div>

@@ -16,7 +16,7 @@ const SimulateContent: FC<Props> = ({ bgColor }): JSX.Element => {
 
   return (
     <div className={`h-full flex flex-col fixed w-full ${bgColor}`}>
-      <section className="flex flex-col h-full px-8 py-12 text-center">
+      <section className="flex h-full px-8 py-8">
         {data?.survey ? (
           <Suspense fallback={null}>
             <Survey />
@@ -25,7 +25,7 @@ const SimulateContent: FC<Props> = ({ bgColor }): JSX.Element => {
           ''
         )}
       </section>
-      <FooterSurvey next={data?.next ?? ''} saveColumn={data?.column ?? ''} lightTheme={false} className={'mt-auto'} />
+      <FooterSurvey next={data?.next ?? ''} saveColumn={data?.column ?? ''} className={data?.layout} />
     </div>
   )
 }
