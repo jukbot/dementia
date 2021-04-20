@@ -28,3 +28,16 @@ export interface QuizData {
   answerChoice: boolean
   image: string
 }
+
+export interface SurveyData extends Map {
+  id?: number
+  totalCount: number
+  choiceA: number
+  choiceB: number
+  choiceC: number
+  choiceD: number
+  choiceE: number
+  publicHospital?: number | null
+  privateHospital?: number | null
+  nearbyClinic?: number | null
+}

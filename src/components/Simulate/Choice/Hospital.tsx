@@ -7,7 +7,7 @@ const content: HospitalChoice[] = [
   {
     id: 1,
     title: 'โรงพยาบาลรัฐ',
-    value: 'public-hospital',
+    value: 'public',
     prev: null,
     next: 1,
     content:
@@ -16,7 +16,7 @@ const content: HospitalChoice[] = [
   {
     id: 2,
     title: 'โรงพยาบาลเอกชน',
-    value: 'private-hospital',
+    value: 'private',
     prev: 0,
     next: 2,
     content:
@@ -25,7 +25,7 @@ const content: HospitalChoice[] = [
   {
     id: 3,
     title: 'คลินิกใกล้บ้าน',
-    value: 'nearby-clinic',
+    value: 'clinic',
     prev: 1,
     next: null,
     content:
