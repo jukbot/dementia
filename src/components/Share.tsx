@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Facebook, Line, Twitter } from './Icons'
 
 const Share = (): JSX.Element => {
@@ -7,6 +7,11 @@ const Share = (): JSX.Element => {
     // window.location.assign(url)
     window.open(url, '_blank')
   }
+
+  useEffect(() => {
+    window.localStorage.removeItem('quiz-score')
+    window.localStorage.removeItem('hospital-choice')
+  }, [])
 
   return (
     <section className="fixed h-full w-full bg-[#4842e0]">

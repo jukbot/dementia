@@ -14,12 +14,10 @@ const FooterSurvey: FC<Props> = ({ saveColumn, next, className, disable }): JSX.
   const [isSaving, setIsSaving] = useState<boolean>(false)
 
   useEffect(() => {
-    console.log('set disable')
     setIsDisabled(Boolean(disable))
   }, [disable])
 
   useEffect(() => {
-    console.log(saveColumn)
     function checkUserData() {
       const answer = window.localStorage.getItem(saveColumn)
       if (answer) {
@@ -44,7 +42,7 @@ const FooterSurvey: FC<Props> = ({ saveColumn, next, className, disable }): JSX.
       if (id && answer) {
         setIsSaving(true)
         setIsDisabled(true)
-        const result = await updateData({ [saveColumn]: String(answer) }, 'survey', id ?? '1')
+        const result = await updateData({ [saveColumn]: answer.replaceAll('"', '') }, 'survey', id ?? '1')
         if (result) {
           setIsSaving(false)
           setIsDisabled(false)

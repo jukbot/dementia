@@ -84,9 +84,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
       {openChoice !== null ? (
         <div
           role="dialog"
-          aria-labelledby=""
-          aria-describedby="dialog1Desc"
-          className="absolute top-0 z-10 flex flex-col w-full h-full p-6 space-y-4 text-white bg-white rounded-md shadow-dark"
+          className="absolute top-0 z-10 flex flex-col w-full h-full p-6 m-0 space-y-4 text-white bg-white rounded-md shadow-dark"
         >
           <div className="flex justify-center w-full">
             <span className="top-0 bg-[#6866e7] text-white flex px-4 py-0.5 rounded-full w-20 justify-center text-sm font-light transition">

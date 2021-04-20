@@ -9,22 +9,7 @@ const SimulateContent: FC = (): JSX.Element => {
   const { id } = useParams()
   const data = content.find((v) => v.route === id)
   const Choice = importView('Choice', data?.component ?? '')
-
-  // const images: HTMLImageElement[] = []
-  // const preload = (list: string[]) => {
-  //   for (let i = 0; i < list.length; i++) {
-  //     images[i] = new Image()
-  //     images[i].src = list[i]
-  //     images[i].className = 'flex-shrink-0 object-contain px-6'
-  //     console.log(images[i])
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   const imageLists: string[] = content.filter((item) => item.image_url).map((item) => item?.image_url ?? '')
-  //   console.log(imageLists)
-  //   preload(imageLists)
-  // }, [])
+  // TODO: optimize by using preload images as array
 
   return (
     <div className={`h-full flex flex-col fixed w-full ${data?.bg_color}`}>

@@ -13,7 +13,7 @@ const SimulateContent: FC<Props> = ({ bgColor }): JSX.Element => {
   const { id } = useParams()
   const data = content.find((v) => v.route === id)
   const Survey = importView(data?.survey ?? '')
-  const [isDisabled, setIsDisabled] = useState<boolean>(false)
+  const [isDisabled, setIsDisabled] = useState<boolean>(true)
 
   return (
     <div className={`h-full flex flex-col fixed w-full ${bgColor}`}>

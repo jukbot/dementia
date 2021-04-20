@@ -1,20 +1,15 @@
 import React, { FC } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Cross, Check } from '../Icons'
-
 interface Props {
   className?: string
-  prev: string | undefined
-  next: string | undefined
+  setAnswer: (answer: boolean) => void
 }
 
-const FooterQuiz: FC<Props> = ({ prev, next, className }): JSX.Element => {
-  const navigate = useNavigate()
-
+const FooterQuiz: FC<Props> = ({ className, setAnswer = () => {} }): JSX.Element => {
   return (
     <nav className={`bottom-0 flex justify-center w-full mb-12 space-x-6 mt-auto ${className}`}>
-      <Check onClick={() => navigate(prev ?? '/')} className="w-24 h-24 rounded-full shadow-dark bg-[#C9C8F3]" />
-      <Cross onClick={() => navigate(next ?? '/')} className="w-24 h-24 rounded-full shadow-dark bg-[#C9C8F3]" />
+      <Check onClick={() => setAnswer(true)} className="w-24 h-24 rounded-full shadow-dark bg-[#C9C8F3]" />
+      <Cross onClick={() => setAnswer(false)} className="w-24 h-24 rounded-full shadow-dark bg-[#C9C8F3]" />
     </nav>
   )
 }

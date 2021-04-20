@@ -42,13 +42,11 @@ const Hospital: FC = () => {
       setHospital(section?.value)
     }
     if (!hospital && section) {
-      console.log('trigger')
       saveForm(section?.value)
     }
   }, [section])
 
   const saveForm = async (value: string): Promise<void> => {
-    console.log('save data')
     try {
       const id = window.localStorage.getItem('dementia-uid')
       if (id) {
@@ -90,20 +88,21 @@ const Hospital: FC = () => {
       {section ? (
         <div
           role="dialog"
-          aria-labelledby=""
-          aria-describedby="dialog1Desc"
           className="absolute top-0 p-6 bg-[#6866e7] justify-center text-white flex flex-col space-y-4 rounded-md"
         >
           <h2 className="top-0 text-xl font-medium text-center text-white">{section?.title}</h2>
+
           <div className="absolute top-0 right-0 pr-4 opacity-75">
-            <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" onClick={() => setSection(null)}>
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                clipRule="evenodd"
-              />
-            </svg>
+            <div
+              className="flex justify-center items-center text-[#6866e7] bg-[#c9c8f3] rounded-full p-1"
+              onClick={() => setSection(null)}
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </div>
           </div>
+
           <p className="text-lg font-light text-white font-pridi">{section?.content}</p>
           <div className="flex justify-center pt-4 space-x-4">
             {section?.prev !== null ? (

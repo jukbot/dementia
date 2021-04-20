@@ -3,6 +3,7 @@
 export const content = [
   {
     route: '1',
+    index: 0,
     heading: 'ข้อมูลชุดที่ 1',
     question: 'ภาวะสมองเสื่อม<br/> เป็นเรื่องปกติของคนแก่',
     answer:
@@ -10,11 +11,13 @@ export const content = [
     answerChoice: false,
     image_url: '/images/quiz/s1-01.jpg',
     image_alt: 'quiz-1',
+    column: 'quiz1',
     prev: '/quiz/landing',
     next: '/quiz/2',
   },
   {
     route: '2',
+    index: 1,
     heading: 'ข้อมูลชุดที่ 2',
     question: 'หากได้รับการรักษา ส่วนใหญ่แล้ว<br/> ผู้ป่วยภาวะสมองเสื่อม<br/> สามารถหายขาดได้',
     answer:
@@ -22,11 +25,13 @@ export const content = [
     answerChoice: false,
     image_url: '/images/quiz/s1-02.jpg',
     image_alt: 'quiz-2',
+    column: 'quiz2',
     prev: '/quiz/1',
     next: '/quiz/3',
   },
   {
     route: '3',
+    index: 2,
     heading: 'ข้อมูลชุดที่ 3',
     question: 'การปรับเปลี่ยนพฤติกรรม<br/> ช่วยป้องกัน<br/> และชะลอสมองเสื่อมได้',
     answer:
@@ -34,7 +39,8 @@ export const content = [
     answerChoice: true,
     image_url: '/images/quiz/s1-03.jpg',
     image_alt: 'quiz-3',
+    column: 'quiz3',
     prev: '/quiz/2',
-    next: '/quiz/result',
+    next: null,
   },
 ]

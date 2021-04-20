@@ -1,5 +1,5 @@
-interface Map {
-  [key: string]: string | undefined | null
+export interface Map {
+  [key: string]: string | undefined | null | number
 }
 export interface FormData extends Map {
   gender: string | null

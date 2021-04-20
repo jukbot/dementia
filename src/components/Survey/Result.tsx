@@ -31,16 +31,20 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
       }
     }
 
-    const session = window.sessionStorage.getItem('survey-summary')
-    if (session) {
-      console.log('get from session')
-      setData(JSON.parse(session))
-    } else {
-      fetchData()
+    try {
+      const session = window.sessionStorage.getItem('survey-summary')
+      if (session) {
+        setData(JSON.parse(session))
+      } else {
+        fetchData()
+      }
+    } catch (error) {
+      console.error(error)
+      alert(error)
     }
   }, [])
 
-  const getWidthPercent = (value: string): string => {
+  const getWidthPercent = (value: string | number | null): string => {
     const width = Math.ceil((Number(value) * 100) / (Number(data?.totalCount) * 2))
     return String(width) + '%'
   }
@@ -79,7 +83,7 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
                       className={`${
                         choice.code === code ? 'bg-[#a7a5f0]' : 'bg-[#6866e7]'
                       } h-4 left-0 w-0 transform transition-transform	`}
-                      style={{ width: getWidthPercent(data?.[choice.column] ?? '') }}
+                      style={{ width: getWidthPercent(data?.[choice.column] ?? 0) }}
                     />
                     <span
                       className={`${choice.code === code ? 'text-white' : 'text-[#a7a5f0] '} text-lg font-light ml-2`}
