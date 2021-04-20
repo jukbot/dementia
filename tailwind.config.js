@@ -48,10 +48,5 @@ module.exports = {
     extend: {},
   },
   // https://tailwindcss.com/docs/plugins
-  plugins: [
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-    require('tailwindcss-debug-screens'),
-  ],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require('tailwindcss-debug-screens')],
 }
