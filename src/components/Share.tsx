@@ -4,7 +4,8 @@ import { Facebook, Line, Twitter } from './Icons'
 const Share = (): JSX.Element => {
   const webUrl = 'https://dementia.pages.dev'
   const goToLink = (url: string): void => {
-    window.location.assign(url)
+    // window.location.assign(url)
+    window.open(url, '_blank')
   }
 
   return (
@@ -33,6 +34,7 @@ const Share = (): JSX.Element => {
           </button>
           <button
             type="button"
+            onClick={() => window.open('/public/pdf/self-survey.pdf', '_blank')}
             className="inline-flex justify-center items-center px-6 py-2 text-lg font-medium text-primary bg-[#a7a5f0] border border-transparent rounded-md shadow-lg hover:bg-gray-100 focus:outline-none"
           >
             ดาวน์โหลดแบบคัดกรอง

@@ -1,8 +1,22 @@
-import React, { FC, memo } from 'react'
+import React, { FC, memo, useEffect } from 'react'
 import { useLocalStorage } from '../../../utils/useLocalStorage'
 
-const SurveyB: FC = (): JSX.Element => {
+interface Props {
+  setValidAnswer: (valid: boolean) => void
+}
+
+const SurveyB: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
   const [answer, setAnswer] = useLocalStorage<string | null>('surveyB', null)
+
+  useEffect(() => {
+    if (answer) {
+      console.log('true')
+      setValidAnswer(true)
+    } else {
+      console.log('false')
+      setValidAnswer(false)
+    }
+  }, [answer])
 
   return (
     <div className="flex flex-col justify-between space-y-8">

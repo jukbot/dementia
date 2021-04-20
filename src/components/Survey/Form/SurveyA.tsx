@@ -3,7 +3,11 @@ import { choices } from '../../../data/choice'
 import { RadioGroup } from '@headlessui/react'
 import { useLocalStorage } from '../../../utils/useLocalStorage'
 
-const SurveyA: FC = (): JSX.Element => {
+interface Props {
+  setValidAnswer: (valid: boolean) => void
+}
+
+const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
   const [openChoice, setOpenChoice] = useState<number | string | null>(null)
   const [selectedChoice, setChoice] = useLocalStorage<number | null>('selectedChoice', null)
 
@@ -15,6 +19,9 @@ const SurveyA: FC = (): JSX.Element => {
       window.localStorage.setItem('code', choices[index]?.code)
       window.localStorage.setItem('choiceColumn', choices[index]?.column)
       window.sessionStorage.removeItem('survey-summary')
+      setValidAnswer(true)
+    } else {
+      setValidAnswer(false)
     }
   }
 

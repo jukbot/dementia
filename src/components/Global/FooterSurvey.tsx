@@ -5,12 +5,18 @@ interface Props {
   className?: string
   saveColumn: string
   next: string | null
+  disable?: boolean
 }
 
-const FooterSurvey: FC<Props> = ({ saveColumn, next, className }): JSX.Element => {
+const FooterSurvey: FC<Props> = ({ saveColumn, next, className, disable }): JSX.Element => {
   const navigate = useNavigate()
   const [isDisabled, setIsDisabled] = useState<boolean>(true)
   const [isSaving, setIsSaving] = useState<boolean>(false)
+
+  useEffect(() => {
+    console.log('set disable')
+    setIsDisabled(Boolean(disable))
+  }, [disable])
 
   useEffect(() => {
     console.log(saveColumn)
@@ -57,8 +63,8 @@ const FooterSurvey: FC<Props> = ({ saveColumn, next, className }): JSX.Element =
       {next ? (
         <button
           type="button"
-          // disabled={isDisabled}
-          onClick={() => saveForm()}
+          disabled={isDisabled}
+          onClick={saveForm}
           className={`${
             isDisabled ? 'text-[#a7a5f0] border-[#a7a5f0]' : 'text-white bg-[#6866E7] border-[#6866E7] shadow-dark'
           } inline-flex items-center px-6 py-2 text-lg font-medium border rounded-md focus:outline-none`}
