@@ -54,21 +54,21 @@ const Share = (): JSX.Element => {
               target="_blank"
               rel="noreferrer"
             >
-              <Line className="flex-shrink-0 w-12 h-12 cursor-pointer md:w-24 md:h-24 hover:text-white" />
+              <Line className="flex-shrink-0 w-12 h-12 cursor-pointer md:w-20 md:h-20 hover:text-white" />
             </a>
             <a
               href={`https://www.facebook.com/sharer/sharer.php?u=${webUrl}&t=ห้องสมองเสื่อม`}
               target="_blank"
               rel="noreferrer"
             >
-              <Facebook className="flex-shrink-0 w-12 h-12 cursor-pointer md:w-24 md:h-24 hover:text-white" />
+              <Facebook className="flex-shrink-0 w-12 h-12 cursor-pointer md:w-20 md:h-20 hover:text-white" />
             </a>
             <a
               href={`https://twitter.com/intent/tweet?url=${webUrl}&hashtag=#ห้องสมองเสื่อม&text=มาทำแบบสำรวจว่าคุณมีความเสี่ยงความจำเสื่อมแค่ไหน`}
               target="_blank"
               rel="noreferrer"
             >
-              <Twitter className="flex-shrink-0 w-12 h-12 cursor-pointer md:w-24 md:h-24 hover:text-white" />
+              <Twitter className="flex-shrink-0 w-12 h-12 cursor-pointer md:w-20 md:h-20 hover:text-white" />
             </a>
           </div>
         </div>

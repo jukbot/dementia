@@ -88,7 +88,7 @@ const Hospital: FC = () => {
       {section ? (
         <div
           role="dialog"
-          className="absolute top-0 p-6 bg-[#6866e7] justify-center text-white flex flex-col space-y-4 rounded-md"
+          className="absolute top-0 p-6 bg-[#6866e7] justify-center text-white lg:max-w-3/4 flex flex-col space-y-4 rounded-md"
         >
           <h2 className="top-0 text-xl font-medium text-center text-white">{section?.title}</h2>
 

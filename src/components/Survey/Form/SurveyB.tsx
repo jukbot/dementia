@@ -19,7 +19,7 @@ const SurveyB: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
   }, [answer])
 
   return (
-    <div className="flex flex-col justify-between space-y-8">
+    <div className="flex flex-col justify-between w-full space-y-8 lg:justify-evenly">
       <h1 className="text-2xl text-[#444444] leading-normal font-light text-center">
         หากเข้ารับบริการ
         <br /> ตรวจคัดกรองคัดแยกแล้วพบว่า
@@ -28,10 +28,10 @@ const SurveyB: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
         <br />
         <br /> คุณจะ
       </h1>
-      <p className="text-[#4842e0] font-light text-lg text-center">คลิกเพื่อเลือกสิ่งที่คุณจะทำต่อ</p>
-      <fieldset>
+      <p className="text-[#4842e0] font-light text-lg md:text-xl text-center">คลิกเพื่อเลือกสิ่งที่คุณจะทำต่อ</p>
+      <fieldset className="flex justify-center">
         <legend className="sr-only">ตัวเลือกสิ่งที่จะทำต่อ</legend>
-        <div className="space-y-4 text-center">
+        <div className="space-y-4 text-center lg:w-1/3">
           <label
             className={`${
               answer === 'a' ? 'bg-[#6866e7] shadow-lg' : 'bg-white shadow-dark'

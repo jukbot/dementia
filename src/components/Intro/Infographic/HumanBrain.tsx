@@ -10,8 +10,11 @@ const HumanBrain: FC = (): JSX.Element => {
         หรือความผิดปกติ ของเซลล์สมอง
       </p>
       <div className="relative flex flex-col items-center">
-        <h3 className="font-medium text-center text-white">คลิกเพื่อดูการทำงานของสมองแต่ละส่วน</h3>
-        <Brain className="w-full px-12 max-w-2/3 lg:max-w-1/2" setSection={(section) => setSection(section)} />
+        <h3 className="text-base font-medium text-center text-white md:text-lg">คลิกเพื่อดูการทำงานของสมองแต่ละส่วน</h3>
+        <Brain
+          className="w-full px-12 md:my-6 md:w-[400px] md:h-[300px]"
+          setSection={(section) => setSection(section)}
+        />
         <div
           className={`${
             section ? 'opacity-100' : 'opacity-0'

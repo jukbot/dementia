@@ -2,7 +2,6 @@ import React, { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Star } from '../Icons'
 import { content } from '../../data/quiz'
-import { Map } from '../../../@types'
 interface Props {
   bgColor?: string
 }
@@ -39,7 +38,7 @@ const QuizResult: FC<Props> = ({ bgColor }): JSX.Element => {
   })
 
   return (
-    <section className={`${bgColor} flex flex-col justify-between h-full px-8 py-8`}>
+    <section className={`${bgColor} flex flex-col justify-evenly h-full px-8 py-8`}>
       <div className="relative flex items-center justify-center font-light text-center text-white">
         <div className="absolute flex flex-col space-y-2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
           <h1 className="text-2xl">คุณตอบถูก</h1>

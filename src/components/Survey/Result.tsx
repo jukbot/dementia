@@ -51,7 +51,7 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
 
   return (
     <section className={`h-full flex flex-col fixed w-full ${bgColor}`}>
-      <div className="flex flex-col justify-between h-full px-6 py-6 space-y-4">
+      <div className="flex flex-col justify-between w-full h-full px-6 py-6 space-y-4 lg:justify-evenly">
         <div className="flex flex-col space-y-4">
           <h1 className="text-[#a7a5f0] font-medium text-2xl text-center">
             คุณเป็น 1 ใน {<CountUp isCounting end={Number(data?.[columnName])} duration={1} />} คน
@@ -63,8 +63,8 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
             </span>
           </div>
         </div>
-        <div>
-          <ul className="space-y-2">
+        <div className="flex justify-center">
+          <ul className="w-full space-y-2 lg:w-1/2">
             {choices.map((choice) => {
               return (
                 <li key={choice.id} className="space-y-1">
@@ -77,7 +77,7 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
                       alt={choice.title}
                       className={`${
                         choice.code === code ? 'opacity-100' : 'opacity-60 filter brightness-75'
-                      } object-contain w-12 h-12 bg-white rounded-md z-10`}
+                      } object-contain w-12 h-12 md:w-20 md:h-20 bg-white rounded-md z-10`}
                     />
                     <div
                       className={`${

@@ -26,25 +26,27 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
   }
 
   return (
-    <div className="relative flex flex-col justify-between w-full space-y-2">
-      <h1 className="text-xl text-[#444444] font-medium text-center">เลือกการคัดกรองคัดแยกแบบที่ใช่</h1>
+    <div className="relative flex flex-col justify-between w-full space-y-2 lg:justify-evenly">
+      <h1 className="text-xl text-[#444444] font-medium text-center">เลือกการคัดกรองคัดแยกแบบทีใช่</h1>
       <p className={`${openChoice !== null ? 'hidden' : ''} text-[#4842e0] font-light text-lg text-center`}>
         คลิกแต่ละข้อเพื่อดูรายละเอียด
       </p>
       <RadioGroup value={openChoice ?? selectedChoice} onChange={setOpenChoice}>
         <RadioGroup.Label className="sr-only">เลือกแบบคัดกรองสำหรับคุณ</RadioGroup.Label>
-        <div className={`${openChoice !== null ? 'hidden' : ''} flex flex-col h-full space-y-3 mb-20`}>
+        <div
+          className={`${openChoice !== null ? 'hidden' : ''} flex flex-col h-full space-y-3 mb-20 w-full items-center`}
+        >
           {choices.map((choice) => (
             <RadioGroup.Option
               key={choice.id}
               value={choice.index}
               className={({ checked }) => `
                   ${checked ? 'bg-[#6866e7] text-white' : 'bg-white shadow-dark text-[#999999]'}
-                    relative rounded-md cursor-pointer focus:outline-none transition w-full overflow-hidden`}
+                    relative rounded-md cursor-pointer focus:outline-none transition w-full lg:w-1/2 overflow-hidden`}
             >
               {({ checked }) => (
                 <div className="flex items-center">
-                  <div className={`${checked ? 'bg-white' : 'bg-[#a7a5f0]'} overflow-hidden h-full transition`}>
+                  <div className={`${checked ? 'bg-white' : 'bg-[#a7a5f0]'} overflow-hidden h-full w-22 transition`}>
                     <img
                       src={choice.thumbnail_url}
                       alt={choice.title}
@@ -61,7 +63,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
                     </span>
                     <RadioGroup.Label
                       as="p"
-                      className="text-base font-light leading-5 max-w-prose"
+                      className="text-base font-light leading-4 max-w-prose sm:text-lg"
                       dangerouslySetInnerHTML={{ __html: choice.title ?? '' }}
                     />
                   </div>
@@ -84,7 +86,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
       {openChoice !== null ? (
         <div
           role="dialog"
-          className="absolute top-0 z-10 flex flex-col w-full h-full p-6 m-0 space-y-4 text-white bg-white rounded-md shadow-dark"
+          className="absolute top-0 z-10 flex flex-col w-full h-full p-6 m-0 space-y-4 overflow-auto bg-white rounded-md shadow-dark"
         >
           <div className="flex justify-center w-full">
             <span className="top-0 bg-[#6866e7] text-white flex px-4 py-0.5 rounded-full w-20 justify-center text-sm font-light transition">
@@ -109,11 +111,13 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
             <img
               src={choices[Number(openChoice)]?.image_url ?? ''}
               alt={choices[Number(openChoice)]?.title ?? ''}
-              className="object-contain w-full"
+              className="object-contain w-full h-auto max-h-[400px]"
             />
           </div>
-          <p className="text-lg font-light text-[#666666] font-pridi h-full">{choices[Number(openChoice)]?.content}</p>
-          <div className="bottom-0 flex justify-center w-full pt-4 mt-auto space-x-2">
+          <p className="text-lg font-light text-[#666666] font-pridi h-full lg:w-1/2 mx-auto">
+            {choices[Number(openChoice)]?.content}
+          </p>
+          <div className="bottom-0 flex justify-center w-full pt-4 mx-auto mt-auto space-x-2 lg:w-1/2">
             <button
               onClick={() => setOpenChoice(choices[Number(openChoice)].prev ?? -1)}
               disabled={choices[Number(openChoice)].prev === null}

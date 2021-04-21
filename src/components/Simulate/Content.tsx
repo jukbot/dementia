@@ -12,7 +12,7 @@ const SimulateContent: FC = (): JSX.Element => {
   // TODO: optimize by using preload images as array
 
   return (
-    <div className={`h-full flex flex-col fixed w-full ${data?.bg_color}`}>
+    <div className={`h-full flex flex-col fixed w-full justify-evenly ${data?.bg_color}`}>
       <section className={`flex flex-col h-full px-8 py-8 space-y-8 ${data?.space_type}`}>
         {data?.image_url ? (
           <img

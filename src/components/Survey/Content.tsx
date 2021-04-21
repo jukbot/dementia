@@ -17,7 +17,7 @@ const SimulateContent: FC<Props> = ({ bgColor }): JSX.Element => {
 
   return (
     <div className={`h-full flex flex-col fixed w-full ${bgColor}`}>
-      <section className="flex h-full px-8 py-8">
+      <section className="flex w-full h-full p-8">
         {data?.survey ? (
           <Suspense fallback={null}>
             <Survey setValidAnswer={(valid: boolean) => setIsDisabled(!valid)} />

@@ -12,7 +12,7 @@ const IntroContent: FC = (): JSX.Element => {
   return (
     <>
       <section
-        className={`flex flex-col h-full py-8 px-12 ${data?.space_type} max-w-screen-md self-center overflow-auto`}
+        className={`flex flex-col h-full py-8 px-12 ${data?.space_type} max-w-screen-md self-center lg:justify-center lg:space-y-8 overflow-auto`}
       >
         {data?.heading ? <h2 className="text-2xl font-medium text-center text-[#A7A5F0] mb-4">{data?.heading}</h2> : ''}
         {data?.title ? (
