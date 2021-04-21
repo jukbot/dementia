@@ -87,7 +87,7 @@ const Brain: FC<Props> = ({ className, setSection = () => {} }) => {
       </g>
       <g
         onClick={() => selectPoint({ text: 'การมองเห็น', id: 'j' })}
-        className={`${selectedId === 'j' ? 'animate-pulse' : ''}`}
+        className={`${selectedId === 'j' ? 'animate-pulse' : ''} cursor-pointer`}
       >
         <filter
           id="j"
@@ -117,7 +117,7 @@ const Brain: FC<Props> = ({ className, setSection = () => {} }) => {
       </g>
       <g
         onClick={() => selectPoint({ text: 'การฟัง', id: 'l' })}
-        className={`${selectedId === 'l' ? 'animate-pulse' : ''}`}
+        className={`${selectedId === 'l' ? 'animate-pulse' : ''} cursor-pointer`}
       >
         <filter
           id="l"
@@ -147,7 +147,7 @@ const Brain: FC<Props> = ({ className, setSection = () => {} }) => {
       </g>
       <g
         onClick={() => selectPoint({ text: 'การรับรู้ภาษา', id: 'n' })}
-        className={`${selectedId === 'n' ? 'animate-pulse' : ''}`}
+        className={`${selectedId === 'n' ? 'animate-pulse' : ''} cursor-pointer`}
       >
         <filter
           id="n"
@@ -177,7 +177,7 @@ const Brain: FC<Props> = ({ className, setSection = () => {} }) => {
       </g>
       <g
         onClick={() => selectPoint({ text: 'การรับสัมผัส', id: 'p' })}
-        className={`${selectedId === 'p' ? 'animate-pulse' : ''}`}
+        className={`${selectedId === 'p' ? 'animate-pulse' : ''} cursor-pointer`}
       >
         <filter
           id="p"
@@ -207,7 +207,7 @@ const Brain: FC<Props> = ({ className, setSection = () => {} }) => {
       </g>
       <g
         onClick={() => selectPoint({ text: 'การเคลื่อนไหว', id: 'r' })}
-        className={`${selectedId === 'r' ? 'animate-pulse' : ''}`}
+        className={`${selectedId === 'r' ? 'animate-pulse' : ''} cursor-pointer`}
       >
         <filter
           id="r"
@@ -237,7 +237,7 @@ const Brain: FC<Props> = ({ className, setSection = () => {} }) => {
       </g>
       <g
         onClick={() => selectPoint({ text: 'การคิดวิเคราะห์', id: 't' })}
-        className={`${selectedId === 't' ? 'animate-pulse' : ''}`}
+        className={`${selectedId === 't' ? 'animate-pulse' : ''} cursor-pointer`}
       >
         <filter
           id="t"
@@ -267,7 +267,7 @@ const Brain: FC<Props> = ({ className, setSection = () => {} }) => {
       </g>
       <g
         onClick={() => selectPoint({ text: 'การพูด', id: 'v' })}
-        className={`${selectedId === 'v' ? 'animate-pulse' : ''}`}
+        className={`${selectedId === 'v' ? 'animate-pulse' : ''} cursor-pointer`}
       >
         <filter
           id="v"
