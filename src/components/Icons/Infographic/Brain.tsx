@@ -6,14 +6,14 @@ interface Props {
 }
 
 const Brain: FC<Props> = ({ className, setSection = () => {} }) => {
-  const [selectedId, setId] = useState<string | null>('')
+  const [selectedId, setId] = useState<string | null>('l')
   const selectPoint = (data: { text: string; id: string }) => {
     setSection(data.text)
     setId(data.id)
   }
 
   return (
-    <svg viewBox="0 0 640 640" width={250} height={250} className={`fill-current ${className}`}>
+    <svg viewBox="0 0 640 640" width={250} height="100%" className={`fill-current ${className}`}>
       <defs>
         <path
           d="M184.32 616.91l-32.18-58.19c-46.91 2.18-72.97 3.38-78.18 3.63-16.41.69-30.28-12.05-30.98-28.46-.05-1.33-.02-2.67.1-3.99.47-4.89 2.78-29.3 6.95-73.26-24.24-4.86-37.7-7.57-40.4-8.11a8.572 8.572 0 01-6.76-10.06c.16-.81.43-1.59.81-2.32 4.33-8.33 38.94-74.98 43.27-83.32C15.37 153.35 186.56 5.79 385.69 24.72c240.09 22.82 313.91 256.89 197.4 490.3 2.7 6.79 16.22 40.72 40.56 101.79"

@@ -9,9 +9,9 @@ const Expense: FC = () => {
         <br /> อย่างทั่วถึง และ มีคุณภาพ
         <br /> ต้องใช้ผู้ดูแลอย่างน้อย 2 คน
       </p>
-      <Elderly className="w-full px-12 py-4 mx-auto" />
+      <Elderly className="w-full py-4 mx-auto max-w-3/4" />
       <p className="text-lg font-light font-pridi">นำมาสู่ปัญหาค่าใช้จ่ายในการดูแล ที่อาจสูงถึง</p>
-      <p className="text-3xl font-normal">50,000 &#3647; / เดือน</p>
+      <p className="text-3xl font-normal lg:text-4xl">50,000 &#3647; / เดือน</p>
     </div>
   )
 }

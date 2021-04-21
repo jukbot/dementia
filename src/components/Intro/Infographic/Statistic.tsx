@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 const Statistic: FC = () => {
   return (
-    <div className="flex flex-col space-y-8 text-center text-white">
+    <div className="flex flex-col h-full space-y-8 text-center text-white">
       <p className="text-lg font-light font-pridi">
         ในประชากรไทยทุก 100 คน
         <br /> จะมีผู้ที่ป่วยอัลไซเมอร์ซึ่งเป็นภาวะสมองเสื่อม

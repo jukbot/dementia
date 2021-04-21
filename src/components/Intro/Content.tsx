@@ -12,9 +12,13 @@ const IntroContent: FC = (): JSX.Element => {
   return (
     <>
       <section
-        className={`flex flex-col h-full py-8 px-12 ${data?.space_type} max-w-screen-md self-center lg:justify-center lg:space-y-8 overflow-auto`}
+        className={`flex flex-col h-full p-8 ${data?.space_type} sm:max-w-[500px] self-center lg:space-y-8 overflow-auto`}
       >
-        {data?.heading ? <h2 className="text-2xl font-medium text-center text-[#A7A5F0] mb-4">{data?.heading}</h2> : ''}
+        {data?.heading ? (
+          <h2 className="text-2xl font-medium text-center text-[#A7A5F0] mb-4 md:text-3xl">{data?.heading}</h2>
+        ) : (
+          ''
+        )}
         {data?.title ? (
           <h1
             className="font-sans text-2xl font-light leading-relaxed text-center text-white"

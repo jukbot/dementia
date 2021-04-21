@@ -16,7 +16,7 @@ export const content = [
   },
   {
     route: '3',
-    nav_position: 'fixed',
+    nav_position: 'mt-auto',
     heading: 'ภาวะสมองเสื่อมคืออะไร',
     infographic: 'HumanBrain',
     prev: '/intro/2',
@@ -24,7 +24,7 @@ export const content = [
   },
   {
     route: '4',
-    nav_position: 'fixed',
+    nav_position: 'mt-auto',
     heading: 'ระดับความรุนแรง',
     infographic: 'SevereLevel',
     prev: '/intro/3',
@@ -32,7 +32,7 @@ export const content = [
   },
   {
     route: '5',
-    nav_position: 'fixed',
+    nav_position: 'mt-auto',
     heading: 'ใครมีโอกาสเป็นบ้าง',
     infographic: 'Probability',
     prev: '/intro/4',
@@ -40,7 +40,7 @@ export const content = [
   },
   {
     route: '6',
-    nav_position: 'fixed',
+    nav_position: 'mt-auto',
     heading: 'ภาวะสมองเสื่อมในไทย',
     infographic: 'Statistic',
     prev: '/intro/5',
@@ -48,7 +48,7 @@ export const content = [
   },
   {
     route: '7',
-    nav_position: 'fixed',
+    nav_position: 'mt-auto',
     heading: 'ไม่ได้ส่งผลแค่ผู้ป่วย',
     infographic: 'Expense',
     prev: '/intro/6',
