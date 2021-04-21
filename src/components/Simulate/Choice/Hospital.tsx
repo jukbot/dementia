@@ -94,7 +94,7 @@ const Hospital: FC = () => {
 
           <div className="absolute top-0 right-0 pr-4 opacity-75">
             <div
-              className="flex justify-center items-center text-[#6866e7] bg-[#c9c8f3] rounded-full p-1"
+              className="flex justify-center items-center text-[#6866e7] bg-[#c9c8f3] rounded-full p-1 cursor-pointer"
               onClick={() => setSection(null)}
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

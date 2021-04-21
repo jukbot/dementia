@@ -103,7 +103,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
           />
           <div className="absolute top-0 right-0 pr-4 opacity-75">
             <div
-              className="flex justify-center items-center text-[#6866e7] bg-[#c9c8f3] rounded-full p-1"
+              className="flex justify-center items-center text-[#6866e7] bg-[#c9c8f3] rounded-full p-1 cursor-pointer"
               onClick={() => setOpenChoice(null)}
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -121,7 +121,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
           <p className="text-lg font-light text-[#666666] font-pridi h-full lg:w-1/2 mx-auto">
             {choices[Number(openChoice)]?.content}
           </p>
-          <div className="bottom-0 flex justify-center w-full pt-4 mx-auto mt-auto space-x-2 lg:w-1/2">
+          <div className="bottom-0 flex justify-center w-full pt-4 mx-auto mt-auto space-x-2 lg:space-x-4 lg:w-1/2">
             <button
               onClick={() => setOpenChoice(choices[Number(openChoice)].prev ?? -1)}
               disabled={choices[Number(openChoice)].prev === null}
