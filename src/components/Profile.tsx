@@ -17,6 +17,11 @@ const defaultValue: FormData = {
   other: '',
 }
 
+interface FormValue {
+  name: string
+  value: string | null
+}
+
 const Profile = (): JSX.Element => {
   const navigate = useNavigate()
   const otherInput = useRef<HTMLInputElement>(null)
@@ -49,7 +54,8 @@ const Profile = (): JSX.Element => {
       if (!id) {
         setIsSaving(true)
         setDisabled(true)
-        const result = await addData(profile, 'survey')
+        const created = String(new Date().toLocaleDateString())
+        const result = await addData({ ...profile, created }, 'survey')
         if (result?.survey) {
           window.localStorage.setItem('dementia-uid', String(result?.survey.id))
         }
@@ -78,8 +84,7 @@ const Profile = (): JSX.Element => {
     }
   }
 
-  // @ts-ignore
-  const validateAge = (e): void => {
+  const validateAge = (e: HTMLInputElement): void => {
     const inputAge = parseInt(e.value)
     if (inputAge >= 15 && inputAge <= 99) {
       handleChange(e)
@@ -91,8 +96,7 @@ const Profile = (): JSX.Element => {
     }
   }
 
-  // @ts-ignore
-  const handleChange = (e): void => {
+  const handleChange = (e: (EventTarget & HTMLInputElement) | (EventTarget & HTMLSelectElement) | FormValue): void => {
     setState({ ...state, [e.name]: e.value })
     validateForm({ ...state, [e.name]: e.value })
 

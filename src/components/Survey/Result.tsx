@@ -17,7 +17,7 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
   })
 
   const [columnName] = useState(() => {
-    const stickyValue = window.localStorage.getItem('choiceColumn')
+    const stickyValue = window.localStorage.getItem('choice-column')
     return stickyValue !== null ? String(stickyValue) : 'choiceA'
   })
   const [data, setData] = useState<SurveyData | null>(null)

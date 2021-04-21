@@ -17,7 +17,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
     if (choices[index]) {
       window.localStorage.setItem('surveyA', choices[index]?.value)
       window.localStorage.setItem('code', choices[index]?.code)
-      window.localStorage.setItem('choiceColumn', choices[index]?.column)
+      window.localStorage.setItem('choice-column', choices[index]?.column)
       window.sessionStorage.removeItem('survey-summary')
       setValidAnswer(true)
     } else {
