@@ -97,7 +97,7 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
           </ul>
         </div>
         <p className="text-2xl font-medium text-center text-white">
-          จากทั้งหมด <CountUp isCounting end={Number(data?.totalCount)} duration={3} /> คน
+          จากทั้งหมด {data?.totalCount ? <CountUp isCounting end={Number(data?.totalCount)} duration={2} /> : 0} คน
         </p>
       </div>
       <FooterNav prev={null} next={'/survey/b'} lightTheme={true} className={'mt-auto'} />
