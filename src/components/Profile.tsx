@@ -120,7 +120,7 @@ const Profile = (): JSX.Element => {
 
   return (
     <section className="fixed h-full w-full bg-[#6866e7] p-6 flex justify-center lg:items-center">
-      <div className="flex flex-col items-center justify-between w-full p-6 space-y-4 bg-white rounded-md lg:max-w-1/2">
+      <div className="flex flex-col items-center justify-between w-full p-6 space-y-2 bg-white rounded-md lg:max-w-1/2">
         <div>
           <h1 className="text-center text-[#666666] text-xl font-medium">ข้อมูลส่วนตัว</h1>
         </div>
