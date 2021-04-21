@@ -51,7 +51,7 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
 
   return (
     <section className={`${bgColor} fixed h-full w-full flex flex-col`}>
-      <div className="flex flex-col p-8 w-full h-full sm:max-w-[500px] self-center space-y-4 overflow-auto">
+      <div className="flex flex-col p-8 w-full h-full sm:max-w-[500px] self-center space-y-2 sm:space-y-4 overflow-auto">
         <div className="flex flex-col space-y-4">
           <h1 className="text-[#a7a5f0] font-medium text-2xl text-center">
             คุณเป็น 1 ใน {data?.totalCount ? <CountUp isCounting end={Number(data?.[columnName])} duration={1} /> : 0}{' '}
