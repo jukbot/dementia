@@ -46,14 +46,18 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
             >
               {({ checked }) => (
                 <div className="flex items-center">
-                  <div className={`${checked ? 'bg-white' : 'bg-[#a7a5f0]'} overflow-hidden h-full w-22 transition`}>
+                  <div
+                    className={`${
+                      checked ? 'bg-white' : 'bg-[#a7a5f0]'
+                    } overflow-hidden w-20 h-20 md:w-28 md:h-28 flex-none transition`}
+                  >
                     <img
                       src={choice.thumbnail_url}
                       alt={choice.title}
-                      className={`${checked ? 'opacity-100' : 'opacity-40'} object-cover h-22 w-full transition`}
+                      className={`${checked ? 'opacity-100' : 'opacity-40'} object-cover w-full h-full transition`}
                     />
                   </div>
-                  <div className="flex flex-col w-full px-4 py-2 space-y-2">
+                  <div className="flex flex-col flex-auto w-full px-4 py-2 space-y-2">
                     <span
                       className={`${
                         checked ? 'bg-white text-[#6866e7]' : 'bg-[#6866e7] text-white'
