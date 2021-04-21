@@ -124,11 +124,11 @@ const Profile = (): JSX.Element => {
 
   return (
     <section className="fixed h-full w-full bg-[#6866e7] p-6 flex justify-center lg:items-center">
-      <div className="flex flex-col items-center justify-between w-full p-6 space-y-2 bg-white rounded-md lg:max-w-1/2">
+      <div className="static flex flex-col items-center justify-between w-full p-6 space-y-2 overflow-y-auto bg-white rounded-md sm:space-y-4 lg:max-w-1/2">
         <div>
           <h1 className="text-center text-[#666666] text-xl font-medium">ข้อมูลส่วนตัว</h1>
         </div>
-        <div className="px-8">
+        <div className="w-full">
           <div className="grid grid-cols-12 gap-x-6 gap-y-4">
             <div className="col-span-6">
               <label htmlFor="gender" className="sr-only">
@@ -195,13 +195,15 @@ const Profile = (): JSX.Element => {
                 onChange={(e) => handleChange(e.target)}
                 className="block w-full text-base font-light h-12 border-0 border-b py-2 px-3 border-[#808080] bg-[#E5E5E5] rounded-t-md font-pridi placeholder-[#808080] focus:outline-none focus:ring-0 focus:border-[#6866e7]"
               >
-                {provinces.map((p) => {
-                  return (
-                    <option key={p.PROVINCE_ID} value={p.PROVINCE_ID}>
-                      {p.PROVINCE_NAME}
-                    </option>
-                  )
-                })}
+                {provinces
+                  .sort((a, b) => a.PROVINCE_NAME.localeCompare(b.PROVINCE_NAME))
+                  .map((p) => {
+                    return (
+                      <option key={p.PROVINCE_ID} value={p.PROVINCE_ID}>
+                        {p.PROVINCE_NAME}
+                      </option>
+                    )
+                  })}
               </select>
             </div>
             <div className="col-span-12">
@@ -219,27 +221,34 @@ const Profile = (): JSX.Element => {
                   state.province ? 'placeholder-[#808080]' : 'placeholder-[#808080]'
                 } block w-full text-base font-light h-12 border-0 border-b py-2 px-3 border-[#808080] bg-[#E5E5E5] rounded-t-md font-pridi focus:outline-none focus:ring-0 focus:border-[#6866e7]`}
               >
-                {[...new Set(zipcode.filter((z) => z.PROVINCE_ID === state.province).map((item) => item.ZIPCODE))].map(
-                  (code) => {
-                    return (
-                      <option key={code} value={code}>
-                        {code}
-                      </option>
-                    )
-                  }
-                )}
+                {[
+                  ...new Set(
+                    zipcode
+                      .filter((z) => z.PROVINCE_ID === state.province)
+                      .map((item) => item.ZIPCODE)
+                      .sort((a, b) => {
+                        return Number(a) - Number(b)
+                      })
+                  ),
+                ].map((code) => {
+                  return (
+                    <option key={code} value={code}>
+                      {code}
+                    </option>
+                  )
+                })}
               </select>
             </div>
           </div>
         </div>
         <div>
-          <h2 className="text-[#666666] text-xl text-center font-medium">
+          <h2 className="text-[#666666] text-lg lg:text-xl text-center font-medium">
             คุณมีความเกี่ยวข้องกับ
             <br />
             ภาวะสมองเสื่อมอย่างไร
           </h2>
         </div>
-        <div className="w-full px-6">
+        <div className="w-full">
           <RadioGroup
             value={state.relevance}
             onChange={(value) => handleChange({ value, name: 'relevance' })}
@@ -320,7 +329,7 @@ const Profile = (): JSX.Element => {
             </RadioGroup.Option>
           </RadioGroup>
         </div>
-        <div className="inline-flex justify-center">
+        <div className="inline-flex justify-center pt-2">
           <button
             type="button"
             onClick={saveForm}
@@ -328,7 +337,7 @@ const Profile = (): JSX.Element => {
             className={`${
               isDisabled
                 ? 'border-[#e7e7f9] text-[#e7e7f9] pointer-events-none'
-                : 'border-[#4842e0] text-white bg-[#4842e0] focus:outline-none hover:shadow-lg shadow-dark'
+                : 'border-[#4842e0] text-white bg-[#4842e0] focus:outline-none hover:shadow-md shadow-dark'
             } inline-flex items-center px-8 py-2 text-lg font-medium border rounded-md`}
           >
             {isSaving ? <span className="animate-pulse">กำลังบันทึก</span> : 'บันทึก'}
