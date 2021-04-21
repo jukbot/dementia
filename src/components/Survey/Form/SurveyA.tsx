@@ -42,7 +42,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
               value={choice.index}
               className={({ checked }) => `
                   ${checked ? 'bg-[#6866e7] text-white' : 'bg-white shadow-dark text-[#999999]'}
-                    relative rounded-md cursor-pointer focus:outline-none transition w-full lg:w-1/2 overflow-hidden`}
+                    relative rounded-md cursor-pointer focus:outline-none transition w-full sm:max-w-[500px] overflow-hidden`}
             >
               {({ checked }) => (
                 <div className="flex items-center">
@@ -88,68 +88,70 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
       </RadioGroup>
 
       {openChoice !== null ? (
-        <div
-          role="dialog"
-          className="absolute top-0 z-10 flex flex-col w-full h-full p-6 m-0 space-y-4 overflow-auto bg-white rounded-md shadow-dark"
-        >
-          <div className="flex justify-center w-full">
-            <span className="top-0 bg-[#6866e7] text-white flex px-4 py-0.5 rounded-full w-20 justify-center text-sm font-light transition">
-              แบบ {choices[Number(openChoice)]?.code ?? ''}
-            </span>
-          </div>
-          <h2
-            className="top-0 text-xl font-light text-center text-[#6866e7]"
-            dangerouslySetInnerHTML={{ __html: choices[Number(openChoice)]?.title ?? '' }}
-          />
-          <div className="absolute top-0 right-0 pr-4 opacity-75">
-            <div
-              className="flex justify-center items-center text-[#6866e7] bg-[#c9c8f3] rounded-full p-1 cursor-pointer"
-              onClick={() => setOpenChoice(null)}
-            >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+        <div className="absolute top-0 z-10 flex justify-center w-full h-full">
+          <div
+            role="dialog"
+            className="absolute top-0 flex flex-col w-full h-full p-6 m-0 space-y-4 overflow-auto bg-white rounded-md shadow-dark sm:max-w-[500px]"
+          >
+            <div className="flex justify-center w-full">
+              <span className="top-0 bg-[#6866e7] text-white flex px-4 py-0.5 rounded-full w-20 justify-center text-sm font-light transition">
+                แบบ {choices[Number(openChoice)]?.code ?? ''}
+              </span>
             </div>
-          </div>
-          <div className="px-8">
-            <img
-              src={choices[Number(openChoice)]?.image_url ?? ''}
-              alt={choices[Number(openChoice)]?.title ?? ''}
-              className="object-contain w-full h-auto max-h-[400px]"
+            <h2
+              className="top-0 text-xl font-light text-center text-[#6866e7]"
+              dangerouslySetInnerHTML={{ __html: choices[Number(openChoice)]?.title ?? '' }}
             />
-          </div>
-          <p className="text-lg font-light text-[#666666] font-pridi h-full lg:w-1/2 mx-auto">
-            {choices[Number(openChoice)]?.content}
-          </p>
-          <div className="bottom-0 flex justify-center w-full pt-4 mx-auto mt-auto space-x-2 lg:space-x-4 lg:w-1/2">
-            <button
-              onClick={() => setOpenChoice(choices[Number(openChoice)].prev ?? -1)}
-              disabled={choices[Number(openChoice)].prev === null}
-              className={`${
-                choices[Number(openChoice)].prev === null
-                  ? 'border-[#e7e7f9] text-[#e7e7f9] pointer-events-none'
-                  : 'border-[#a7a5f0] text-[#a7a5f0]'
-              } border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex items-center justify-center w-full px-2 py-2 text-lg font-medium border rounded-md`}
-            >
-              ย้อนกลับ
-            </button>
-            <button
-              onClick={() => selectChoice(choices[Number(openChoice)].index)}
-              className={`bg-[#6866e7] text-white hover:text-white focus:outline-none inline-flex items-center justify-center w-full px-2 py-2 text-lg font-medium border rounded-md`}
-            >
-              เลือก
-            </button>
-            <button
-              onClick={() => setOpenChoice(choices[Number(openChoice)].next ?? 0)}
-              disabled={choices[Number(openChoice)].next === null}
-              className={`${
-                choices[Number(openChoice)].next === null
-                  ? 'border-[#e7e7f9] text-[#e7e7f9] pointer-events-none'
-                  : 'border-[#a7a5f0] text-[#a7a5f0]'
-              } focus:outline-none inline-flex items-center justify-center w-full px-2 py-2 text-lg font-medium border rounded-md`}
-            >
-              ถัดไป
-            </button>
+            <div className="absolute top-0 right-0 pr-4 opacity-75">
+              <div
+                className="flex justify-center items-center text-[#6866e7] bg-[#c9c8f3] rounded-full p-1 cursor-pointer"
+                onClick={() => setOpenChoice(null)}
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </div>
+            </div>
+            <div className="px-8">
+              <img
+                src={choices[Number(openChoice)]?.image_url ?? ''}
+                alt={choices[Number(openChoice)]?.title ?? ''}
+                className="object-contain w-full h-auto max-h-[400px]"
+              />
+            </div>
+            <p className="text-lg font-light text-[#666666] font-pridi w-full h-full">
+              {choices[Number(openChoice)]?.content}
+            </p>
+            <div className="bottom-0 flex justify-center w-full pt-4 mt-auto space-x-2 lg:space-x-4">
+              <button
+                onClick={() => setOpenChoice(choices[Number(openChoice)].prev ?? -1)}
+                disabled={choices[Number(openChoice)].prev === null}
+                className={`${
+                  choices[Number(openChoice)].prev === null
+                    ? 'border-[#e7e7f9] text-[#e7e7f9] pointer-events-none'
+                    : 'border-[#a7a5f0] text-[#a7a5f0]'
+                } border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex items-center justify-center w-full px-2 py-2 text-lg font-medium border rounded-md`}
+              >
+                ย้อนกลับ
+              </button>
+              <button
+                onClick={() => selectChoice(choices[Number(openChoice)].index)}
+                className={`bg-[#6866e7] text-white hover:text-white focus:outline-none inline-flex items-center justify-center w-full px-2 py-2 text-lg font-medium border rounded-md`}
+              >
+                เลือก
+              </button>
+              <button
+                onClick={() => setOpenChoice(choices[Number(openChoice)].next ?? 0)}
+                disabled={choices[Number(openChoice)].next === null}
+                className={`${
+                  choices[Number(openChoice)].next === null
+                    ? 'border-[#e7e7f9] text-[#e7e7f9] pointer-events-none'
+                    : 'border-[#a7a5f0] text-[#a7a5f0]'
+                } focus:outline-none inline-flex items-center justify-center w-full px-2 py-2 text-lg font-medium border rounded-md`}
+              >
+                ถัดไป
+              </button>
+            </div>
           </div>
         </div>
       ) : null}

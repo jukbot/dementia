@@ -50,11 +50,12 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
   }
 
   return (
-    <section className={`h-full flex flex-col fixed w-full ${bgColor}`}>
-      <div className="flex flex-col justify-between w-full h-full px-6 py-6 space-y-4 lg:justify-evenly">
+    <section className={`h-full flex flex-col fixed w-full ${bgColor} p-8`}>
+      <div className="flex flex-col justify-between w-full h-full space-y-4 lg:justify-evenly">
         <div className="flex flex-col space-y-4">
           <h1 className="text-[#a7a5f0] font-medium text-2xl text-center">
-            คุณเป็น 1 ใน {<CountUp isCounting end={Number(data?.[columnName])} duration={1} />} คน
+            คุณเป็น 1 ใน {data?.totalCount ? <CountUp isCounting end={Number(data?.[columnName])} duration={1} /> : 0}{' '}
+            คน
             <br /> ที่เลือกการคัดกรองคัดแยก
           </h1>
           <div className="flex justify-center">
@@ -96,7 +97,7 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
             })}
           </ul>
         </div>
-        <p className="text-2xl font-medium text-center text-white">
+        <p className="pb-4 text-2xl font-medium text-center text-white">
           จากทั้งหมด {data?.totalCount ? <CountUp isCounting end={Number(data?.totalCount)} duration={2} /> : 0} คน
         </p>
       </div>
