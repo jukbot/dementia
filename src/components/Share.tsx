@@ -49,11 +49,7 @@ const Share = (): JSX.Element => {
         <div className="pt-4">
           <h2 className="text-2xl font-medium text-center text-[#e7e7f9]">แชร์สิ่งนี้ให้คนที่คุณรัก</h2>
           <div className="flex justify-center pt-6 space-x-4 text-[#a7a5f0]">
-            <a
-              href={`https://social-plugins.line.me/lineit/share?url=${webUrl}&hashtag=#ห้องสมองเสื่อม`}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href={`https://social-plugins.line.me/lineit/share?url=${webUrl}`} target="_blank" rel="noreferrer">
               <Line className="flex-shrink-0 w-12 h-12 cursor-pointer md:w-20 md:h-20 hover:text-white" />
             </a>
             <a
