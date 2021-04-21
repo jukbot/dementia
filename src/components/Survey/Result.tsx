@@ -45,13 +45,13 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
   }, [])
 
   const getWidthPercent = (value: string | number | null): string => {
-    const width = Math.ceil((Number(value) * 100) / (Number(data?.totalCount) * 2))
+    const width = Math.ceil((Number(value) * 100) / Number(data?.totalCount))
     return String(width) + '%'
   }
 
   return (
-    <section className={`h-full flex flex-col fixed w-full ${bgColor} p-8`}>
-      <div className="flex flex-col justify-between w-full h-full space-y-4 lg:justify-evenly">
+    <section className={`${bgColor} fixed h-full w-full flex flex-col`}>
+      <div className="flex flex-col p-8 w-full h-full sm:max-w-[500px] self-center space-y-4 overflow-auto">
         <div className="flex flex-col space-y-4">
           <h1 className="text-[#a7a5f0] font-medium text-2xl text-center">
             คุณเป็น 1 ใน {data?.totalCount ? <CountUp isCounting end={Number(data?.[columnName])} duration={1} /> : 0}{' '}
@@ -64,12 +64,16 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
             </span>
           </div>
         </div>
-        <div className="flex justify-center">
-          <ul className="w-full space-y-2 lg:w-1/2">
+        <div className="flex justify-center w-full h-full">
+          <ul className="w-full space-y-2">
             {choices.map((choice) => {
               return (
                 <li key={choice.id} className="space-y-1">
-                  <h3 className={`${choice.code === code ? 'text-white' : 'text-[#a7a5f0]'} text-lg font-light`}>
+                  <h3
+                    className={`${
+                      choice.code === code ? 'text-white' : 'text-[#a7a5f0]'
+                    } text-lg font-light lg:tracking-widest`}
+                  >
                     {choice.title.replaceAll('<br/>', '')}
                   </h3>
                   <div className="flex items-center w-full">
@@ -97,7 +101,7 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
             })}
           </ul>
         </div>
-        <p className="pb-4 text-2xl font-medium text-center text-white">
+        <p className="text-2xl font-medium text-center text-white">
           จากทั้งหมด {data?.totalCount ? <CountUp isCounting end={Number(data?.totalCount)} duration={2} /> : 0} คน
         </p>
       </div>

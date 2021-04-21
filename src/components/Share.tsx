@@ -22,7 +22,7 @@ const Share = (): JSX.Element => {
           <br /> ภาวะสมองเสื่อม
         </h1>
 
-        <div className="flex flex-col self-center w-full px-8 pt-4 space-y-4 md:max-w-1/2">
+        <div className="flex flex-col self-center w-full px-8 pt-4 space-y-4 sm:max-w-[500px]">
           <button
             type="button"
             onClick={() => goToLink('https://www.the101.world/prevent-dementia-syndrome')}

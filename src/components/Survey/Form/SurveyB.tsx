@@ -31,7 +31,7 @@ const SurveyB: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
       <p className="text-[#4842e0] font-light text-lg md:text-xl text-center">คลิกเพื่อเลือกสิ่งที่คุณจะทำต่อ</p>
       <fieldset className="flex justify-center">
         <legend className="sr-only">ตัวเลือกสิ่งที่จะทำต่อ</legend>
-        <div className="space-y-4 text-center lg:w-1/3">
+        <div className="w-full space-y-4 text-center sm:max-w-[500px]">
           <label
             className={`${
               answer === 'a' ? 'bg-[#6866e7] shadow-lg' : 'bg-white shadow-dark'
