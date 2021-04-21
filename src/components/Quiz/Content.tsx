@@ -64,7 +64,7 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
   return (
     <>
       <section
-        className={`${bgColor} flex flex-col space-y-4 w-full h-full py-8 px-8 justify-evenly lg:space-y-8 overflow-auto`}
+        className={`${bgColor} flex flex-col space-y-4 w-full h-full p-8 justify-evenly lg:space-y-8 overflow-auto`}
       >
         <h2 className={`${data?.heading ? 'block' : 'hidden'} text-xl font-medium text-center text-[#999999]`}>
           {data?.heading}
@@ -77,7 +77,7 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
         ) : (
           ''
         )}
-        <div className={showAnswer ? 'hidden' : 'flex justify-center'}>
+        <div className={showAnswer ? 'hidden' : 'flex justify-center items-center'}>
           <img src={`${data?.image_url}`} className="object-contain w-full md:w-1/2" alt={data?.image_alt} />
         </div>
         <div className={`${showAnswer ? 'block' : 'hidden'} flex w-full space-x-4 items-center justify-center`}>
