@@ -5,7 +5,7 @@ import Modal from './Global/Modal'
 
 const modalTitle = 'หมายเหตุ'
 const modalContent =
-  'เว็บไซต์นี้เกิดขึ้นจากความร่วมมือของทีมงาน ไรซ์ อิมแพค และมูลนิธิสถาบันวิจัยและพัฒนา ผู้สูงอายุไทย (มส.ผส.) เพื่อรับฟังและสื่อสาร เชิงนโยบาย ภายใต้โครงการแผนงานยุทธศาสตร์ เป้าหมาย (Spearhead) ด้านสังคม แผนงาน ศักยภาพและโอกาสของผู้สูงวัย<br/><br/> ข้อมูลของท่านจะถูกเก็บรักษาเป็นอย่างดี และจะไม่ถูกนำไปใช้ในเชิงพาณิชย์อย่างเด็ดขาด นอกจากใช้ในการพัฒนาข้อเสนอเชิงนโยบาย เท่านั้น'
+  'เว็บไซต์นี้เกิดขึ้นจากความร่วมมือของทีมงาน ไรซ์ อิมแพค และมูลนิธิสถาบันวิจัยและพัฒนา ผู้สูงอายุไทย (มส.ผส.) เพื่อรับฟังและสื่อสารเชิงนโยบาย ภายใต้โครงการแผนงานยุทธศาสตร์ เป้าหมาย (Spearhead) ด้านสังคม แผนงาน ศักยภาพและโอกาสของผู้สูงวัย<br/><br/> ข้อมูลของท่านจะถูกเก็บรักษาเป็นอย่างดี และจะไม่ถูกนำไปใช้ในเชิงพาณิชย์อย่างเด็ดขาด นอกจากใช้ในการพัฒนาข้อเสนอเชิงนโยบาย เท่านั้น'
 const modalButton = 'ยอมรับและไปต่อ'
 
 const Landing = (): JSX.Element => {
@@ -20,11 +20,11 @@ const Landing = (): JSX.Element => {
   }
 
   return (
-    <section className="fixed h-full w-full bg-[#2208b2]">
+    <section className="fixed w-full h-full bg-black">
       <div className="flex justify-center w-full">
-        <img src={body} alt="body" className="absolute bottom-0 z-0 w-full sm:h-full" />
+        <img src={body} alt="body" className="absolute bottom-0 h-full bg-[#2208b2] z-0" />
       </div>
-      <div className="relative z-10 flex flex-col justify-end h-full py-8">
+      <div className="relative z-10 flex flex-col justify-end h-full py-8 lg:py-12">
         <h1 className="py-4 text-2xl font-light text-center text-white">
           หากความทรงจำของคุณ
           <br /> ค่อยๆ เลือนหายไป
