@@ -61,7 +61,7 @@ const Hospital: FC = () => {
   return (
     <div className="relative flex justify-center pt-12">
       {!section ? (
-        <ul className="flex flex-col items-center justify-center w-full space-y-4 text-center max-w-1/2">
+        <ul className="flex flex-col items-center justify-center w-3/4 space-y-4 text-center">
           <li
             role="button"
             onClick={() => setSection(content[0])}
@@ -88,7 +88,7 @@ const Hospital: FC = () => {
       {section ? (
         <div
           role="dialog"
-          className="absolute top-0 p-6 bg-[#6866e7] justify-center text-white lg:max-w-3/4 flex flex-col space-y-4 rounded-md"
+          className="absolute top-0 p-6 bg-[#6866e7] justify-center text-white w-full flex flex-col space-y-4 rounded-md"
         >
           <h2 className="top-0 text-xl font-medium text-center text-white">{section?.title}</h2>
 

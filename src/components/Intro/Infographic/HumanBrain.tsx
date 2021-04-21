@@ -22,7 +22,7 @@ const HumanBrain: FC = (): JSX.Element => {
             {section}
           </label>
         </div>
-        <Brain className="w-full px-12 py-2 md:w-[400px] md:h-[300px]" setSection={(section) => setSection(section)} />
+        <Brain className="w-full px-12 md:w-[400px] md:h-[300px]" setSection={(section) => setSection(section)} />
         {/* <div
           className={`${
             section ? 'opacity-100' : 'opacity-0'
@@ -30,7 +30,7 @@ const HumanBrain: FC = (): JSX.Element => {
         /> */}
       </div>
       <p className="text-lg font-light text-white font-pridi">
-        อาการในแต่ละคนอาจแตกต่างกันไป ขึ้นอยู่กับ ระดับความรุนแรง และส่วนของสมองที่ได้รับ ผลกระทบ
+        อาการในแต่ละคนอาจแตกต่างกันไป ขึ้นอยู่กับระดับความรุนแรง และส่วนของสมองที่ได้รับผลกระทบ
       </p>
     </div>
   )

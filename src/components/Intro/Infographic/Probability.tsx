@@ -8,7 +8,7 @@ const Probability: FC = () => {
         ภาวะสมองเสื่อมพบได้ทุกช่วงอายุ แต่มักจะพบได้มากกว่าในผู้สูงอายุ โดยเฉพาะผู้สูงอายุที่มีอายุ 65 ปีขึ้นไป
         และจะมีโอกาสพบสูงขึ้นเรื่อยๆ เมื่อมีอายุมากขึ้น
       </p>
-      <Diagram className="w-full py-4 mx-auto max-w-[500px]" />
+      <Diagram className="w-full py-4 mx-auto sm:max-w-[500px]" />
     </div>
   )
 }

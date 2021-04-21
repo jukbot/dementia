@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 
 const SimulateLayout: FC = (): JSX.Element => {
   return (
-    <main>
+    <main className="fixed flex flex-col w-full h-full">
       <Outlet />
     </main>
   )

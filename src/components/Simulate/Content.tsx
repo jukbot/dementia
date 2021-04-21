@@ -11,38 +11,41 @@ const SimulateContent: FC = (): JSX.Element => {
   const Choice = importView('Choice', data?.component ?? '')
   // TODO: optimize by using preload images as array
 
+  // flex flex-col h-full p-8 undefined sm:max-w-[500px] self-center lg:space-y-8 overflow-auto
   return (
-    <div className={`h-full flex flex-col fixed w-full justify-evenly ${data?.bg_color}`}>
-      <section className={`flex flex-col h-full px-8 py-8 space-y-8 ${data?.space_type}`}>
-        {data?.image_url ? (
-          <img
-            src={`${data?.image_url}`}
-            className={`${
-              data?.image_url ? 'opacity-100' : 'opacity-0'
-            } delay-100	flex-shrink-0 object-contain px-6 transition-opacity`}
-            alt="simulate"
+    <div className={`${data?.bg_color} fixed h-full w-full`}>
+      <div className={`flex flex-col w-full h-full p-8 items-center lg:space-y-8`}>
+        <section className={`flex flex-col h-full w-full space-y-8 sm:max-w-[500px] ${data?.space_type} `}>
+          {data?.image_url ? (
+            <img
+              src={`${data?.image_url}`}
+              className={`${
+                data?.image_url ? 'opacity-100' : 'opacity-0'
+              } delay-100	flex-shrink-0 object-contain px-6 transition-opacity`}
+              alt="simulate"
+            />
+          ) : (
+            ''
+          )}
+          <h1
+            className={`text-2xl font-light ${data?.text_color} leading-normal text-center`}
+            dangerouslySetInnerHTML={{ __html: data?.title ?? '' }}
           />
-        ) : (
-          ''
-        )}
-        <h1
-          className={`text-2xl font-light ${data?.text_color} leading-normal text-center`}
-          dangerouslySetInnerHTML={{ __html: data?.title ?? '' }}
+          {data?.component ? (
+            <Suspense fallback={null}>
+              <Choice />
+            </Suspense>
+          ) : (
+            ''
+          )}
+        </section>
+        <FooterNav
+          prev={data?.prev ?? null}
+          next={data?.next ?? null}
+          lightTheme={data?.light_theme ?? true}
+          className={'mt-auto'}
         />
-        {data?.component ? (
-          <Suspense fallback={null}>
-            <Choice />
-          </Suspense>
-        ) : (
-          ''
-        )}
-      </section>
-      <FooterNav
-        prev={data?.prev ?? null}
-        next={data?.next ?? null}
-        lightTheme={data?.light_theme ?? true}
-        className={data?.image_url ? 'absolute' : 'mt-auto'}
-      />
+      </div>
     </div>
   )
 }
