@@ -35,7 +35,7 @@ const Modal: FC<Props> = ({
   return (
     <div>
       <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none modal">
-        <div className="relative w-auto max-w-xl px-6 py-12 mx-auto modal">
+        <div className="relative w-auto max-w-[500px] px-6 py-12 mx-auto modal">
           <div className="relative flex flex-col w-full h-full bg-white border-0 rounded-md shadow-md outline-none focus:outline-none">
             <div className="flex items-start justify-center pt-8">
               <h3 className="text-2xl font-medium text-[#6866e7]">{title}</h3>
