@@ -8,8 +8,14 @@ interface Props {
 const FooterQuiz: FC<Props> = ({ className, setAnswer = () => {} }): JSX.Element => {
   return (
     <nav className={`bottom-0 flex justify-center w-full mb-12 space-x-6 mt-auto ${className}`}>
-      <Check onClick={() => setAnswer(true)} className="w-24 h-24 rounded-full shadow-dark bg-[#C9C8F3]" />
-      <Cross onClick={() => setAnswer(false)} className="w-24 h-24 rounded-full shadow-dark bg-[#C9C8F3]" />
+      <Check
+        onClick={() => setAnswer(true)}
+        className="w-24 h-24 rounded-full shadow-dark bg-[#C9C8F3] cursor-pointer"
+      />
+      <Cross
+        onClick={() => setAnswer(false)}
+        className="w-24 h-24 rounded-full shadow-dark bg-[#C9C8F3] cursor-pointer"
+      />
     </nav>
   )
 }

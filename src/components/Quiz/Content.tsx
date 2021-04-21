@@ -63,22 +63,22 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
 
   return (
     <>
-      <section
-        className={`${bgColor} flex flex-col space-y-4 w-full h-full p-8 justify-evenly lg:space-y-8 overflow-auto`}
-      >
+      <section className={`${bgColor} flex flex-col h-full p-8 sm:max-w-[500px] self-center space-y-4 overflow-auto`}>
         <h2 className={`${data?.heading ? 'block' : 'hidden'} text-xl font-medium text-center text-[#999999]`}>
           {data?.heading}
         </h2>
         {data?.question ? (
-          <h1
-            className="text-2xl font-light text-center text-[#666666]"
-            dangerouslySetInnerHTML={{ __html: data?.question ?? '' }}
-          />
+          <div className="flex items-center justify-center h-full">
+            <h1
+              className="text-2xl font-light text-center text-[#666666]"
+              dangerouslySetInnerHTML={{ __html: data?.question ?? '' }}
+            />
+          </div>
         ) : (
           ''
         )}
         <div className={showAnswer ? 'hidden' : 'flex justify-center items-center'}>
-          <img src={`${data?.image_url}`} className="object-contain w-full md:w-1/2" alt={data?.image_alt} />
+          <img src={`${data?.image_url}`} className="object-contain w-full h-full" alt={data?.image_alt} />
         </div>
         <div className={`${showAnswer ? 'block' : 'hidden'} flex w-full space-x-4 items-center justify-center`}>
           <p
@@ -101,14 +101,14 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
         <div
           className={`${showAnswer ? 'block' : 'hidden'} flex flex-col items-center space-y-4 w-full h-full px-6 py-4 ${
             data?.answerChoice ? 'bg-[#6866e7]' : 'bg-[#cd786a]'
-          } rounded-md lg:max-w-1/2 mx-auto`}
+          } rounded-md mx-auto`}
         >
           <h3 className="text-xl font-medium text-white">เฉลย</h3>
           <span className={`flex justify-center items-center border border-white text-white rounded-full p-1`}>
             {data?.answerChoice ? <CheckOutline className="w-14 h-14" /> : <CrossOutline className="w-14 h-14" />}
           </span>
-          <p className="text-lg font-light text-white font-pridi">{data?.answer}</p>
-          <div className="flex justify-center pt-4 space-x-4">
+          <p className="h-full text-lg font-light text-white font-pridi">{data?.answer}</p>
+          <div className="bottom-0 flex justify-center mt-auto space-x-4 sm:py-4">
             <button
               onClick={() => goToNextQuestion()}
               className={`${
