@@ -22,7 +22,7 @@ const Landing = (): JSX.Element => {
   return (
     <section className="fixed w-full h-full bg-black">
       <div className="flex justify-center w-full">
-        <img src={body} alt="body" className="absolute object-cover bottom-0 h-full bg-[#2208b2] z-0" />
+        <img src={body} alt="body" className="absolute object-cover inset-0 mx-auto h-full bg-[#2208b2] z-0" />
       </div>
       <div className="relative z-10 flex flex-col justify-end h-full py-8 mt-auto lg:py-12">
         <h1 className="py-2 text-2xl font-light text-center text-white">
