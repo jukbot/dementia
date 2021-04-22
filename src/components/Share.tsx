@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Facebook, Line, Twitter } from './Icons'
 
 const Share = (): JSX.Element => {
-  const webUrl = 'https://dementia.pages.dev'
+  const webUrl = 'https://dementia.riseimpact.co'
   const goToLink = (url: string): void => {
     // window.location.assign(url)
     window.open(url, '_blank')
