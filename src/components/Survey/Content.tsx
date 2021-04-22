@@ -16,8 +16,8 @@ const SimulateContent: FC<Props> = ({ bgColor }): JSX.Element => {
   const [isDisabled, setIsDisabled] = useState<boolean>(true)
 
   return (
-    <div className={`h-full flex flex-col fixed w-full ${bgColor} overflow-auto`}>
-      <div className={`flex flex-col w-full h-full items-center p-8 space-y-4`}>
+    <div className={`h-full flex flex-col fixed w-full ${bgColor} overflow-auto p-6`}>
+      <div className={`flex flex-col w-full h-full items-center space-y-4 relative`}>
         <section className="flex w-full h-full">
           {data?.survey ? (
             <Suspense fallback={null}>

@@ -88,7 +88,7 @@ const Hospital: FC = () => {
       {section ? (
         <div
           role="dialog"
-          className="absolute top-0 p-6 bg-[#6866e7] justify-center text-white w-full flex flex-col space-y-4 rounded-md"
+          className="absolute top-0 p-6 bg-[#6866e7] text-white w-full flex flex-col space-y-4 rounded-md"
         >
           <h2 className="top-0 text-xl font-medium text-center text-white">{section?.title}</h2>
 
@@ -104,11 +104,11 @@ const Hospital: FC = () => {
           </div>
 
           <p className="text-lg font-light text-white font-pridi">{section?.content}</p>
-          <div className="flex justify-center pt-4 space-x-4">
+          <div className="flex justify-center space-x-4 lg:pt-4">
             {section?.prev !== null ? (
               <button
                 onClick={() => setSection(content[section?.prev ?? 0])}
-                className={`border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex items-center px-6 py-2 text-lg font-medium border rounded-md`}
+                className={`border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex items-center px-4 py-2 text-lg font-medium border rounded-md`}
               >
                 ย้อนกลับ
               </button>
@@ -117,7 +117,7 @@ const Hospital: FC = () => {
             {section?.next !== null ? (
               <button
                 onClick={() => setSection(content[section?.next ?? 0])}
-                className={`border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex items-center px-6 py-2 text-lg font-medium border rounded-md`}
+                className={`border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex items-center px-4 py-2 text-lg font-medium border rounded-md`}
               >
                 หน้าถัดไป
               </button>

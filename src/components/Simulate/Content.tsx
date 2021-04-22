@@ -13,9 +13,9 @@ const SimulateContent: FC = (): JSX.Element => {
 
   // flex flex-col h-full p-8 undefined sm:max-w-[500px] self-center lg:space-y-8 overflow-auto
   return (
-    <div className={`${data?.bg_color} fixed h-full w-full`}>
-      <div className={`flex flex-col w-full h-full items-center lg:space-y-8 p-8`}>
-        <section className={`flex flex-col h-full w-full space-y-8 sm:max-w-[500px] ${data?.space_type} `}>
+    <div className={`${data?.bg_color} h-full w-full`}>
+      <div className={`flex flex-col w-full h-full items-center lg:space-y-8 overflow-auto`}>
+        <section className={`flex flex-col h-full w-full space-y-8 p-6 sm:max-w-[500px] ${data?.space_type} `}>
           {data?.image_url ? (
             <img
               src={`${data?.image_url}`}

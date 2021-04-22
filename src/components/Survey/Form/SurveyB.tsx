@@ -19,7 +19,7 @@ const SurveyB: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
   }, [answer])
 
   return (
-    <div className="flex flex-col justify-between w-full space-y-8 lg:justify-evenly">
+    <div className="flex flex-col justify-between w-full space-y-4 lg:space-y-8 lg:justify-evenly">
       <h1 className="text-xl sm:text-2xl text-[#444444] leading-normal font-light text-center">
         หากเข้ารับบริการ
         <br /> ตรวจคัดกรองคัดแยกแล้วพบว่า

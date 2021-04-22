@@ -26,7 +26,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
   }
 
   return (
-    <div className="relative flex flex-col justify-between w-full space-y-2 lg:justify-evenly">
+    <div className="flex flex-col justify-between w-full space-y-2 lg:justify-evenly">
       <h1 className="text-xl text-[#444444] font-medium text-center">เลือกการคัดกรองคัดแยกแบบทีใช่</h1>
       <p className={`${openChoice !== null ? 'hidden' : ''} text-[#4842e0] font-light text-lg text-center`}>
         คลิกแต่ละข้อเพื่อดูรายละเอียด
@@ -120,7 +120,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
             <p className="text-lg font-light text-[#666666] font-pridi w-full h-full">
               {choices[Number(openChoice)]?.content}
             </p>
-            <div className="bottom-0 flex justify-center w-full pt-4 mt-auto space-x-2 lg:space-x-4">
+            <div className="bottom-0 flex justify-center w-full pt-2 mt-auto space-x-2 lg:space-x-4">
               <button
                 onClick={() => setOpenChoice(choices[Number(openChoice)].prev ?? -1)}
                 disabled={choices[Number(openChoice)].prev === null}
@@ -128,7 +128,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
                   choices[Number(openChoice)].prev === null
                     ? 'border-[#e7e7f9] text-[#e7e7f9] pointer-events-none'
                     : 'border-[#a7a5f0] text-[#a7a5f0]'
-                } border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex items-center justify-center w-full px-2 py-2 text-lg font-medium border rounded-md`}
+                } border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex items-center justify-center w-full px-1 py-2 text-lg font-medium border rounded-md`}
               >
                 ย้อนกลับ
               </button>
@@ -145,7 +145,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
                   choices[Number(openChoice)].next === null
                     ? 'border-[#e7e7f9] text-[#e7e7f9] pointer-events-none'
                     : 'border-[#a7a5f0] text-[#a7a5f0]'
-                } focus:outline-none inline-flex items-center justify-center w-full px-2 py-2 text-lg font-medium border rounded-md`}
+                } focus:outline-none inline-flex items-center justify-center w-full px-1 py-2 text-lg font-medium border rounded-md`}
               >
                 ถัดไป
               </button>

@@ -62,10 +62,8 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
   }
 
   return (
-    <>
-      <section
-        className={`${bgColor} flex flex-col h-full p-8 sm:py-12 sm:max-w-[500px] self-center space-y-4 overflow-auto`}
-      >
+    <div className="flex flex-col w-full h-full overflow-auto">
+      <section className={`${bgColor} flex flex-col h-full sm:py-12 sm:max-w-[500px] self-center space-y-4 p-6`}>
         <h2 className={`${data?.heading ? 'block' : 'hidden'} text-xl font-medium text-center text-[#999999]`}>
           {data?.heading}
         </h2>
@@ -127,7 +125,7 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
         </div>
       </section>
       <FooterQuiz setAnswer={(ans) => checkAnswer(ans)} className={`${showAnswer ? 'hidden' : 'flex'} mt-auto`} />
-    </>
+    </div>
   )
 }
 
