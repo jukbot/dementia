@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /quiz/[id]
+
+Sitemap: https://dementia.riseimpact.co/sitemap.xml
