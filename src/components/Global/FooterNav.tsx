@@ -11,7 +11,7 @@ const FooterNav: FC<Props> = ({ lightTheme = true, prev, next, className }): JSX
   const navigate = useNavigate()
 
   return (
-    <nav className={`bottom-0 flex justify-center w-full space-x-4 mb-8 ${className}`}>
+    <nav className={`bottom-0 flex justify-center w-full space-x-4 pb-8 ${className}`}>
       {prev ? (
         <button
           type="button"
