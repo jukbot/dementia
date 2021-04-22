@@ -57,7 +57,7 @@ const FooterSurvey: FC<Props> = ({ saveColumn, next, className, disable }): JSX.
   }
 
   return (
-    <nav className={`bottom-0 flex justify-center w-full mb-8 space-x-4 mt-auto ${className}`}>
+    <nav className={`bottom-0 flex justify-center w-full pb-8 space-x-4 mt-auto ${className}`}>
       {next ? (
         <button
           type="button"

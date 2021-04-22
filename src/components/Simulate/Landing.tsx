@@ -26,7 +26,7 @@ const SimulateLanding: FC<Props> = ({ bgColor }): JSX.Element => {
   return (
     <div className="fixed w-full h-full bg-black">
       <div className="flex justify-center w-full">
-        <img src={body} alt="body" className={`absolute bottom-0 z-0 object-cover h-full w-full ${bgColor}`} />
+        <img src={body} alt="body" className={`absolute bottom-0 z-0 object-cover h-full ${bgColor}`} />
       </div>
       <section className="relative z-10 flex flex-col justify-end h-full py-8">
         <h1 className="py-4 mb-12 text-2xl font-light text-center text-white">

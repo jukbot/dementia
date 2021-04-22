@@ -16,22 +16,24 @@ const SimulateContent: FC<Props> = ({ bgColor }): JSX.Element => {
   const [isDisabled, setIsDisabled] = useState<boolean>(true)
 
   return (
-    <div className={`h-full flex flex-col fixed w-full ${bgColor}`}>
-      <section className="flex w-full h-full p-8">
-        {data?.survey ? (
-          <Suspense fallback={null}>
-            <Survey setValidAnswer={(valid: boolean) => setIsDisabled(!valid)} />
-          </Suspense>
-        ) : (
-          ''
-        )}
-      </section>
-      <FooterSurvey
-        next={data?.next ?? ''}
-        saveColumn={data?.column ?? ''}
-        className={data?.layout}
-        disable={isDisabled}
-      />
+    <div className={`h-full flex flex-col fixed w-full ${bgColor} overflow-auto`}>
+      <div className={`flex flex-col w-full h-full items-center p-8 space-y-4`}>
+        <section className="flex w-full h-full">
+          {data?.survey ? (
+            <Suspense fallback={null}>
+              <Survey setValidAnswer={(valid: boolean) => setIsDisabled(!valid)} />
+            </Suspense>
+          ) : (
+            ''
+          )}
+        </section>
+        <FooterSurvey
+          next={data?.next ?? ''}
+          saveColumn={data?.column ?? ''}
+          className={data?.layout}
+          disable={isDisabled}
+        />
+      </div>
     </div>
   )
 }

@@ -33,9 +33,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
       </p>
       <RadioGroup value={openChoice ?? selectedChoice} onChange={setOpenChoice}>
         <RadioGroup.Label className="sr-only">เลือกแบบคัดกรองสำหรับคุณ</RadioGroup.Label>
-        <div
-          className={`${openChoice !== null ? 'hidden' : ''} flex flex-col h-full space-y-3 mb-20 w-full items-center`}
-        >
+        <div className={`${openChoice !== null ? 'hidden' : ''} flex flex-col h-full space-y-3 w-full items-center`}>
           {choices.map((choice) => (
             <RadioGroup.Option
               key={choice.id}

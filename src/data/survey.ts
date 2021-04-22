@@ -3,7 +3,7 @@ export const content = [
     route: 'a',
     survey: 'SurveyA',
     column: 'surveyA',
-    layout: 'absolute',
+    layout: 'mt-auto',
     prev: null,
     next: '/survey/result',
   },

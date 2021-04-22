@@ -22,10 +22,12 @@ const QuizLanding: FC<Props> = ({ bgColor }): JSX.Element => {
         </div>
       </div>
       <div>
-        <p className="text-2xl font-light text-center text-white max-w-prose">
+        <p className="text-2xl font-light text-center text-white">
           ลองทายดูซิว่า
-          <br /> ข้อมูลภาวะสมองเสื่อมต่อไปนี้
-          <br /> <span className="font-medium">จริง</span> หรือ <span className="font-medium">เท็จ</span>
+          <br />
+          ข้อมูลภาวะสมองเสื่อมต่อไปนี้
+          <br />
+          <span className="font-medium">จริง</span> หรือ <span className="font-medium">เท็จ</span>
         </p>
         <div className="flex justify-center py-8 space-x-6">
           <CheckLight className="w-20 h-20" />

@@ -20,7 +20,7 @@ const SurveyB: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
 
   return (
     <div className="flex flex-col justify-between w-full space-y-8 lg:justify-evenly">
-      <h1 className="text-2xl text-[#444444] leading-normal font-light text-center">
+      <h1 className="text-xl sm:text-2xl text-[#444444] leading-normal font-light text-center">
         หากเข้ารับบริการ
         <br /> ตรวจคัดกรองคัดแยกแล้วพบว่า
         <br /> คุณหรือผู้สูงอายุในครอบครัว
@@ -67,8 +67,10 @@ const SurveyB: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
                   answer === 'b' ? 'text-white' : 'text-[#6866e7]'
                 } transition font-light text-lg text-center}`}
               >
-                นัดหมายแพทย์เฉพาะทางเพื่อวินิจฉัย
-                <br /> โดยละเอียด เช่น สแกนสมอง ตรวจเลือด
+                นัดหมายแพทย์เฉพาะทาง
+                <br />
+                เพื่อวินิจฉัยโดยละเอียด เช่น
+                <br /> สแกนสมอง ตรวจเลือด
                 <br /> เพื่อยืนยันภาวะทางสมองอีกครั้ง
               </p>
             </div>
