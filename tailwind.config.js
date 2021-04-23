@@ -13,6 +13,10 @@ module.exports = {
       sans: ['Mitr', ...defaultTheme.fontFamily.sans],
       pridi: ['Pridi', ...defaultTheme.fontFamily.serif],
     },
+    screens: {
+      xs: '360px',
+      ...defaultTheme.screens,
+    },
     extend: {
       colors: {
         primary: 'var(--color-primary)',

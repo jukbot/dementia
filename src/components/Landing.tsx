@@ -24,19 +24,19 @@ const Landing = (): JSX.Element => {
       <div className="flex justify-center w-full">
         <img src={body} alt="body" className="absolute object-cover inset-0 mx-auto h-full bg-[#2208b2] z-0" />
       </div>
-      <div className="relative z-10 flex flex-col justify-end h-full py-8 mt-auto lg:py-12">
-        <h1 className="py-2 text-2xl font-light text-center text-white">
+      <div className="relative z-10 flex flex-col justify-end h-full py-6 mt-auto space-y-3 xs:space-y-6 sm:space-y-8 xs:py-8 lg:py-12">
+        <h1 className="text-xl font-light text-center text-white xs:text-2xl lg:text-3xl">
           หากความทรงจำของคุณ
           <br /> ค่อยๆ เลือนหายไป
         </h1>
-        <p className="py-2 text-xl font-pridi font-light text-center text-[#a7a5f0]">
+        <p className="text-lg xs:text-xl font-pridi font-light text-center text-[#a7a5f0]">
           ชวนคุณมาสัมผัสประสบการณ์สมองเสื่อม
           <br />
           เพื่อพัฒนาระบบคัดกรองคัดแยก
           <br />
           ที่ดียิ่งขึ้นสำหรับทุกคน
         </p>
-        <div className="bottom-0 flex justify-center h-16 pt-4">
+        <div className="bottom-0 flex justify-center">
           <button
             type="button"
             onClick={() => setShowModal(true)}
