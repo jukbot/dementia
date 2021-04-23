@@ -10,10 +10,8 @@ const IntroContent: FC = (): JSX.Element => {
   const data = content.find((v) => v.route === id)
   const InfoGraphic = importView(data?.infographic ?? '')
   return (
-    <div className="flex flex-col w-full h-full overflow-auto">
-      <section
-        className={`flex flex-col h-full ${data?.space_type} sm:max-w-[500px] self-center mb-2 lg:space-y-8 p-6`}
-      >
+    <div className="flex flex-col items-center w-full h-full overflow-auto">
+      <section className={`flex flex-col sm:max-w-[500px] lg:space-y-8 p-6`}>
         {data?.heading ? (
           <h2 className="text-2xl font-medium text-center text-[#A7A5F0] mb-4 md:text-3xl">{data?.heading}</h2>
         ) : (
