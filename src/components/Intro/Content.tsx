@@ -11,7 +11,9 @@ const IntroContent: FC = (): JSX.Element => {
   const InfoGraphic = importView(data?.infographic ?? '')
   return (
     <div className="flex flex-col items-center w-full h-full overflow-auto">
-      <section className={`flex flex-col sm:max-w-[500px] lg:space-y-8 p-6`}>
+      <section
+        className={`flex flex-col justify-center sm:max-w-[500px] lg:space-y-8 p-6 ${data?.title ? 'h-full' : ''}`}
+      >
         {data?.heading ? (
           <h2 className="text-2xl font-medium text-center text-[#A7A5F0] mb-4 md:text-3xl">{data?.heading}</h2>
         ) : (
@@ -25,15 +27,16 @@ const IntroContent: FC = (): JSX.Element => {
         ) : (
           ''
         )}
+
         {data?.infographic ? (
-          <Suspense fallback={<div className="w-full h-64" />}>
+          <Suspense fallback={<div className="flex-shrink-0 w-full" />}>
             <InfoGraphic />
           </Suspense>
         ) : (
           ''
         )}
       </section>
-      <FooterNav prev={data?.prev} next={data?.next} lightTheme={true} className={data?.nav_position} />
+      <FooterNav prev={data?.prev} next={data?.next} lightTheme={true} className={`${data?.nav_position}`} />
     </div>
   )
 }

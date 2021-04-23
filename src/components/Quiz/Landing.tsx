@@ -10,7 +10,7 @@ const QuizLanding: FC<Props> = ({ bgColor }): JSX.Element => {
   const navigate = useNavigate()
 
   return (
-    <section className={`${bgColor} flex flex-col h-full p-8 overflow-auto`}>
+    <section className={`${bgColor} flex flex-col h-full p-8 justify-between overflow-auto`}>
       <div className="space-y-2 text-center text-white">
         <h1 className="text-2xl font-normal">คุณรู้จัก</h1>
         <h2 className="text-4xl font-medium">ภาวะสมองเสื่อม</h2>
