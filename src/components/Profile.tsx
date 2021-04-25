@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ExclamationCircleIcon } from '@heroicons/react/solid'
 import { provinces } from '../data/province'
+import { districts } from '../data/district'
 import { zipcode } from '../data/zipcode'
 import { useLocalStorage } from '../utils/useLocalStorage'
 import { RadioGroup } from '@headlessui/react'
@@ -29,6 +30,9 @@ const Profile = (): JSX.Element => {
   const [, setSubject] = useLocalStorage<string | null>('subject', null)
   const [relevance, setRelevance] = useState<string | null>(null)
   const [age, setAge] = useState<number>(0)
+  const [provinceName, setProvinceName] = useState<string | null>('กระบี่')
+  const [districtName, setDistrictName] = useState<string | null>('10100')
+  const [zoneArea, setZoneArea] = useState<string | null>('เมือง')
   const [isSaving, setIsSaving] = useState<boolean>(false)
   const [ageError, setAgeError] = useState<boolean>(false)
   const [isDisabled, setDisabled] = useState<boolean>(true)
@@ -55,14 +59,14 @@ const Profile = (): JSX.Element => {
         setIsSaving(true)
         setDisabled(true)
         const created = String(new Date().toLocaleDateString())
-        const result = await addData({ ...profile, created }, 'survey')
+        const result = await addData({ ...profile, created, provinceName, districtName, zoneArea }, 'survey')
         if (result?.survey) {
           window.localStorage.setItem('dementia-uid', String(result?.survey.id))
         }
       } else {
         setIsSaving(true)
         setDisabled(true)
-        await updateData(profile, 'survey', id ?? '1')
+        await updateData({ ...profile, provinceName, districtName, zoneArea }, 'survey', id ?? '1')
       }
       setIsSaving(false)
       setDisabled(false)
@@ -96,12 +100,44 @@ const Profile = (): JSX.Element => {
     }
   }
 
+  const getProvinceName = (id: number) => {
+    const province = provinces.find((v) => v.PROVINCE_ID === id)
+    console.log(province?.PROVINCE_NAME)
+    setProvinceName(String(province?.PROVINCE_NAME))
+  }
+
+  const getDistrictName = (id: string) => {
+    const result = zipcode.find((v) => v.ZIPCODE === id)
+    const district = districts.find((v) => v.DISTRICT_ID === Number(result?.DISTRICT_ID))
+    console.log(district?.DISTRICT_NAME)
+
+    if (
+      district?.DISTRICT_NAME.startsWith('เขต') ||
+      district?.DISTRICT_NAME.startsWith('เมือง') ||
+      district?.DISTRICT_NAME.startsWith('พระนครศรีอยุธยา')
+    ) {
+      setZoneArea('เมือง')
+    } else {
+      setZoneArea('ชนบท')
+    }
+
+    setDistrictName(String(district?.DISTRICT_NAME))
+  }
+
   const handleChange = (e: (EventTarget & HTMLInputElement) | (EventTarget & HTMLSelectElement) | FormValue): void => {
     setState({ ...state, [e.name]: e.value })
     validateForm({ ...state, [e.name]: e.value })
 
     if (e.name === 'relevance') {
       setRelevance(e.value)
+    }
+
+    if (e.name === 'province') {
+      getProvinceName(Number(e.value))
+    }
+
+    if (e.name === 'postal') {
+      getDistrictName(String(e.value))
     }
   }
 
