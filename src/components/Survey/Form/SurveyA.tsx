@@ -30,6 +30,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
       <h1 className="text-xl text-[#444444] font-medium text-center">เลือกการคัดกรองคัดแยกแบบทีใช่</h1>
       <p className={`${openChoice !== null ? 'hidden' : ''} text-[#4842e0] font-light text-lg text-center`}>
         คลิกแต่ละข้อเพื่อดูรายละเอียด
+       <br/>และกด 'เลือก' เมื่อเจอการคัดกรองคัดแยกแบบที่ชอบ
       </p>
       <RadioGroup value={openChoice ?? selectedChoice} onChange={setOpenChoice}>
         <RadioGroup.Label className="sr-only">เลือกแบบคัดกรองสำหรับคุณ</RadioGroup.Label>
