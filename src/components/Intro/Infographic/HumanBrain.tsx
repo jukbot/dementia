@@ -11,7 +11,7 @@ const HumanBrain: FC = (): JSX.Element => {
       </p>
       <div className="relative flex flex-col items-center">
         <h3 className="text-base font-medium text-center text-white sm:text-lg">
-          คลิกที่วงกลม<br/>เพื่อดูการทำงานของสมองแต่ละส่วน
+          กดที่จุดสีชมพู<br/>เพื่อดูการทำงานของสมองแต่ละส่วน
         </h3>
         <div className="h-16 mt-4 lg:mt-8">
           <label
