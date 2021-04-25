@@ -35,14 +35,14 @@ const Share = (): JSX.Element => {
             onClick={() => goToLink('https://www.facebook.com/azthai2013')}
             className="inline-flex justify-center items-center px-6 py-2 text-lg font-medium text-primary bg-[#a7a5f0] border border-transparent rounded-md shadow-lg hover:bg-gray-100 focus:outline-none"
           >
-            สายด่วนดูแล ผู้ป่วยสมองเสื่อม
+            เพจสมาคมผู้ดูแลผู้ป่วยสมองเสื่อม
           </button>
           <button
             type="button"
             onClick={() => window.open('/pdf/self-survey.pdf', '_blank')}
             className="inline-flex justify-center items-center px-6 py-2 text-lg font-medium text-primary bg-[#a7a5f0] border border-transparent rounded-md shadow-lg hover:bg-gray-100 focus:outline-none"
           >
-            ดาวน์โหลดแบบคัดกรอง
+            คัดกรองเบื้องต้นด้วย 14 คำถาม
           </button>
         </div>
 
