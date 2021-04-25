@@ -12,8 +12,8 @@ import { addData, updateData } from '../utils/sheety'
 const defaultValue: FormData = {
   gender: 'male',
   age: '',
-  province: '1',
-  postal: '10200',
+  province: '64',
+  postal: '10100',
   relevance: '',
   other: '',
 }
@@ -31,7 +31,7 @@ const Profile = (): JSX.Element => {
   const [relevance, setRelevance] = useState<string | null>(null)
   const [age, setAge] = useState<number>(0)
   const [provinceName, setProvinceName] = useState<string | null>('กระบี่')
-  const [districtName, setDistrictName] = useState<string | null>('10100')
+  const [districtName, setDistrictName] = useState<string | null>('เขตป้อมปราบศัตรูพ่าย')
   const [zoneArea, setZoneArea] = useState<string | null>('เมือง')
   const [isSaving, setIsSaving] = useState<boolean>(false)
   const [ageError, setAgeError] = useState<boolean>(false)
@@ -102,14 +102,13 @@ const Profile = (): JSX.Element => {
 
   const getProvinceName = (id: number) => {
     const province = provinces.find((v) => v.PROVINCE_ID === id)
-    console.log(province?.PROVINCE_NAME)
     setProvinceName(String(province?.PROVINCE_NAME))
   }
 
   const getDistrictName = (id: string) => {
     const result = zipcode.find((v) => v.ZIPCODE === id)
-    const district = districts.find((v) => v.DISTRICT_ID === Number(result?.DISTRICT_ID))
-    console.log(district?.DISTRICT_NAME)
+    const district = districts.find((v) => String(v.DISTRICT_ID) === result?.DISTRICT_ID)
+    setDistrictName(String(district?.DISTRICT_NAME))
 
     if (
       district?.DISTRICT_NAME.startsWith('เขต') ||
@@ -120,8 +119,6 @@ const Profile = (): JSX.Element => {
     } else {
       setZoneArea('ชนบท')
     }
-
-    setDistrictName(String(district?.DISTRICT_NAME))
   }
 
   const handleChange = (e: (EventTarget & HTMLInputElement) | (EventTarget & HTMLSelectElement) | FormValue): void => {
