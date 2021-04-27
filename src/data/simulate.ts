@@ -141,7 +141,7 @@ export const content = [
     text_color: 'text-[#444444]',
     space_type: 'justify-center items-center',
     light_theme: false,
-    title: 'และพบว่ามีแบบทดสอบ<br/> ที่สามารถใช้ประเมินภาวะ<br/> สมองเสื่อมเองได้ณ',
+    title: 'และพบว่ามีแบบทดสอบ<br/> ที่สามารถใช้ประเมินภาวะ<br/> สมองเสื่อมเองได้',
     image_url: '/images/simulate/s2-10.jpg',
     prev: '/simulate/11',
     next: '/simulate/13',
