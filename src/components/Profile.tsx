@@ -13,7 +13,8 @@ const defaultValue: FormData = {
   gender: 'male',
   age: '',
   province: '64',
-  postal: '10100',
+  postal: '',
+  area: '',
   relevance: '',
   other: '',
 }
@@ -58,7 +59,7 @@ const Profile = (): JSX.Element => {
       if (!id) {
         setIsSaving(true)
         setDisabled(true)
-        const created = String(new Date().toLocaleDateString())
+        const created = String(new Date().toISOString().split('T')[0])
         const result = await addData({ ...profile, created, provinceName, districtName, zoneArea }, 'survey')
         if (result?.survey) {
           window.localStorage.setItem('dementia-uid', String(result?.survey.id))
@@ -66,7 +67,8 @@ const Profile = (): JSX.Element => {
       } else {
         setIsSaving(true)
         setDisabled(true)
-        await updateData({ ...profile, provinceName, districtName, zoneArea }, 'survey', id ?? '1')
+        const created = String(new Date().toISOString().split('T')[0])
+        await updateData({ ...profile, created, provinceName, districtName, zoneArea }, 'survey', id ?? '1')
       }
       setIsSaving(false)
       setDisabled(false)
@@ -254,6 +256,9 @@ const Profile = (): JSX.Element => {
                   state.province ? 'placeholder-[#808080]' : 'placeholder-[#808080]'
                 } block w-full text-base font-light h-12 border-0 border-b py-2 px-3 border-[#808080] bg-[#E5E5E5] rounded-t-md font-pridi focus:outline-none focus:ring-0 focus:border-[#6866e7]`}
               >
+                <option value="" disabled>
+                  รหัสไปรษณีย์
+                </option>
                 {[
                   ...new Set(
                     zipcode
@@ -270,6 +275,29 @@ const Profile = (): JSX.Element => {
                     </option>
                   )
                 })}
+              </select>
+            </div>
+            <div className="col-span-12">
+              <label htmlFor="area" className="sr-only">
+                อยู่ในพื้นที่
+              </label>
+              <select
+                name="area"
+                id="area"
+                placeholder="อยู่ในพื้นที่"
+                onChange={(e) => handleChange(e.target)}
+                defaultValue={profile?.area ?? ''}
+                disabled={!state.province}
+                className={`${
+                  state.province ? 'placeholder-[#808080]' : 'placeholder-[#808080]'
+                } block w-full text-base font-light h-12 border-0 border-b py-2 px-3 border-[#808080] bg-[#E5E5E5] rounded-t-md font-pridi focus:outline-none focus:ring-0 focus:border-[#6866e7]`}
+              >
+                <option value="" disabled>
+                  อนู่ในพื้นที่
+                </option>
+                <option value="urban">เทศบาลนคร/เมือง</option>
+                <option value="rural">นอกเขตเทศบาลเมือง</option>
+                <option value="special">กทม./ พัทยา</option>
               </select>
             </div>
           </div>
