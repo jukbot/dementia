@@ -164,7 +164,7 @@ const Profile = (): JSX.Element => {
           <h1 className="text-center text-[#666666] text-xl font-medium">ข้อมูลส่วนตัว</h1>
         </div>
         <div className="w-full">
-          <div className="grid grid-cols-12 gap-x-6 gap-y-4">
+          <div className="grid grid-cols-12 gap-x-4 gap-y-4">
             <div className="col-span-6">
               <label htmlFor="gender" className="sr-only">
                 เพศ
@@ -218,7 +218,7 @@ const Profile = (): JSX.Element => {
                 ตัวเลข 15-99
               </div>
             </div>
-            <div className="col-span-12">
+            <div className="col-span-6">
               <label htmlFor="province" className="sr-only">
                 จังหวัด
               </label>
@@ -241,7 +241,7 @@ const Profile = (): JSX.Element => {
                   })}
               </select>
             </div>
-            <div className="col-span-12">
+            <div className="col-span-6">
               <label htmlFor="postal" className="sr-only">
                 รหัสไปรษณีย์
               </label>
@@ -295,7 +295,7 @@ const Profile = (): JSX.Element => {
                 <option value="" disabled>
                   อนู่ในพื้นที่
                 </option>
-                <option value="urban">เทศบาลนคร/เมือง</option>
+                <option value="urban">เทศบาล/เมือง</option>
                 <option value="rural">นอกเขตเทศบาลเมือง</option>
                 <option value="special">กทม./ พัทยา</option>
               </select>
