@@ -33,13 +33,17 @@ const content: HospitalChoice[] = [
   },
 ]
 
-const Hospital: FC = () => {
+interface Props {
+  className?: string
+}
+
+const Hospital: FC<Props> = () => {
   const [section, setSection] = useState<HospitalChoice | null>()
-  const [hospital, setHospital] = useLocalStorage<string | null | undefined>('hospital-choice', '')
+  const [hospital, setHospital] = useLocalStorage<string | null>('hospital-choice', '')
 
   useEffect(() => {
     if (!hospital) {
-      setHospital(section?.value)
+      setHospital(section?.value ?? '')
     }
     if (!hospital && section) {
       saveForm(section?.value)
@@ -59,7 +63,7 @@ const Hospital: FC = () => {
   }
 
   return (
-    <div className="relative flex justify-center pt-12">
+    <div className={`relative flex justify-center pt-12`}>
       {!section ? (
         <ul className="flex flex-col items-center justify-center w-3/4 space-y-4 text-center">
           <li
