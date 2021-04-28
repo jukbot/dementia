@@ -295,9 +295,9 @@ const Profile = (): JSX.Element => {
                 <option value="" disabled>
                   อนู่ในพื้นที่
                 </option>
-                <option value="urban">เทศบาล/เมือง</option>
+                <option value="urban">เทศบาลนคร/เมือง</option>
                 <option value="rural">นอกเขตเทศบาลเมือง</option>
-                <option value="special">กทม./ พัทยา</option>
+                <option value="special">กทม./พัทยา</option>
               </select>
             </div>
           </div>
