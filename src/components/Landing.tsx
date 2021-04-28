@@ -22,14 +22,18 @@ const Landing = (): JSX.Element => {
   return (
     <section className="fixed w-full h-full bg-black">
       <div className="flex justify-center w-full">
-        <img src={body} alt="body" className="absolute object-cover inset-0 mx-auto h-full bg-[#2208b2] z-0" />
+        <img
+          src={body}
+          alt="body"
+          className="absolute object-cover inset-0 mx-auto w-full sm:w-auto h-full bg-[#2208b2] z-0"
+        />
       </div>
       <div className="relative z-10 flex flex-col justify-end h-full py-6 mt-auto space-y-3 xs:space-y-4 sm:space-y-6 md:space-y-8 xs:py-8 lg:py-12">
         <h1 className="text-xl font-light text-center text-white xs:text-2xl lg:text-3xl">
           หากความทรงจำของคุณ
           <br /> ค่อยๆ เลือนหายไป
         </h1>
-        <p className="text-lg xs:text-xl font-pridi font-light text-center text-[#a7a5f0]">
+        <p className="text-base xs:text-xl font-pridi font-light text-center text-[#a7a5f0]">
           ชวนคุณมาสัมผัสประสบการณ์สมองเสื่อม
           <br />
           เพื่อพัฒนาระบบคัดกรองคัดแยก
@@ -42,7 +46,7 @@ const Landing = (): JSX.Element => {
             onClick={() => setShowModal(true)}
             className={`${
               showModal ? 'hidden' : 'inline-flex'
-            }  items-center px-6 py-2 text-lg font-medium border rounded-md border-[#a7a5f0] text-[#a7a5f0] hover:text-[#6866E7] hover:border-gray-50 hover:bg-gray-50 focus:outline-none`}
+            }  items-center px-6 py-2 text-base xs:text-lg font-medium border rounded-md border-[#a7a5f0] text-[#a7a5f0] hover:text-[#6866E7] hover:border-gray-50 hover:bg-gray-50 focus:outline-none`}
           >
             เข้าสู่เว็บไซต์
           </button>
