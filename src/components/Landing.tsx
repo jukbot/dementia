@@ -24,7 +24,7 @@ const Landing = (): JSX.Element => {
       <div className="flex justify-center w-full">
         <img src={body} alt="body" className="absolute object-cover inset-0 mx-auto h-full bg-[#2208b2] z-0" />
       </div>
-      <div className="relative z-10 flex flex-col justify-end h-full py-6 mt-auto space-y-3 xs:space-y-6 sm:space-y-8 xs:py-8 lg:py-12">
+      <div className="relative z-10 flex flex-col justify-end h-full py-6 mt-auto space-y-3 xs:space-y-4 sm:space-y-6 md:space-y-8 xs:py-8 lg:py-12">
         <h1 className="text-xl font-light text-center text-white xs:text-2xl lg:text-3xl">
           หากความทรงจำของคุณ
           <br /> ค่อยๆ เลือนหายไป
