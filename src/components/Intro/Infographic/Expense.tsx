@@ -3,7 +3,7 @@ import { Elderly } from '../../Icons'
 
 const Expense: FC = () => {
   return (
-    <div className="flex flex-col space-y-8 text-center text-white">
+    <div className="flex flex-col space-y-4 text-center text-white sm:space-y-8">
       <p className="text-lg font-light font-pridi">
         การดูแลผู้ป่วยภาวะสมองเสื่อม 1 คน
         <br /> อย่างทั่วถึงและมีคุณภาพ

@@ -104,7 +104,9 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
           } rounded-md mx-auto`}
         >
           <h3 className="text-xl font-medium text-white">เฉลย</h3>
-          <span className={`flex justify-center items-center border border-white text-white rounded-full p-1`}>
+          <span
+            className={`flex justify-center items-center border border-white text-white rounded-full p-1 flex-shrink-0`}
+          >
             {data?.answerChoice ? <CheckOutline className="w-14 h-14" /> : <CrossOutline className="w-14 h-14" />}
           </span>
           <p className="h-full text-lg font-light text-white font-pridi">{data?.answer}</p>

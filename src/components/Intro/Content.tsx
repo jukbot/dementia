@@ -21,7 +21,7 @@ const IntroContent: FC = (): JSX.Element => {
         )}
         {data?.title ? (
           <h1
-            className="font-sans text-2xl font-light leading-relaxed text-center text-white"
+            className="font-sans text-2xl font-light text-center text-white"
             dangerouslySetInnerHTML={{ __html: data?.title ?? '' }}
           />
         ) : (
