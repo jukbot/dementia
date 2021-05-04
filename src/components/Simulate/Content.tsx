@@ -29,7 +29,7 @@ const SimulateContent: FC = (): JSX.Element => {
         setComponent(data?.component ?? null)
         setImageUrl(data?.image_url ?? '')
         setClassName('opacity-100')
-      }, 500)
+      }, 400)
     }
     if (component) {
       return setComponent(null)
@@ -41,7 +41,9 @@ const SimulateContent: FC = (): JSX.Element => {
   return (
     <div className={`${color} transition-colors duration-1000 ease-in-out fixed h-full w-full`}>
       <div className={`flex flex-col w-full h-full items-center lg:space-y-8 overflow-auto`}>
-        <section className={`flex flex-col h-full w-full space-y-8 p-6 sm:max-w-[500px] ${data?.space_type} `}>
+        <section
+          className={`flex flex-col h-full w-full space-y-4 sm:space-y-8 p-6 sm:max-w-[500px] ${data?.space_type} `}
+        >
           <img
             src={`${imageUrl}`}
             className={`${
@@ -50,7 +52,7 @@ const SimulateContent: FC = (): JSX.Element => {
             alt="simulate"
           />
           <h1
-            className={`${className} transition-opacity ease-in duration-300 text-2xl font-light ${data?.text_color} leading-normal text-center`}
+            className={`${className} transition-opacity ease-in duration-300 text-xl sm:text-2xl font-light ${data?.text_color} leading-normal text-center`}
             dangerouslySetInnerHTML={{ __html: title ?? '' }}
           />
           {component ? (

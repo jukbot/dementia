@@ -57,7 +57,7 @@ const FooterSurvey: FC<Props> = ({ saveColumn, next, className, disable }): JSX.
   }
 
   return (
-    <nav className={`flex justify-center w-full bottom-0 pb-4 space-x-4 h-20 flex-shrink-0 mt-auto ${className}`}>
+    <nav className={`flex justify-center w-full flex-shrink-0 space-x-4 mt-auto ${className}`}>
       {next ? (
         <button
           type="button"
@@ -65,7 +65,7 @@ const FooterSurvey: FC<Props> = ({ saveColumn, next, className, disable }): JSX.
           onClick={saveForm}
           className={`${
             isDisabled ? 'text-[#a7a5f0] border-[#a7a5f0]' : 'text-white bg-[#6866E7] border-[#6866E7] shadow-dark'
-          } inline-flex items-center px-6 py-2 text-lg font-medium border rounded-md focus:outline-none`}
+          } inline-flex items-center px-6 py-2 text-lg font-medium border rounded-md focus:outline-none h-12 flex-shrink-0`}
         >
           {isSaving ? <span className="animate-pulse">กำลังบันทึก</span> : 'บันทึก'}
         </button>

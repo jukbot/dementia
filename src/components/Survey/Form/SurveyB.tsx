@@ -20,7 +20,7 @@ const SurveyB: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
 
   return (
     <div className="flex flex-col justify-between w-full space-y-4 lg:space-y-8 lg:justify-evenly">
-      <h1 className="text-xl sm:text-2xl text-[#444444] leading-normal font-light text-center">
+      <h1 className="text-lg xs:text-xl sm:text-2xl text-[#444444] leading-normal font-light text-center">
         หากเข้ารับบริการ
         <br /> ตรวจคัดกรองคัดแยกแล้วพบว่า
         <br /> คุณหรือผู้สูงอายุในครอบครัว
@@ -46,7 +46,7 @@ const SurveyB: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
               <p
                 className={`${
                   answer === 'a' ? 'text-white' : 'text-[#6866e7]'
-                } transition font-light text-lg text-center}`}
+                } transition font-light text-base xs:text-lg text-center}`}
               >
                 ปรับเปลี่ยนพฤติกรรมด้วยตนเอง
                 <br /> เพื่อชะลอความเสื่อมของสมอง
@@ -66,7 +66,7 @@ const SurveyB: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
               <p
                 className={`${
                   answer === 'b' ? 'text-white' : 'text-[#6866e7]'
-                } transition font-light text-lg text-center}`}
+                } transition font-light text-base xs:text-lg text-center}`}
               >
                 นัดหมายแพทย์เฉพาะทาง
                 <br />

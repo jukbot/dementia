@@ -16,7 +16,7 @@ const Share = (): JSX.Element => {
   return (
     <section className="fixed h-full w-full bg-[#4842e0]">
       <div className="flex flex-col justify-between h-full py-12">
-        <h1 className="text-2xl font-medium text-center text-[#a7a5f0]">
+        <h1 className="text-xl xs:text-2xl font-medium text-center text-[#a7a5f0]">
           ลิงก์ข้อมูล
           <br /> ที่เป็นประโยชน์เกี่ยวกับ
           <br /> ภาวะสมองเสื่อม
@@ -26,28 +26,28 @@ const Share = (): JSX.Element => {
           <button
             type="button"
             onClick={() => goToLink('https://www.the101.world/prevent-dementia-syndrome')}
-            className="inline-flex justify-center items-center px-6 py-2 text-lg font-medium text-primary bg-[#a7a5f0] border border-transparent rounded-md shadow-lg hover:bg-gray-100 focus:outline-none"
+            className="inline-flex justify-center items-center px-2 py-2 text-base xs:text-lg font-medium text-primary bg-[#a7a5f0] border border-transparent rounded-md shadow-lg hover:bg-gray-100 focus:outline-none"
           >
             ‘ยากันลืม’ คู่มือเตือนความจำ
           </button>
           <button
             type="button"
             onClick={() => goToLink('https://www.facebook.com/azthai2013')}
-            className="inline-flex justify-center items-center px-6 py-2 text-lg font-medium text-primary bg-[#a7a5f0] border border-transparent rounded-md shadow-lg hover:bg-gray-100 focus:outline-none"
+            className="inline-flex justify-center items-center px-2 py-2 text-base xs:text-lg font-medium text-primary bg-[#a7a5f0] border border-transparent rounded-md shadow-lg hover:bg-gray-100 focus:outline-none"
           >
             เพจสมาคมผู้ดูแลผู้ป่วยสมองเสื่อม
           </button>
           <button
             type="button"
             onClick={() => window.open('/pdf/self-survey.pdf', '_blank')}
-            className="inline-flex justify-center items-center px-6 py-2 text-lg font-medium text-primary bg-[#a7a5f0] border border-transparent rounded-md shadow-lg hover:bg-gray-100 focus:outline-none"
+            className="inline-flex justify-center items-center px-2 py-2 text-base xs:text-lg font-medium text-primary bg-[#a7a5f0] border border-transparent rounded-md shadow-lg hover:bg-gray-100 focus:outline-none"
           >
             คัดกรองเบื้องต้นด้วย 14 คำถาม
           </button>
         </div>
 
         <div className="pt-4">
-          <h2 className="text-2xl font-medium text-center text-[#e7e7f9]">แชร์สิ่งนี้ให้คนที่คุณรัก</h2>
+          <h2 className="text-xl xs:text-2xl font-medium text-center text-[#e7e7f9]">แชร์สิ่งนี้ให้คนที่คุณรัก</h2>
           <div className="flex justify-center pt-6 space-x-4 text-[#a7a5f0]">
             <a href={`https://social-plugins.line.me/lineit/share?url=${webUrl}`} target="_blank" rel="noreferrer">
               <Line className="flex-shrink-0 w-12 h-12 cursor-pointer md:w-20 md:h-20 hover:text-white" />

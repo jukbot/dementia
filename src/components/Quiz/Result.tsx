@@ -41,9 +41,9 @@ const QuizResult: FC<Props> = ({ bgColor }): JSX.Element => {
     <div className={`${bgColor} fixed h-full w-full flex justify-center`}>
       <section className="flex flex-col h-full px-8 py-12 sm:max-w-[500px] self-center space-y-4 overflow-auto">
         <div className="relative flex items-center justify-center font-light text-center text-white">
-          <div className="absolute flex flex-col space-y-2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-            <h1 className="text-2xl">คุณตอบถูก</h1>
-            <p className="text-4xl tracking-tighter sm:text-5xl">
+          <div className="absolute flex flex-col transform -translate-x-1/2 -translate-y-1/2 sm:space-y-2 top-1/2 left-1/2">
+            <h1 className="text-xl sm:text-2xl">คุณตอบถูก</h1>
+            <p className="text-3xl tracking-tighter sm:text-4xl sm:text-5xl">
               {score} <span className="text-2xl sm:text-3xl">จาก</span> {maxScore}
             </p>
           </div>
@@ -51,7 +51,7 @@ const QuizResult: FC<Props> = ({ bgColor }): JSX.Element => {
         </div>
         <div className="flex items-center justify-center h-full">
           <h2
-            className="text-2xl font-light leading-relaxed text-center text-white sm:text-3xl sm:leading-10"
+            className="text-xl font-light leading-relaxed text-center text-white sm:text-2xl sm:text-3xl sm:leading-10"
             dangerouslySetInnerHTML={{ __html: message[Number(score)].text ?? '' }}
           />
         </div>
@@ -64,11 +64,11 @@ const QuizResult: FC<Props> = ({ bgColor }): JSX.Element => {
             </p>
           </div>
         </div>
-        <div className="flex justify-center h-16 pt-4">
+        <div className="flex justify-center pt-4">
           <button
             type="button"
             onClick={() => navigate('/simulate/pre')}
-            className="bg-[#e7e7f9] text-[#6866e7] inline-flex items-center px-6 py-2 text-lg font-medium border shadow-dark rounded-md focus:outline-none"
+            className="bg-[#e7e7f9] text-[#6866e7] inline-flex items-center px-6 py-2 text-lg flex-shrink-0 h-12 font-medium border shadow-dark rounded-md focus:outline-none"
           >
             หน้าถัดไป
           </button>

@@ -28,9 +28,12 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
   return (
     <div className="flex flex-col justify-between w-full space-y-2 lg:justify-evenly">
       <h1 className="text-xl text-[#444444] font-medium text-center">เลือกการคัดกรองคัดแยกแบบทีใช่</h1>
-      <p className={`${openChoice !== null ? 'hidden' : ''} text-[#4842e0] font-light text-lg text-center`}>
+      <p
+        className={`${openChoice !== null ? 'hidden' : ''} text-[#4842e0] font-light text-base xs:text-lg text-center`}
+      >
         คลิกแต่ละข้อเพื่อดูรายละเอียด
-       <br/>และกด 'เลือก' เมื่อเจอการคัดกรองคัดแยกแบบที่ชอบ
+        <br />
+        และกด &apos;เลือก&apos; เมื่อเจอการคัดกรองคัดแยกแบบที่ชอบ
       </p>
       <RadioGroup value={openChoice ?? selectedChoice} onChange={setOpenChoice}>
         <RadioGroup.Label className="sr-only">เลือกแบบคัดกรองสำหรับคุณ</RadioGroup.Label>
@@ -48,7 +51,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
                   <div
                     className={`${
                       checked ? 'bg-white' : 'bg-[#a7a5f0]'
-                    } overflow-hidden w-20 h-20 md:w-28 md:h-28 flex-none transition`}
+                    } overflow-hidden w-20 h-20 xs:w-[96px] xs:h-[96px] md:w-28 md:h-28 flex-none transition`}
                   >
                     <img
                       src={choice.thumbnail_url}
@@ -56,7 +59,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
                       className={`${checked ? 'opacity-100' : 'opacity-40'} object-cover w-full h-full transition`}
                     />
                   </div>
-                  <div className="flex flex-col flex-auto w-full px-4 py-2 space-y-2">
+                  <div className="flex flex-col flex-auto w-full px-2 py-2 space-y-2 xs:px-4">
                     <span
                       className={`${
                         checked ? 'bg-white text-[#6866e7]' : 'bg-[#6866e7] text-white'
@@ -66,14 +69,14 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
                     </span>
                     <RadioGroup.Label
                       as="p"
-                      className="text-base font-light leading-4 max-w-prose sm:text-lg"
+                      className="text-sm font-light leading-4 xs:text-base sm:text-lg"
                       dangerouslySetInnerHTML={{ __html: choice.title ?? '' }}
                     />
                   </div>
 
                   <div
                     className={`${checked ? 'bg-[#4842e0]' : ''}
-                      h-6 w-6 cursor-pointer rounded-full flex bg-[#e7e7f9] items-center justify-center flex-shrink-0 mr-4 right-0
+                      h-6 w-6 cursor-pointer rounded-full flex bg-[#e7e7f9] items-center justify-center flex-shrink-0 mr-2 xs:mr-4 right-0
                     `}
                     aria-hidden="true"
                   >
@@ -90,15 +93,15 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
         <div className="absolute top-0 z-10 flex justify-center w-full h-full">
           <div
             role="dialog"
-            className="absolute top-0 flex flex-col w-full h-full p-6 m-0 space-y-4 overflow-auto bg-white rounded-md shadow-dark sm:max-w-[500px]"
+            className="absolute top-0 flex flex-col w-full h-full p-4 xs:p-6 m-0 space-y-4 overflow-auto bg-white rounded-md shadow-dark sm:max-w-[500px]"
           >
             <div className="flex justify-center w-full">
-              <span className="top-0 bg-[#6866e7] text-white flex px-4 py-0.5 rounded-full w-20 justify-center text-sm font-light transition">
+              <span className="top-0 bg-[#6866e7] text-white flex px-4 flex-shrink-0 h-6 py-0.5 rounded-full w-20 justify-center text-sm font-light transition">
                 แบบ {choices[Number(openChoice)]?.code ?? ''}
               </span>
             </div>
             <h2
-              className="top-0 text-xl font-light text-center text-[#6866e7]"
+              className="top-0 text-lg xs:text-xl font-light text-center text-[#6866e7]"
               dangerouslySetInnerHTML={{ __html: choices[Number(openChoice)]?.title ?? '' }}
             />
             <div className="absolute top-0 right-0 pr-4 opacity-75">
@@ -118,7 +121,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
                 className="object-contain w-full h-auto max-h-[400px]"
               />
             </div>
-            <p className="text-lg font-light text-[#666666] font-pridi w-full h-full">
+            <p className="text-base xs:text-lg font-light text-[#666666] font-pridi w-full h-full">
               {choices[Number(openChoice)]?.content}
             </p>
             <div className="bottom-0 flex justify-center w-full pt-2 mt-auto space-x-2 lg:space-x-4">
@@ -129,13 +132,13 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
                   choices[Number(openChoice)].prev === null
                     ? 'border-[#e7e7f9] text-[#e7e7f9] pointer-events-none'
                     : 'border-[#a7a5f0] text-[#a7a5f0]'
-                } border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex items-center justify-center w-full px-1 py-2 text-lg font-medium border rounded-md`}
+                } border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex items-center justify-center w-full px-1 py-2 text-base xs:text-lg font-medium border rounded-md h-12`}
               >
                 ย้อนกลับ
               </button>
               <button
                 onClick={() => selectChoice(choices[Number(openChoice)].index)}
-                className={`bg-[#6866e7] text-white hover:text-white focus:outline-none inline-flex items-center justify-center w-full px-2 py-2 text-lg font-medium border rounded-md`}
+                className={`bg-[#6866e7] text-white hover:text-white focus:outline-none inline-flex items-center justify-center w-full px-2 py-2 text-base xs:text-lg font-medium border rounded-md h-12`}
               >
                 เลือก
               </button>
@@ -146,7 +149,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
                   choices[Number(openChoice)].next === null
                     ? 'border-[#e7e7f9] text-[#e7e7f9] pointer-events-none'
                     : 'border-[#a7a5f0] text-[#a7a5f0]'
-                } focus:outline-none inline-flex items-center justify-center w-full px-1 py-2 text-lg font-medium border rounded-md`}
+                } focus:outline-none inline-flex items-center justify-center w-full px-1 py-2 text-base xs:text-lg font-medium border rounded-md h-12`}
               >
                 ถัดไป
               </button>

@@ -69,21 +69,21 @@ const Hospital: FC<Props> = () => {
           <li
             role="button"
             onClick={() => setSection(content[0])}
-            className="bg-[#a7a5f0] text-lg font-medium shadow-dark rounded-md py-2 px-4 text-white w-full hover:bg-[#6866e7] hover:shadow-lg"
+            className="bg-[#a7a5f0] text-lg font-medium shadow-dark rounded-md py-2 px-4 text-white w-full hover:bg-[#6866e7] hover:shadow-lg focus::bg-[#6866e7]"
           >
             โรงพยาบาลรัฐ
           </li>
           <li
             role="button"
             onClick={() => setSection(content[1])}
-            className="bg-[#a7a5f0] text-lg font-medium shadow-dark rounded-md py-2 px-4 text-white w-full hover:bg-[#6866e7] hover:shadow-lg"
+            className="bg-[#a7a5f0] text-lg font-medium shadow-dark rounded-md py-2 px-4 text-white w-full hover:bg-[#6866e7] hover:shadow-lg focus::bg-[#6866e7]"
           >
             โรงพยาบาลเอกชน
           </li>
           <li
             role="button"
             onClick={() => setSection(content[2])}
-            className="bg-[#a7a5f0] text-lg font-medium shadow-dark rounded-md py-2 px-4 text-white w-full hover:bg-[#6866e7] hover:shadow-lg"
+            className="bg-[#a7a5f0] text-lg font-medium shadow-dark rounded-md py-2 px-4 text-white w-full hover:bg-[#6866e7] hover:shadow-lg focus::bg-[#6866e7]"
           >
             คลินิกใกล้บ้าน
           </li>
@@ -107,12 +107,12 @@ const Hospital: FC<Props> = () => {
             </div>
           </div>
 
-          <p className="text-lg font-light text-white font-pridi">{section?.content}</p>
-          <div className="flex justify-center space-x-4 lg:pt-4">
+          <p className="h-full text-base font-light text-white sm:text-lg font-pridi">{section?.content}</p>
+          <div className="flex justify-center pt-2 space-x-4 lg:pt-4">
             {section?.prev !== null ? (
               <button
                 onClick={() => setSection(content[section?.prev ?? 0])}
-                className={`border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex items-center px-4 py-2 text-lg font-medium border rounded-md`}
+                className={`border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex h-12 flex-shrink-0 items-center px-4 py-2 text-lg font-medium border rounded-md`}
               >
                 ย้อนกลับ
               </button>
@@ -121,7 +121,7 @@ const Hospital: FC<Props> = () => {
             {section?.next !== null ? (
               <button
                 onClick={() => setSection(content[section?.next ?? 0])}
-                className={`border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex items-center px-4 py-2 text-lg font-medium border rounded-md`}
+                className={`border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex h-12 flex-shrink-0 items-center px-4 py-2 text-lg font-medium border rounded-md`}
               >
                 หน้าถัดไป
               </button>

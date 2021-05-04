@@ -11,10 +11,10 @@ const QuizLanding: FC<Props> = ({ bgColor }): JSX.Element => {
 
   return (
     <section className={`${bgColor} flex flex-col h-full p-8 justify-between overflow-auto`}>
-      <div className="space-y-2 text-center text-white">
-        <h1 className="text-2xl font-normal">คุณรู้จัก</h1>
-        <h2 className="text-4xl font-medium">ภาวะสมองเสื่อม</h2>
-        <h2 className="text-2xl font-normal">ดีแค่ไหน</h2>
+      <div className="text-center text-white sm:space-y-2">
+        <h1 className="text-xl font-normal sm:text-2xl">คุณรู้จัก</h1>
+        <h2 className="text-3xl text-4xl font-medium">ภาวะสมองเสื่อม</h2>
+        <h2 className="text-xl font-normal sm:text-2xl">ดีแค่ไหน</h2>
       </div>
       <div className="flex justify-center py-4">
         <div className="border-[#a7a5f0] border-2 w-28 h-28 flex items-center justify-center rounded-full">
@@ -22,19 +22,19 @@ const QuizLanding: FC<Props> = ({ bgColor }): JSX.Element => {
         </div>
       </div>
       <div>
-        <p className="text-2xl font-light text-center text-white">
+        <p className="text-xl font-light text-center text-white sm:text-2xl">
           ลองทายดูซิว่า
           <br />
           ข้อมูลภาวะสมองเสื่อมต่อไปนี้
           <br />
           <span className="font-medium">จริง</span> หรือ <span className="font-medium">เท็จ</span>
         </p>
-        <div className="flex justify-center py-8 space-x-6">
+        <div className="flex justify-center py-4 space-x-6 sm:py-8">
           <CheckLight className="w-20 h-20" />
           <CrossLight className="w-20 h-20" />
         </div>
       </div>
-      <div className="flex justify-center h-16 pt-4">
+      <div className="flex justify-center flex-shrink-0 h-16 pt-4">
         <button
           type="button"
           onClick={() => navigate('/quiz/1')}
