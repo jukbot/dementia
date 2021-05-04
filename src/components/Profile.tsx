@@ -158,8 +158,8 @@ const Profile = (): JSX.Element => {
   }
 
   return (
-    <section className="fixed h-full w-full bg-[#6866e7] p-6 flex justify-center lg:items-center">
-      <div className="static flex flex-col items-center justify-between w-full p-6 space-y-2 overflow-y-auto bg-white rounded-md sm:space-y-4 sm:max-w-[500px]">
+    <section className="fixed h-full w-full bg-[#6866e7] p-4 sm:p-6 flex justify-center lg:items-center">
+      <div className="static flex flex-col items-center justify-between w-full p-4 sm:p-6 space-y-2 overflow-y-auto bg-white rounded-md sm:space-y-4 sm:max-w-[500px]">
         <div>
           <h1 className="text-center text-[#666666] text-xl font-medium">ข้อมูลส่วนตัว</h1>
         </div>
@@ -252,6 +252,7 @@ const Profile = (): JSX.Element => {
                 onChange={(e) => handleChange(e.target)}
                 defaultValue={profile?.postal ?? ''}
                 disabled={!state.province}
+                required
                 className={`${
                   state.province ? 'placeholder-[#808080]' : 'placeholder-[#808080]'
                 } block w-full text-base font-light h-12 border-0 border-b py-2 px-3 border-[#808080] bg-[#E5E5E5] rounded-t-md font-pridi focus:outline-none focus:ring-0 focus:border-[#6866e7]`}
@@ -288,6 +289,7 @@ const Profile = (): JSX.Element => {
                 onChange={(e) => handleChange(e.target)}
                 defaultValue={profile?.area ?? ''}
                 disabled={!state.province}
+                required
                 className={`${
                   state.province ? 'placeholder-[#808080]' : 'placeholder-[#808080]'
                 } block w-full text-base font-light h-12 border-0 border-b py-2 px-3 border-[#808080] bg-[#E5E5E5] rounded-t-md font-pridi focus:outline-none focus:ring-0 focus:border-[#6866e7]`}
