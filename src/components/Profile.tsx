@@ -295,7 +295,7 @@ const Profile = (): JSX.Element => {
                 } block w-full text-base font-light h-12 border-0 border-b py-2 px-3 border-[#808080] bg-[#E5E5E5] rounded-t-md font-pridi focus:outline-none focus:ring-0 focus:border-[#6866e7]`}
               >
                 <option value="" disabled>
-                  อนู่ในพื้นที่
+                  อยู่ในพื้นที่
                 </option>
                 <option value="urban">เทศบาลนคร/เมือง</option>
                 <option value="rural">นอกเขตเทศบาลเมือง</option>
