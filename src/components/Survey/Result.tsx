@@ -1,7 +1,7 @@
 import React, { FC, memo, useEffect, useState } from 'react'
 import { CountUp } from 'use-count-up'
 
-import { SurveyData } from '../../../@types'
+import { SurveyData, SurveyChoice } from '../../../@types'
 import { choices } from '../../data/choice'
 import { getDataById } from '../../utils/sheety'
 import FooterNav from '../Global/FooterNav'
@@ -66,7 +66,7 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
         </div>
         <div className="flex justify-center w-full h-full">
           <ul className="w-full space-y-2">
-            {choices.map((choice) => {
+            {choices.map((choice: SurveyChoice) => {
               return (
                 <li key={choice.id} className="space-y-1">
                   <h3
@@ -78,7 +78,7 @@ const SurveyResult: FC<Props> = ({ bgColor }): JSX.Element => {
                   </h3>
                   <div className="flex items-center w-full">
                     <img
-                      src={choice.thumbnail_url}
+                      src={choice.image_url}
                       alt={choice.title}
                       className={`${
                         choice.code === code ? 'opacity-100' : 'opacity-60 filter brightness-75'
