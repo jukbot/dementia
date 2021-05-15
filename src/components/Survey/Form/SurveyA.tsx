@@ -118,14 +118,14 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
               <img
                 src={choices[Number(openChoice)]?.image_url ?? ''}
                 alt={choices[Number(openChoice)]?.title ?? ''}
-                className="object-contain w-full h-auto max-h-[400px]"
+                className="object-contain w-full h-auto max-h-[160px]"
               />
             </div>
             <p className="text-base xs:text-lg font-light text-[#666666] font-pridi w-full h-full">
               {choices[Number(openChoice)]?.content}
             </p>
             <div className="bottom-0 flex justify-center w-full pt-2 mt-auto space-x-2 lg:space-x-4">
-              <button
+              {/* <button
                 onClick={() => setOpenChoice(choices[Number(openChoice)].prev ?? -1)}
                 disabled={choices[Number(openChoice)].prev === null}
                 className={`${
@@ -135,14 +135,14 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
                 } border-[#a7a5f0] text-[#a7a5f0] focus:outline-none inline-flex items-center justify-center w-full px-1 py-2 text-base xs:text-lg font-medium border rounded-md h-12`}
               >
                 ย้อนกลับ
-              </button>
+              </button> */}
               <button
                 onClick={() => selectChoice(choices[Number(openChoice)].index)}
                 className={`bg-[#6866e7] text-white hover:text-white focus:outline-none inline-flex items-center justify-center w-full px-2 py-2 text-base xs:text-lg font-medium border rounded-md h-12`}
               >
                 เลือก
               </button>
-              <button
+              {/* <button
                 onClick={() => setOpenChoice(choices[Number(openChoice)].next ?? 0)}
                 disabled={choices[Number(openChoice)].next === null}
                 className={`${
@@ -152,7 +152,7 @@ const SurveyA: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
                 } focus:outline-none inline-flex items-center justify-center w-full px-1 py-2 text-base xs:text-lg font-medium border rounded-md h-12`}
               >
                 ถัดไป
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

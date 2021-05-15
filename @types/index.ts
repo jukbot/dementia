@@ -29,7 +29,7 @@ export interface QuizData {
   image: string
 }
 
-export interface SurveyData extends Map {
+export interface SurveyData extends Record<string, string | undefined | null | number> {
   id?: string | null
   totalCount: string | null
   choiceA: string | null
@@ -40,4 +40,19 @@ export interface SurveyData extends Map {
   publicHospital?: string | null
   privateHospital?: string | null
   nearbyClinic?: string | null
+}
+
+export interface SurveyChoice {
+  id: number
+  title: string
+  content: string
+  text: string
+  thumbnail_url: string
+  image_url: string
+  code: string
+  column: string
+  index: number
+  value: string
+  prev: number | null
+  next: number | null
 }
