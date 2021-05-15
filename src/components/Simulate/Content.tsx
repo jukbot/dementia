@@ -29,7 +29,7 @@ const SimulateContent: FC = (): JSX.Element => {
         setComponent(data?.component ?? null)
         setImageUrl(data?.image_url ?? '')
         setClassName('opacity-100')
-      }, 400)
+      }, 300)
     }
     if (component) {
       return setComponent(null)
@@ -39,7 +39,7 @@ const SimulateContent: FC = (): JSX.Element => {
   // TODO: optimize by using preload images as array
 
   return (
-    <div className={`${color} transition-colors duration-1000 ease-in-out fixed h-full w-full`}>
+    <div className={`${color} transition-colors duration-500 ease-in-out fixed h-full w-full`}>
       <div className={`flex flex-col w-full h-full items-center lg:space-y-8 overflow-auto`}>
         <section
           className={`flex flex-col h-full w-full space-y-4 sm:space-y-8 p-6 sm:max-w-[500px] ${data?.space_type} `}
