@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import body from '../images/landing/body.svg'
+import logo from '../images/landing/rise-impact-logo.svg'
 import Modal from './Global/Modal'
 
 const modalTitle = 'หมายเหตุ'
@@ -22,6 +23,14 @@ const Landing = (): JSX.Element => {
   return (
     <section className="fixed w-full h-full bg-black">
       <div className="flex justify-center w-full">
+        <div className="w-[481px]">
+          <img
+            src={logo}
+            alt="logo"
+            className="absolute object-cover mt-4 ml-4 z-10 w-[80px] xs-w-[100px]"
+            width={80}
+          />
+        </div>
         <img
           src={body}
           alt="body"
