@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import { content } from '../../data/quiz'
 import { useLocalStorage } from '../../utils/useLocalStorage'
 import FooterQuiz from '../Global/FooterQuiz'
-import { CheckOutline, CrossOutline } from '../Icons'
 import { Map } from '../../../@types'
 import { updateData } from '../../utils/sheety'
 interface Props {
@@ -92,13 +91,9 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
           >
             <span>คุณคิดว่าประโยคนี้ :</span>
             {answer ? (
-              <span className="flex justify-center items-center text-[#4842e0] bg-[#c9c8f3] rounded-full p-1">
-                <CheckOutline className="w-6 h-6" />
-              </span>
+              <span className="flex items-center justify-center">จริง</span>
             ) : (
-              <span className="flex justify-center items-center text-[#9e1d01] bg-[#f1cbcb] rounded-full p-1">
-                <CrossOutline className="w-6 h-6" />
-              </span>
+              <span className="flex items-center justify-center">เท็จ</span>
             )}
           </p>
         </div>
@@ -110,12 +105,8 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
           } rounded-md mx-auto`}
         >
           <h3 className="text-xl font-medium text-white">เฉลย</h3>
-          <span className={`flex justify-center items-center border border-white text-white rounded-full p-1`}>
-            {data?.answerChoice ? (
-              <CheckOutline className="flex-shrink-0 w-14 h-14" />
-            ) : (
-              <CrossOutline className="flex-shrink-0 w-14 h-14" />
-            )}
+          <span className={`flex justify-center items-center text-white font-light text-5xl`}>
+            {data?.answerChoice ? <span>จริง</span> : <span>เท็จ</span>}
           </span>
           <p className="h-full text-base font-light text-white sm:text-lg font-pridi">{data?.answer}</p>
           <div className="flex justify-center mt-auto space-x-4 sm:py-4">
