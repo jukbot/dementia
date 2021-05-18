@@ -5,7 +5,7 @@ module.exports = {
   purge: {
     enabled: process.env.NODE_ENV === 'production',
     safeList: [],
-    content: ['./public/index.html', './src/**/*.{jsx,tsx}'],
+    content: ['./index.html', './src/**/*.{jsx,tsx}'],
   },
   darkMode: false,
   theme: {
