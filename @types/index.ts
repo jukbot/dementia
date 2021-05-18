@@ -1,13 +1,16 @@
 export interface Map {
   [key: string]: string | undefined | null | number
 }
-export interface FormData extends Map {
+export interface FormData extends Record<string, string | null> {
   gender: string | null
   age: string | null
   province: string | null
   postal: string | null
   relevance: string | null
-  other?: string | null
+  other: string | null
+  provinceName: string | null
+  districtName: string | null
+  zoneArea: string | null
 }
 
 export interface HospitalChoice {

@@ -12,11 +12,14 @@ import { addData, updateData } from '../utils/sheety'
 const defaultValue: FormData = {
   gender: 'male',
   age: '',
-  province: '64',
+  province: '1',
   postal: '',
   area: '',
   relevance: '',
   other: '',
+  provinceName: '',
+  districtName: '',
+  zoneArea: '',
 }
 
 interface FormValue {
@@ -31,9 +34,6 @@ const Profile = (): JSX.Element => {
   const [, setSubject] = useLocalStorage<string | null>('subject', null)
   const [relevance, setRelevance] = useState<string | null>(null)
   const [age, setAge] = useState<number>(0)
-  const [provinceName, setProvinceName] = useState<string | null>('กระบี่')
-  const [districtName, setDistrictName] = useState<string | null>('เขตป้อมปราบศัตรูพ่าย')
-  const [zoneArea, setZoneArea] = useState<string | null>('เมือง')
   const [isSaving, setIsSaving] = useState<boolean>(false)
   const [ageError, setAgeError] = useState<boolean>(false)
   const [isDisabled, setDisabled] = useState<boolean>(true)
@@ -60,7 +60,7 @@ const Profile = (): JSX.Element => {
         setIsSaving(true)
         setDisabled(true)
         const created = String(new Date().toISOString().split('T')[0])
-        const result = await addData({ ...profile, created, provinceName, districtName, zoneArea }, 'survey')
+        const result = await addData({ ...profile, created }, 'survey')
         if (result?.survey) {
           window.localStorage.setItem('dementia-uid', String(result?.survey.id))
         }
@@ -68,13 +68,13 @@ const Profile = (): JSX.Element => {
         setIsSaving(true)
         setDisabled(true)
         const created = String(new Date().toISOString().split('T')[0])
-        await updateData({ ...profile, created, provinceName, districtName, zoneArea }, 'survey', id ?? '1')
+        await updateData({ ...profile, created }, 'survey', id ?? '1')
       }
       setIsSaving(false)
       setDisabled(false)
       navigate('/intro/1')
     } catch (error) {
-      console.log(error)
+      alert(error)
       setIsSaving(false)
       setDisabled(false)
     }
@@ -102,41 +102,39 @@ const Profile = (): JSX.Element => {
     }
   }
 
-  const getProvinceName = (id: number) => {
+  const getProvinceName = (id: number): string => {
     const province = provinces.find((v) => v.PROVINCE_ID === id)
-    setProvinceName(String(province?.PROVINCE_NAME))
+    return String(province?.PROVINCE_NAME)
   }
 
-  const getDistrictName = (id: string) => {
+  const getDistrictName = (id: string): string => {
     const result = zipcode.find((v) => v.ZIPCODE === id)
     const district = districts.find((v) => String(v.DISTRICT_ID) === result?.DISTRICT_ID)
-    setDistrictName(String(district?.DISTRICT_NAME))
-
-    if (
-      district?.DISTRICT_NAME.startsWith('เขต') ||
-      district?.DISTRICT_NAME.startsWith('เมือง') ||
-      district?.DISTRICT_NAME.startsWith('พระนครศรีอยุธยา')
-    ) {
-      setZoneArea('เมือง')
-    } else {
-      setZoneArea('ชนบท')
-    }
+    return String(district?.DISTRICT_NAME)
   }
 
   const handleChange = (e: (EventTarget & HTMLInputElement) | (EventTarget & HTMLSelectElement) | FormValue): void => {
-    setState({ ...state, [e.name]: e.value })
     validateForm({ ...state, [e.name]: e.value })
 
     if (e.name === 'relevance') {
       setRelevance(e.value)
-    }
-
-    if (e.name === 'province') {
-      getProvinceName(Number(e.value))
-    }
-
-    if (e.name === 'postal') {
-      getDistrictName(String(e.value))
+      setState({ ...state, relevance: e.value })
+    } else if (e.name === 'province') {
+      const provinceName = getProvinceName(Number(e.value))
+      setState({ ...state, province: e.value, provinceName })
+    } else if (e.name === 'postal') {
+      const districtName = getDistrictName(String(e.value))
+      if (
+        districtName.startsWith('เขต') ||
+        districtName.startsWith('เมือง') ||
+        districtName.startsWith('พระนครศรีอยุธยา')
+      ) {
+        setState({ ...state, postal: e.value, districtName, zoneArea: 'เมือง' })
+      } else {
+        setState({ ...state, postal: e.value, districtName, zoneArea: 'ชนบท' })
+      }
+    } else {
+      setState({ ...state, [e.name]: e.value })
     }
   }
 

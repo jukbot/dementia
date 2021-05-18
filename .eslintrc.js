@@ -30,6 +30,7 @@ module.exports = {
   rules: {
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
+    'react/jsx-uses-react': 0,
     'react-hooks/exhaustive-deps': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/explicit-member-accessibility': 0,
