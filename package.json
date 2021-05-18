@@ -1,10 +1,10 @@
 {
-  "name": "pedmt",
+  "name": "dementia",
   "author": "jukbot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scripts": {
     "dev": "NODE_ENV=development vite",
-    "build": "NODE_ENV=production tsc && vite build --debug",
+    "build": "NODE_ENV=production tsc && vite build",
     "serve": "vite preview"
   },
   "dependencies": {

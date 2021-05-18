@@ -5,9 +5,9 @@ module.exports = {
   purge: {
     enabled: process.env.NODE_ENV === 'production',
     safeList: [],
-    content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+    content: ['./public/index.html', './src/**/*.{jsx,tsx}'],
   },
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
     fontFamily: {
       sans: ['Mitr', ...defaultTheme.fontFamily.sans],
@@ -49,9 +49,7 @@ module.exports = {
       }),
     },
   },
-  variants: {
-    extend: {},
-  },
+  variants: {},
   // https://tailwindcss.com/docs/plugins
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require('tailwindcss-debug-screens')],
 }
