@@ -23,19 +23,10 @@ const Landing = (): JSX.Element => {
   return (
     <section className="fixed w-full h-full bg-black">
       <div className="flex justify-center w-full">
-        <div className="w-[481px]">
-          <img
-            src={logo}
-            alt="logo"
-            className="absolute object-cover mt-4 ml-4 z-10 w-[80px] xs-w-[100px]"
-            width={80}
-          />
+        <div className="w-[513px]">
+          <img src={logo} alt="logo" className="absolute object-cover mt-4 ml-4 z-10 w-[80px] xs-w-[100px]" width={80} />
         </div>
-        <img
-          src={body}
-          alt="body"
-          className="absolute object-cover inset-0 mx-auto w-full sm:w-auto h-full bg-[#2208b2] z-0"
-        />
+        <img src={body} alt="body" className="absolute object-cover inset-0 mx-auto w-full sm:w-auto h-full bg-[#2208b2] z-0" />
       </div>
       <div className="relative z-10 flex flex-col justify-end h-full py-6 mt-auto space-y-3 xs:space-y-4 sm:space-y-6 md:space-y-8 xs:py-8 lg:py-12">
         <h1 className="text-xl font-light text-center text-white xs:text-2xl lg:text-3xl">

@@ -9,13 +9,7 @@ interface Props {
   setOpenModal: (active: boolean, continues: boolean) => void
 }
 
-const Modal: FC<Props> = ({
-  title = '',
-  content = '',
-  buttonText = 'Close',
-  isShown = false,
-  setOpenModal = () => {},
-}) => {
+const Modal: FC<Props> = ({ title = '', content = '', buttonText = 'Close', isShown = false, setOpenModal = () => {} }) => {
   useEffect(() => {
     const handleClick = (e: MouseEvent | TouchEvent) => {
       const target = e.target as HTMLDivElement
@@ -35,18 +29,15 @@ const Modal: FC<Props> = ({
   return (
     <div>
       <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none modal">
-        <div className="relative w-auto sm:max-w-[500px] px-6 py-12 mx-auto modal">
+        <div className="relative w-auto sm:max-w-[500px] p-6 mx-auto modal">
           <div className="relative flex flex-col w-full h-full bg-white border-0 rounded-md shadow-md outline-none focus:outline-none">
             <div className="flex items-start justify-center pt-8">
               <h3 className="text-2xl font-medium text-[#6866e7]">{title}</h3>
             </div>
-            <div className="relative flex-auto px-6">
-              <p
-                className="my-4 text-lg font-light font-pridi text-[#444444]"
-                dangerouslySetInnerHTML={{ __html: content ?? '' }}
-              />
+            <div className="relative flex-auto h-full px-6">
+              <p className="my-4 text-base xs:text-lg font-light font-pridi text-[#444444]" dangerouslySetInnerHTML={{ __html: content ?? '' }} />
             </div>
-            <div className="flex items-end justify-center pt-6 pb-8 mt-auto">
+            <div className="flex items-end justify-center pb-8 mt-auto">
               <button
                 type="button"
                 onClick={() => setOpenModal(false, true)}
