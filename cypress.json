@@ -1,0 +1,9 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "integrationFolder": "./test/e2e",
+  "testFiles": "**/*.{test,spec}.{js,ts,jsx,tsx}",
+  "experimentalStudio": true,
+  "viewportHeight": 736,
+  "viewportWidth": 414,
+  "componentFolder": "src"
+}
