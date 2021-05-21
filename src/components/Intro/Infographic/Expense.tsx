@@ -1,7 +1,7 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Elderly } from '../../Icons'
 
-const Expense: FC = () => {
+const Expense = (): JSX.Element => {
   return (
     <div className="flex flex-col space-y-4 text-center text-white sm:space-y-8">
       <p className="text-lg font-light font-pridi">
