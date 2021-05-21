@@ -6,7 +6,9 @@
     "dev": "NODE_ENV=development vite",
     "build": "NODE_ENV=production tsc && vite build",
     "serve": "vite preview",
+    "prepare": "husky install",
     "cypress:open": "cypress open",
+    "lint": "eslint --ext js,ts,tsx --cache --fix src/",
     "test:e2e": "yarn cypress open-ct"
   },
   "dependencies": {
@@ -23,11 +25,11 @@
     "use-count-up": "^2.3.1"
   },
   "devDependencies": {
-    "@cypress/react": "^5.7.0",
+    "@cypress/react": "^5.8.0",
     "@cypress/vite-dev-server": "^1.2.7",
     "@testing-library/cypress": "^7.0.6",
-    "@types/node": "^15.3.0",
-    "@types/react": "^17.0.5",
+    "@types/node": "^15.6.0",
+    "@types/react": "^17.0.6",
     "@types/react-dom": "^17.0.5",
     "@types/react-router-dom": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
@@ -44,7 +46,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
-    "postcss": "^8.2.15",
+    "postcss": "^8.3.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.3.0",
     "tailwindcss-debug-screens": "^2.0.0",
