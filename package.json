@@ -7,6 +7,7 @@
     "build": "NODE_ENV=production tsc && vite build",
     "serve": "vite preview",
     "prepare": "husky install",
+    "type-check": "tsc --pretty --noEmit",
     "cypress:open": "cypress open",
     "lint": "eslint --ext js,ts,tsx --cache --fix src/",
     "test:e2e": "yarn cypress open-ct"
@@ -27,6 +28,8 @@
   "devDependencies": {
     "@cypress/react": "^5.8.0",
     "@cypress/vite-dev-server": "^1.2.7",
+    "@tailwindcss/aspect-ratio": "^0.2.0",
+    "@tailwindcss/line-clamp": "^0.2.0",
     "@testing-library/cypress": "^7.0.6",
     "@types/node": "^15.6.0",
     "@types/react": "^17.0.6",
