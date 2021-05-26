@@ -4,7 +4,7 @@ module.exports = {
   mode: 'jit',
   purge: {
     enabled: process.env.NODE_ENV === 'production',
-    safeList: [],
+    safelist: [],
     content: ['./index.html', './src/**/*.{jsx,tsx}'],
   },
   darkMode: false,
