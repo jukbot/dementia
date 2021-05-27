@@ -186,10 +186,14 @@
       U+FEFF, U+FFFD;
   }
 
-  body {
-    touch-action: pan-y;
-    margin: 0;
+  * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    touch-action: pan-y;
+    background-color: #ffffff;
+    scroll-behavior: smooth;
   }
 }
