@@ -34,7 +34,6 @@ module.exports = {
         '1/3': '33.33%',
         '1/2': '50%',
         '3/4': '75%',
-        290: '290px',
         full: '100%',
         min: 'min-content',
         max: 'max-content',
