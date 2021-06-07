@@ -38,7 +38,7 @@ const Landing = (): JSX.Element => {
           <br />
           เพื่อพัฒนาระบบคัดกรองคัดแยก
           <br />
-          ที่ดียิ่งขึ้นสำหรับทุกคน
+          ที่ดียิ่งขึ้นสำหรับทุกคน
         </p>
         <div className="bottom-0 flex justify-center">
           <button
@@ -52,7 +52,7 @@ const Landing = (): JSX.Element => {
           </button>
         </div>
       </div>
-      {showModal ? (
+      {showModal && (
         <Modal
           title={modalTitle}
           content={modalContent}
@@ -60,8 +60,6 @@ const Landing = (): JSX.Element => {
           isShown={showModal}
           setOpenModal={(active, continues) => handleAction(active, continues)}
         />
-      ) : (
-        ''
       )}
     </section>
   )

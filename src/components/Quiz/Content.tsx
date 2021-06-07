@@ -63,15 +63,10 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
   return (
     <div className="flex flex-col w-full h-full overflow-auto">
       <section className={`${bgColor} flex flex-col h-full sm:max-w-[500px] self-center space-y-2 sm:space-y-4 p-6`}>
-        <h2 className={`${data?.heading ? 'block' : 'hidden'} text-xl font-medium text-center text-[#999999]`}>
-          {data?.heading}
-        </h2>
+        <h2 className={`${data?.heading ? 'block' : 'hidden'} text-xl font-medium text-center text-[#999999]`}>{data?.heading}</h2>
         {data?.question ? (
           <div className="flex items-center justify-center h-full">
-            <h1
-              className="text-xl sm:text-2xl font-light text-center text-[#666666]"
-              dangerouslySetInnerHTML={{ __html: data?.question ?? '' }}
-            />
+            <h1 className="text-xl sm:text-2xl font-light text-center text-[#666666]" dangerouslySetInnerHTML={{ __html: data?.question ?? '' }} />
           </div>
         ) : (
           ''
@@ -79,28 +74,18 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
         <div className={showAnswer ? 'hidden' : 'flex justify-center items-center'}>
           <img src={`${data?.image_url}`} className="object-contain w-full h-full" alt={data?.image_alt} />
         </div>
-        <div
-          className={`${
-            showAnswer ? 'block' : 'hidden'
-          } flex w-full space-x-4 py-2 sm:py-8 items-center justify-center`}
-        >
+        <div className={`${showAnswer ? 'block' : 'hidden'} flex w-full space-x-4 py-2 sm:py-8 items-center justify-center`}>
           <p
             className={`${
               answer ? 'text-[#6866e7] border-[#6866e7]' : 'text-[#9e1d01] border-[#9e1d01]'
             }  border rounded-md flex items-center space-x-2 px-4 py-2 font-medium text-lg`}
           >
             <span>คุณคิดว่าประโยคนี้ :</span>
-            {answer ? (
-              <span className="flex items-center justify-center">จริง</span>
-            ) : (
-              <span className="flex items-center justify-center">เท็จ</span>
-            )}
+            {answer ? <span className="flex items-center justify-center">จริง</span> : <span className="flex items-center justify-center">เท็จ</span>}
           </p>
         </div>
         <div
-          className={`${
-            showAnswer ? 'flex' : 'hidden'
-          } flex-col items-center space-y-2 sm:space-y-4 h-full w-full mb-4 px-6 py-4 ${
+          className={`${showAnswer ? 'flex' : 'hidden'} flex-col items-center space-y-2 sm:space-y-4 h-full w-full mb-4 px-6 py-4 ${
             data?.answerChoice ? 'bg-[#6866e7]' : 'bg-[#cd786a]'
           } rounded-md mx-auto`}
         >
@@ -113,11 +98,7 @@ const QuizContent: FC<Props> = ({ bgColor }): JSX.Element => {
             <button
               onClick={() => goToNextQuestion()}
               className={`${
-                data?.next
-                  ? data?.answerChoice
-                    ? 'bg-[#2207b4] text-[#e7e7f9]'
-                    : 'bg-[#9e1d01] text-[#f1cbcb]'
-                  : 'bg-[#e7e7f9] text-[#6866e7]'
+                data?.next ? (data?.answerChoice ? 'bg-[#2207b4] text-[#e7e7f9]' : 'bg-[#9e1d01] text-[#f1cbcb]') : 'bg-[#e7e7f9] text-[#6866e7]'
               } focus:outline-none shadow-dark inline-flex items-center px-6 py-2 flex-shrink-0 h-12 text-lg font-medium rounded-md`}
             >
               {data?.next ? 'ข้อถัดไป' : 'ดูคะแนน'}

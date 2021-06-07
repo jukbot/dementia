@@ -9,13 +9,8 @@ const SurveyB: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
   const [answer, setAnswer] = useLocalStorage<string | null>('surveyB', null)
 
   useEffect(() => {
-    if (answer) {
-      console.log('true')
-      setValidAnswer(true)
-    } else {
-      console.log('false')
-      setValidAnswer(false)
-    }
+    if (answer) return setValidAnswer(true)
+    return setValidAnswer(false)
   }, [answer])
 
   return (
@@ -34,20 +29,14 @@ const SurveyB: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
         <legend className="sr-only">ตัวเลือกสิ่งที่จะทำต่อ</legend>
         <div className="w-full space-y-4 text-center sm:max-w-[500px]">
           <label
-            className={`${
-              answer === 'a' ? 'bg-[#6866e7] shadow-lg' : 'bg-white shadow-dark'
-            } relative block px-4 py-4 rounded-md cursor-pointer transition`}
+            className={`${answer === 'a' ? 'bg-[#6866e7] shadow-lg' : 'bg-white shadow-dark'} relative block px-4 py-4 rounded-md cursor-pointer transition`}
             tabIndex={0}
             role="radio"
             aria-checked={answer === 'a'}
             onClick={() => setAnswer('a')}
           >
             <div className="flex items-center justify-center">
-              <p
-                className={`${
-                  answer === 'a' ? 'text-white' : 'text-[#6866e7]'
-                } transition font-light text-base xs:text-lg text-center}`}
-              >
+              <p className={`${answer === 'a' ? 'text-white' : 'text-[#6866e7]'} transition font-light text-base xs:text-lg text-center}`}>
                 ปรับเปลี่ยนพฤติกรรมด้วยตนเอง
                 <br /> เพื่อชะลอความเสื่อมของสมอง
                 <br /> สังเกตอาการและตรวจเช็คอย่างสม่ำเสมอ
@@ -55,19 +44,13 @@ const SurveyB: FC<Props> = ({ setValidAnswer = () => {} }): JSX.Element => {
             </div>
           </label>
           <label
-            className={`${
-              answer === 'b' ? 'bg-[#6866e7] shadow-lg' : 'bg-white shadow-dark'
-            } relative block px-4 py-4 rounded-md cursor-pointer transition`}
+            className={`${answer === 'b' ? 'bg-[#6866e7] shadow-lg' : 'bg-white shadow-dark'} relative block px-4 py-4 rounded-md cursor-pointer transition`}
             tabIndex={1}
             aria-checked={answer === 'b'}
             onClick={() => setAnswer('b')}
           >
             <div className="flex items-center justify-center">
-              <p
-                className={`${
-                  answer === 'b' ? 'text-white' : 'text-[#6866e7]'
-                } transition font-light text-base xs:text-lg text-center}`}
-              >
+              <p className={`${answer === 'b' ? 'text-white' : 'text-[#6866e7]'} transition font-light text-base xs:text-lg text-center}`}>
                 นัดหมายแพทย์เฉพาะทาง
                 <br />
                 เพื่อวินิจฉัยโดยละเอียด เช่น

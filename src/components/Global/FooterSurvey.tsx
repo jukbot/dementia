@@ -20,11 +20,8 @@ const FooterSurvey: FC<Props> = ({ saveColumn, next, className, disable }): JSX.
   useEffect(() => {
     function checkUserData() {
       const answer = window.localStorage.getItem(saveColumn)
-      if (answer) {
-        setIsDisabled(false)
-      } else {
-        setIsDisabled(true)
-      }
+      if (answer) return setIsDisabled(false)
+      return setIsDisabled(true)
     }
 
     checkUserData()
