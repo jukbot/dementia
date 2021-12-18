@@ -53,14 +53,7 @@
       "react-app"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not ie11",
-      "not op_mini all"
-    ]
-  },
+  "browserslist": "> 0.6%, not dead, not IE 11",
   "lint-staged": {
     "*.{ts,tsx}": [
       "prettier --write",
